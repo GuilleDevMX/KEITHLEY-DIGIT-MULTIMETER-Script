@@ -156,9 +156,17 @@ class KeithleyAcquisition:
 
     def setup_csv_output(self) -> str:
         """Configura el archivo CSV para salida de datos"""
+        import os
+
+        # Asegurar que el directorio de salida existe
+        output_dir = self.config['output_dir']
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
+            self.logger.info(f"Created output directory: {output_dir}")
+
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         filename = f'dc_voltage_readings_{self.config["experiment_label"]}_{timestamp}.csv'
-        filepath = f"{self.config['output_dir']}/{filename}"
+        filepath = os.path.join(output_dir, filename)
 
         self.csv_file = open(filepath, 'w', newline='')
         self.csv_writer = csv.writer(self.csv_file)

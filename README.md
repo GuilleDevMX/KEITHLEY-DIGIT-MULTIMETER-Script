@@ -77,6 +77,65 @@ python main_refactored.py \
     --blocks 0  # 0 = modo infinito
 ```
 
+### Especificar Directorio de Salida
+```bash
+python main_refactored.py \
+    --label "experimento" \
+    --samples 1000 \
+    --blocks 5 \
+    --output-dir "resultados_experimento"
+```
+
+### Ejemplos de Organización
+```bash
+# Resultados organizados por experimento
+python main_refactored.py --output-dir "experimentos/sensor_voltaje"
+
+# Resultados organizados por fecha
+python main_refactored.py --output-dir "resultados/2025-10-09"
+
+# Resultados organizados por tipo de prueba
+python main_refactored.py --output-dir "calibracion/linealidad"
+```
+
+## 📁 Organización de Archivos
+
+### Estructura por Defecto
+```
+proyecto/
+├── main_refactored.py
+├── config.py
+├── acquisition.py
+├── analysis.py
+├── plotting.py
+└── output/                    # 📁 Archivos generados aquí
+    ├── dc_voltage_readings_experimento1_20251009_143000.csv
+    ├── voltage_analysis_experimento1_20251009_143005.png
+    └── keithley_acquisition_20251009.log
+```
+
+### Personalizar Carpeta de Salida
+```bash
+# Usar carpeta específica
+python main_refactored.py --output-dir "experimentos/voltaje"
+
+# Usar subcarpetas por fecha
+python main_refactored.py --output-dir "resultados/2025-10-09"
+```
+
+### Archivos Generados
+- **CSV**: `dc_voltage_readings_[etiqueta]_[timestamp].csv`
+  - Datos crudos de voltaje con metadatos
+  - Columnas: Block, Sample_In_Block, Global_Sample, Voltage_V, Timestamp
+
+- **PNG**: `voltage_analysis_[etiqueta]_[timestamp].png`
+  - Gráficas completas de análisis estadístico
+  - 6 paneles: serie temporal, distribución, análisis por bloques, etc.
+
+- **LOG**: `keithley_acquisition_[fecha].log`
+  - Registro completo de la ejecución
+  - Información de debugging y errores
+
 ## ⚙️ Parámetros de Configuración
 
 | Parámetro | Descripción | Valor por defecto | Rango |
@@ -87,7 +146,7 @@ python main_refactored.py \
 | `--blocks`, `-b` | Número de bloques | 50 | 0-1000 (0=infinito) |
 | `--force`, `-f` | Forzar NPLC personalizados | False | - |
 | `--no-stats` | Solo gráficas básicas | False | - |
-| `--output-dir`, `-o` | Directorio de salida | `.` | Ruta válida |
+| `--output-dir`, `-o` | Directorio de salida para archivos | `output` | Ruta válida |
 | `--quiet`, `-q` | Modo silencioso | False | - |
 
 ### Gestión de Configuración

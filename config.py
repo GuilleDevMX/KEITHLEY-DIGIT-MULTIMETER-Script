@@ -58,8 +58,8 @@ Ejemplos de uso:
                                help='Cargar configuración desde archivo JSON')
 
         # Argumentos de salida
-        self.parser.add_argument('--output-dir', '-o', type=str, default='.',
-                               help='Directorio de salida para archivos (default: .)')
+        self.parser.add_argument('--output-dir', '-o', type=str, default='output',
+                               help='Directorio de salida para archivos (default: output)')
         self.parser.add_argument('--quiet', '-q', action='store_true',
                                help='Modo silencioso (menos output en consola)')
 

@@ -1,0 +1,11 @@
+{
+  "experiment_label": "test_output",
+  "samples_per_count": 100,
+  "nplc_cycles": 10.0,
+  "num_blocks": 1,
+  "force_nplc": false,
+  "no_stats": false,
+  "output_dir": "test_output",
+  "quiet": false,
+  "infinite_mode": false
+}

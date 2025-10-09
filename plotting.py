@@ -13,6 +13,11 @@ class KeithleyPlotter:
     def __init__(self, output_dir: str = ".", experiment_label: str = "experimento"):
         self.output_dir = output_dir
         self.experiment_label = experiment_label
+
+        # Crear directorio de salida si no existe
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir, exist_ok=True)
+
         self._setup_plot_style()
 
     def _setup_plot_style(self):
