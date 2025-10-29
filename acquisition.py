@@ -10,7 +10,6 @@ from datetime import datetime
 from typing import List, Dict, Optional, Any
 from contextlib import contextmanager
 
-
 class KeithleyError(Exception):
     """Excepción base para errores del sistema Keithley"""
     pass
@@ -136,8 +135,9 @@ class KeithleyAcquisition:
         self.inst.write(f'SENSe:VOLTage:DC:NPLCycles {self.config["nplc_cycles"]}')
 
         # Verificar configuración
-        current_nplc = self.inst.query('SENSe:VOLTage:DC:NPLCycles?').strip()
-        if str(self.config['nplc_cycles']) != current_nplc:
+        # cast to float for comparison
+        current_nplc = float(self.inst.query('SENSe:VOLTage:DC:NPLCycles?').strip())
+        if current_nplc != float(self.config['nplc_cycles']):
             self.logger.warning(f"NPLCycles verification failed: expected {self.config['nplc_cycles']}, got {current_nplc}")
 
         self.logger.info("Instrument initialized successfully")
@@ -250,7 +250,7 @@ class KeithleyAcquisition:
         if len(block_readings) != self.config['samples_per_count']:
             self.logger.warning(f"Expected {self.config['samples_per_count']} readings, got {len(block_readings)}")
 
-        self.logger.info(f"Block {block_num} completed: {len(block_readings)} samples")
+        # self.logger.info(f"Block {block_num} completed: {len(block_readings)} samples")
         return block_readings
 
     def _wait_for_completion(self, block_num: int):
@@ -275,7 +275,7 @@ class KeithleyAcquisition:
             time.sleep(0.1)
 
         block_time = time.time() - poll_start
-        self.logger.info(f"Block {block_num} completed in {block_time:.3f}s after {poll_count} polls")
+        # self.logger.info(f"Block {block_num} completed in {block_time:.3f}s after {poll_count} polls")
 
     def save_block_data(self, block_readings: List[float], block_num: int,
                        global_sample_index: int) -> int:

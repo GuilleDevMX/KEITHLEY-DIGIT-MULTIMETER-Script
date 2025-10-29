@@ -34,13 +34,20 @@ Un sistema completo y modular para adquisición de datos de voltaje DC usando in
 keithley-acquisition/
 ├── main.py                 # Script original (legacy)
 ├── main_refactored.py      # Script principal modular
+├── gui_interface.py        # 🆕 Interfaz gráfica avanzada
 ├── config.py              # Configuración y validación
 ├── acquisition.py         # Lógica de adquisición de datos
 ├── analysis.py            # Análisis estadístico
 ├── plotting.py            # Generación de gráficas
+├── alicat_pid_calibration.py # Calibración PID Alicat
+├── acquisition_instruments.py # Sistema integrado multi-dispositivo
 ├── test_main.py           # Tests unitarios
-├── requirements.txt       # Dependencias
-└── README.md             # Esta documentación
+├── requirements.txt       # Dependencias actualizadas
+├── README.md             # Documentación completa
+└── output/               # 📁 Archivos generados
+    ├── Datos_20251015_121501.csv    # Datos de adquisición
+    ├── voltage_analysis_*.png       # Gráficas de análisis
+    └── gui_acquisition.log          # Log de interfaz gráfica
 ```
 
 ## 🎯 Uso Básico
@@ -98,7 +105,80 @@ python main_refactored.py --output-dir "resultados/2025-10-09"
 python main_refactored.py --output-dir "calibracion/linealidad"
 ```
 
-## 📁 Organización de Archivos
+## �️ Interfaz Gráfica Avanzada
+
+El sistema incluye una interfaz gráfica completa (`gui_interface.py`) para control intuitivo de la adquisición y análisis de datos.
+
+### 🚀 Funcionalidades de la GUI
+
+#### **Pestañas Principales:**
+1. **Control de Adquisición**: Inicio, pausa, detención y monitoreo en tiempo real
+2. **Parámetros**: Configuración completa de setpoint, Keithley y directorios
+3. **Puertos**: Escaneo automático y prueba de conexiones seriales/VISA
+4. **Calibración**: Control de calibración PID para Alicat
+5. **Visualización**: Análisis gráfico avanzado de datos CSV
+6. **Exportación**: Exportación de datos y gráficas en múltiples formatos
+
+### 📊 Sistema de Visualización
+
+#### **Gráficas Principales:**
+- **Voltajes vs Tiempo**: Serie temporal con voltajes TIVA (crudos y filtrados) y KEITHLEY (cuando disponible)
+- **Presión Alicat vs Tiempo**: Presión actual, setpoint y setpoint enviado
+- **Layout**: 2 gráficas en columna (una por fila) para fácil comparación
+
+#### **Análisis Detallado:**
+- **Correlación**: Matriz de correlación entre todas las variables disponibles
+- **Histogramas**: Distribuciones de variables principales (voltajes TIVA/KEITHLEY, presión, temperatura)
+- **Espectro**: Análisis de frecuencia (FFT) dinámico para todas las señales disponibles
+- **Tendencias**: Regresión lineal y análisis de tendencias temporales para múltiples variables
+
+### 💾 Exportación de Datos
+
+#### **Formatos de Datos:**
+- **CSV**: Formato estándar de valores separados por comas
+- **Excel (XLSX)**: Compatible con Microsoft Excel y LibreOffice
+- **JSON**: Formato estructurado para aplicaciones web
+- **Parquet**: Optimizado para big data y análisis masivo
+
+#### **Formatos de Gráficas:**
+- **PNG**: Alta calidad para documentos y presentaciones
+- **JPG**: Comprimido para uso web
+- **BMP**: Formato sin pérdida para edición
+- **PDF**: Vectorial para publicaciones científicas
+- **EPS**: Formato PostScript para impresión profesional
+
+### 🎯 Cómo Usar la Interfaz Gráfica
+
+```bash
+# Activar entorno virtual
+.\env\Scripts\activate
+
+# Ejecutar interfaz gráfica
+python gui_interface.py
+```
+
+#### **Flujo de Trabajo Típico:**
+1. **Configurar Puertos**: Escanear y probar conexiones seriales
+2. **Ajustar Parámetros**: Configurar setpoints, Keithley y directorios
+3. **Iniciar Adquisición**: Comenzar captura de datos con monitoreo en tiempo real
+4. **Visualizar Datos**: Cargar CSV generado y explorar gráficas
+5. **Exportar Resultados**: Guardar datos y gráficas en formatos deseados
+
+### 🔧 Características Avanzadas
+
+- **Pausa/Reanudación**: Control preciso sobre la adquisición de datos
+- **Monitoreo en Tiempo Real**: Logs detallados y estado del sistema
+- **Validación Automática**: Verificación de conexiones y parámetros
+- **Interfaz Intuitiva**: Diseño moderno con navegación por pestañas
+- **Manejo de Errores**: Mensajes informativos y recuperación automática
+- **Cierre Seguro**: Limpieza automática de recursos al cerrar la aplicación
+  - Detiene threads de adquisición y calibración
+  - Cierra conexiones seriales y VISA
+  - Libera figuras de matplotlib
+  - Cierra handlers de logging
+  - Garantiza integridad de datos
+
+## �📁 Organización de Archivos
 
 ### Estructura por Defecto
 ```
@@ -284,11 +364,3 @@ Para contribuir:
 ## 📄 Licencia
 
 Este proyecto es software libre. Consulta el archivo LICENSE para detalles.
-
-## 📞 Soporte
-
-Para soporte técnico o reportar bugs, por favor crear un issue en el repositorio con:
-- Descripción del problema
-- Pasos para reproducir
-- Logs relevantes
-- Configuración del sistema

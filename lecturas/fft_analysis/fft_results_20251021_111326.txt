@@ -1,0 +1,17 @@
+=== RESULTADOS ANÁLISIS FFT ===
+Archivo analizado: C:\Users\LENOVO\Documents\CIDESI\Filtro\Datos\KEITHLEY\lecturas\TIVA_Acquisition_20251021_111108.csv
+Fecha de análisis: 2025-10-21 11:13:27
+
+PARÁMETROS DE ADQUISICIÓN:
+Frecuencia de muestreo: 20.30 Hz
+Total de muestras: 1217
+Duración total: 59.91 segundos
+
+ESTADÍSTICAS DE SEÑAL:
+Media: 0.007284 V
+Desviación estándar: 0.000004 V
+Valor máximo: 0.007293 V
+Valor mínimo: 0.007270 V
+Rango dinámico: 0.000023 V
+
+FRECUENCIAS DOMINANTES:

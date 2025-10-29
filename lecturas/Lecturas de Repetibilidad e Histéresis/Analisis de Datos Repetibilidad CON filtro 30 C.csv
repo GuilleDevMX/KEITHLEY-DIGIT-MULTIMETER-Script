@@ -1,0 +1,152 @@
+ANÁLISIS,HISTERESIS
+FECHA EXPORTACIÓN,2025-10-28 11:08:58
+
+RESUMEN GLOBAL
+Métrica,Valor
+total_histeresis_area,0.000129
+total_histeresis_area_w_FP,0.000127
+total_histeresis_area_keithley,0.000200
+num_cycles_analyzed,2
+average_area_per_cycle,0.000065
+average_area_per_cycle_w_FP,0.000064
+average_area_per_cycle_keithley,0.000100
+cycle_areas,"['0.000076', '0.000053']"
+cycle_areas_w_FP,"['0.000074', '0.000053']"
+cycle_areas_keithley,"['0.000103', '0.000097']"
+
+DATOS DE HISTÉRESIS - ANÁLISIS COMPLETO
+"Este archivo contiene promedios por fase, datos interpolados de histéresis y promedios generales"
+
+PROMEDIOS POR FASE Y SETPOINT
+Ciclo,Fase,KEITHLEY (V),Setpoint (kPA),TIVA Filtrado (V),TIVA Raw (V),Tipo
+1,Subida,,0.0,,-0.007176,TIVA Raw
+1,Subida,,1.0,,-0.002909,TIVA Raw
+1,Subida,,2.0,,0.001362,TIVA Raw
+1,Subida,,3.0,,0.005597,TIVA Raw
+1,Subida,,4.0,,0.009892,TIVA Raw
+1,Subida,,5.0,,0.014145,TIVA Raw
+1,Subida,,6.0,,0.018373,TIVA Raw
+1,Subida,,6.5,,0.020504,TIVA Raw
+1,Subida,,6.8,,0.021772,TIVA Raw
+1,Subida,,0.0,-0.007176,,TIVA Filtrado
+1,Subida,,1.0,-0.002910,,TIVA Filtrado
+1,Subida,,2.0,0.001362,,TIVA Filtrado
+1,Subida,,3.0,0.005596,,TIVA Filtrado
+1,Subida,,4.0,0.009892,,TIVA Filtrado
+1,Subida,,5.0,0.014145,,TIVA Filtrado
+1,Subida,,6.0,0.018372,,TIVA Filtrado
+1,Subida,,6.5,0.020504,,TIVA Filtrado
+1,Subida,,6.8,0.021772,,TIVA Filtrado
+1,Subida,-0.007172,0.0,,,KEITHLEY
+1,Subida,-0.002908,1.0,,,KEITHLEY
+1,Subida,0.001360,2.0,,,KEITHLEY
+1,Subida,0.005625,3.0,,,KEITHLEY
+1,Subida,0.009885,4.0,,,KEITHLEY
+1,Subida,0.014135,5.0,,,KEITHLEY
+1,Subida,0.018378,6.0,,,KEITHLEY
+1,Subida,0.020491,6.5,,,KEITHLEY
+1,Subida,0.021759,6.8,,,KEITHLEY
+1,Bajada,,0.0,,-0.007167,TIVA Raw
+1,Bajada,,1.0,,-0.002907,TIVA Raw
+1,Bajada,,2.0,,0.001359,TIVA Raw
+1,Bajada,,3.0,,0.005619,TIVA Raw
+1,Bajada,,4.0,,0.009878,TIVA Raw
+1,Bajada,,5.0,,0.014128,TIVA Raw
+1,Bajada,,6.0,,0.018364,TIVA Raw
+1,Bajada,,6.5,,0.020477,TIVA Raw
+1,Bajada,,0.0,-0.007167,,TIVA Filtrado
+1,Bajada,,1.0,-0.002907,,TIVA Filtrado
+1,Bajada,,2.0,0.001359,,TIVA Filtrado
+1,Bajada,,3.0,0.005619,,TIVA Filtrado
+1,Bajada,,4.0,0.009878,,TIVA Filtrado
+1,Bajada,,5.0,0.014129,,TIVA Filtrado
+1,Bajada,,6.0,0.018365,,TIVA Filtrado
+1,Bajada,,6.5,0.020477,,TIVA Filtrado
+1,Bajada,-0.007164,0.0,,,KEITHLEY
+1,Bajada,-0.002907,1.0,,,KEITHLEY
+1,Bajada,0.001354,2.0,,,KEITHLEY
+1,Bajada,0.005606,3.0,,,KEITHLEY
+1,Bajada,0.009861,4.0,,,KEITHLEY
+1,Bajada,0.014112,5.0,,,KEITHLEY
+1,Bajada,0.018352,6.0,,,KEITHLEY
+1,Bajada,0.020468,6.5,,,KEITHLEY
+2,Subida,,0.0,,-0.007169,TIVA Raw
+2,Subida,,1.0,,-0.002903,TIVA Raw
+2,Subida,,2.0,,0.001348,TIVA Raw
+2,Subida,,3.0,,0.005625,TIVA Raw
+2,Subida,,4.0,,0.009899,TIVA Raw
+2,Subida,,5.0,,0.014151,TIVA Raw
+2,Subida,,6.0,,0.018369,TIVA Raw
+2,Subida,,6.5,,0.020497,TIVA Raw
+2,Subida,,6.8,,0.021780,TIVA Raw
+2,Subida,,0.0,-0.007169,,TIVA Filtrado
+2,Subida,,1.0,-0.002903,,TIVA Filtrado
+2,Subida,,2.0,0.001347,,TIVA Filtrado
+2,Subida,,3.0,0.005623,,TIVA Filtrado
+2,Subida,,4.0,0.009899,,TIVA Filtrado
+2,Subida,,5.0,0.014149,,TIVA Filtrado
+2,Subida,,6.0,0.018368,,TIVA Filtrado
+2,Subida,,6.5,0.020495,,TIVA Filtrado
+2,Subida,,6.8,0.021780,,TIVA Filtrado
+2,Subida,-0.007165,0.0,,,KEITHLEY
+2,Subida,-0.002903,1.0,,,KEITHLEY
+2,Subida,0.001365,2.0,,,KEITHLEY
+2,Subida,0.005629,3.0,,,KEITHLEY
+2,Subida,0.009892,4.0,,,KEITHLEY
+2,Subida,0.014143,5.0,,,KEITHLEY
+2,Subida,0.018378,6.0,,,KEITHLEY
+2,Subida,0.020497,6.5,,,KEITHLEY
+2,Subida,0.021766,6.8,,,KEITHLEY
+2,Bajada,,0.0,,-0.007162,TIVA Raw
+2,Bajada,,1.0,,-0.002900,TIVA Raw
+2,Bajada,,2.0,,0.001362,TIVA Raw
+2,Bajada,,3.0,,0.005625,TIVA Raw
+2,Bajada,,4.0,,0.009884,TIVA Raw
+2,Bajada,,5.0,,0.014136,TIVA Raw
+2,Bajada,,6.0,,0.018370,TIVA Raw
+2,Bajada,,6.5,,0.020486,TIVA Raw
+2,Bajada,,0.0,-0.007162,,TIVA Filtrado
+2,Bajada,,1.0,-0.002900,,TIVA Filtrado
+2,Bajada,,2.0,0.001362,,TIVA Filtrado
+2,Bajada,,3.0,0.005625,,TIVA Filtrado
+2,Bajada,,4.0,0.009885,,TIVA Filtrado
+2,Bajada,,5.0,0.014137,,TIVA Filtrado
+2,Bajada,,6.0,0.018370,,TIVA Filtrado
+2,Bajada,,6.5,0.020486,,TIVA Filtrado
+2,Bajada,-0.007160,0.0,,,KEITHLEY
+2,Bajada,-0.002899,1.0,,,KEITHLEY
+2,Bajada,0.001356,2.0,,,KEITHLEY
+2,Bajada,0.005617,3.0,,,KEITHLEY
+2,Bajada,0.009867,4.0,,,KEITHLEY
+2,Bajada,0.014118,5.0,,,KEITHLEY
+2,Bajada,0.018359,6.0,,,KEITHLEY
+2,Bajada,0.020475,6.5,,,KEITHLEY
+
+DATOS DE HISTÉRESIS (Interpolados)
+Bajada (V),Bajada (V) w/ FP,Bajada KEITHLEY (V),Ciclo,Error Histéresis (V),Fase,Setpoint (kPA),Subida (V),Subida (V) w/ FP,Subida KEITHLEY (V),Tipo
+-0.007167,-0.007167,-0.007164,1,-0.000009,Histéresis,0.0,-0.007176,-0.007176,-0.007172,Histéresis
+-0.002907,-0.002907,-0.002907,1,-0.000002,Histéresis,1.0,-0.002909,-0.002910,-0.002908,Histéresis
+0.001359,0.001359,0.001354,1,0.000003,Histéresis,2.0,0.001362,0.001362,0.001360,Histéresis
+0.005619,0.005619,0.005606,1,-0.000022,Histéresis,3.0,0.005597,0.005596,0.005625,Histéresis
+0.009878,0.009878,0.009861,1,0.000015,Histéresis,4.0,0.009892,0.009892,0.009885,Histéresis
+0.014128,0.014129,0.014112,1,0.000017,Histéresis,5.0,0.014145,0.014145,0.014135,Histéresis
+0.018364,0.018365,0.018352,1,0.000008,Histéresis,6.0,0.018373,0.018372,0.018378,Histéresis
+0.020477,0.020477,0.020468,1,0.000027,Histéresis,6.5,0.020504,0.020504,0.020491,Histéresis
+-0.007162,-0.007162,-0.007160,2,-0.000006,Histéresis,0.0,-0.007169,-0.007169,-0.007165,Histéresis
+-0.002900,-0.002900,-0.002899,2,-0.000003,Histéresis,1.0,-0.002903,-0.002903,-0.002903,Histéresis
+0.001362,0.001362,0.001356,2,-0.000014,Histéresis,2.0,0.001348,0.001347,0.001365,Histéresis
+0.005625,0.005625,0.005617,2,0.000000,Histéresis,3.0,0.005625,0.005623,0.005629,Histéresis
+0.009884,0.009885,0.009867,2,0.000014,Histéresis,4.0,0.009899,0.009899,0.009892,Histéresis
+0.014136,0.014137,0.014118,2,0.000015,Histéresis,5.0,0.014151,0.014149,0.014143,Histéresis
+0.018370,0.018370,0.018359,2,-0.000001,Histéresis,6.0,0.018369,0.018368,0.018378,Histéresis
+0.020486,0.020486,0.020475,2,0.000011,Histéresis,6.5,0.020497,0.020495,0.020497,Histéresis
+-0.007165,-0.007164,-0.007162,Promedio General,-0.000008,Histéresis,0.0,-0.007172,-0.007172,-0.007169,Histéresis
+-0.002904,-0.002904,-0.002903,Promedio General,-0.000003,Histéresis,1.0,-0.002906,-0.002906,-0.002906,Histéresis
+0.001360,0.001361,0.001355,Promedio General,-0.000005,Histéresis,2.0,0.001355,0.001354,0.001363,Histéresis
+0.005622,0.005622,0.005612,Promedio General,-0.000011,Histéresis,3.0,0.005611,0.005610,0.005627,Histéresis
+0.009881,0.009882,0.009864,Promedio General,0.000015,Histéresis,4.0,0.009895,0.009895,0.009889,Histéresis
+0.014132,0.014133,0.014115,Promedio General,0.000016,Histéresis,5.0,0.014148,0.014147,0.014139,Histéresis
+0.018367,0.018367,0.018356,Promedio General,0.000004,Histéresis,6.0,0.018371,0.018370,0.018378,Histéresis
+0.020481,0.020481,0.020471,Promedio General,0.000019,Histéresis,6.5,0.020500,0.020500,0.020494,Histéresis
+
+FIN DEL ARCHIVO
