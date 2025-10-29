@@ -16,6 +16,7 @@ import logging
 import csv
 from scipy import stats
 from contextlib import contextmanager
+import pyvisa
 
 # Importar librerías para visualización y exportación
 import matplotlib.pyplot as plt

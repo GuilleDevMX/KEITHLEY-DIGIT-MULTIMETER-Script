@@ -76,7 +76,7 @@ def read_tiva(ser_tiva, result):
             valor1 = linea_raw[11]
             TEMP1_ALTO = (valor1 >> 4) & 0x0F
             TEMP1_BAJO = valor1 & 0x0F
-            tiva_temp = TEMP_ALTO + TEMP_BAJO * 0.01  + TEMP1_ALTO * 0.01 + TEMP1_BAJO * 0.0001
+            tiva_temp = TEMP_ALTO *10 + TEMP_BAJO  + TEMP1_ALTO * 0.1 + TEMP1_BAJO * 0.01
 
             if linea_raw[0] == 45:  # Si es negativo
                 tiva_raw = tiva_raw * -1

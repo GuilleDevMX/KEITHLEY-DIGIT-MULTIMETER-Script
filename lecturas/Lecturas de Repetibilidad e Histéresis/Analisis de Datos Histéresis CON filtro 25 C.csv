@@ -1,0 +1,77 @@
+ANÁLISIS,HISTERESIS
+FECHA EXPORTACIÓN,2025-10-29 15:19:13
+
+RESUMEN GLOBAL
+Métrica,Valor
+total_histeresis_area,0.000064
+total_histeresis_area_w_FP,0.000066
+total_histeresis_area_keithley,0.000063
+num_cycles_analyzed,2
+average_area_per_cycle,0.000032
+average_area_per_cycle_w_FP,0.000033
+average_area_per_cycle_keithley,0.000031
+cycle_areas,"['0.000037', '0.000028']"
+cycle_areas_w_FP,"['0.000039', '0.000027']"
+cycle_areas_keithley,"['0.000034', '0.000029']"
+
+DATOS DE HISTÉRESIS - ANÁLISIS COMPLETO
+"Este archivo contiene promedios por fase, datos interpolados de histéresis y promedios generales"
+
+PROMEDIOS POR FASE Y SETPOINT
+Ciclo,Fase,KEITHLEY (V),Setpoint (kPA),TIVA Filtrado (V),TIVA Raw (V),Tipo
+1,Subida,,0.0,,-0.007245,TIVA Raw
+1,Subida,,3.5,,0.007851,TIVA Raw
+1,Subida,,6.5,,0.020732,TIVA Raw
+1,Subida,,6.8,,0.022014,TIVA Raw
+1,Subida,,0.0,-0.007245,,TIVA Filtrado
+1,Subida,,3.5,0.007851,,TIVA Filtrado
+1,Subida,,6.5,0.020732,,TIVA Filtrado
+1,Subida,,6.8,0.022014,,TIVA Filtrado
+1,Subida,-0.007242,0.0,,,KEITHLEY
+1,Subida,0.007845,3.5,,,KEITHLEY
+1,Subida,0.020716,6.5,,,KEITHLEY
+1,Subida,0.021996,6.8,,,KEITHLEY
+1,Bajada,,0.0,,-0.007236,TIVA Raw
+1,Bajada,,3.5,,0.007856,TIVA Raw
+1,Bajada,,6.5,,0.020734,TIVA Raw
+1,Bajada,,0.0,-0.007236,,TIVA Filtrado
+1,Bajada,,3.5,0.007857,,TIVA Filtrado
+1,Bajada,,6.5,0.020734,,TIVA Filtrado
+1,Bajada,-0.007233,0.0,,,KEITHLEY
+1,Bajada,0.007849,3.5,,,KEITHLEY
+1,Bajada,0.020719,6.5,,,KEITHLEY
+2,Subida,,0.0,,-0.007239,TIVA Raw
+2,Subida,,3.5,,0.007855,TIVA Raw
+2,Subida,,6.5,,0.020733,TIVA Raw
+2,Subida,,6.8,,0.022015,TIVA Raw
+2,Subida,,0.0,-0.007239,,TIVA Filtrado
+2,Subida,,3.5,0.007855,,TIVA Filtrado
+2,Subida,,6.5,0.020733,,TIVA Filtrado
+2,Subida,,6.8,0.022015,,TIVA Filtrado
+2,Subida,-0.007236,0.0,,,KEITHLEY
+2,Subida,0.007848,3.5,,,KEITHLEY
+2,Subida,0.020717,6.5,,,KEITHLEY
+2,Subida,0.021998,6.8,,,KEITHLEY
+2,Bajada,,0.0,,-0.007235,TIVA Raw
+2,Bajada,,3.5,,0.007860,TIVA Raw
+2,Bajada,,6.5,,0.020737,TIVA Raw
+2,Bajada,,0.0,-0.007235,,TIVA Filtrado
+2,Bajada,,3.5,0.007860,,TIVA Filtrado
+2,Bajada,,6.5,0.020737,,TIVA Filtrado
+2,Bajada,-0.007231,0.0,,,KEITHLEY
+2,Bajada,0.007853,3.5,,,KEITHLEY
+2,Bajada,0.020721,6.5,,,KEITHLEY
+
+DATOS DE HISTÉRESIS (Interpolados)
+Bajada (V),Bajada (V) w/ FP,Bajada KEITHLEY (V),Ciclo,Error Histéresis (V),Fase,Setpoint (kPA),Subida (V),Subida (V) w/ FP,Subida KEITHLEY (V),Tipo
+-0.007236,-0.007236,-0.007233,1,-0.000009,Histéresis,0.0,-0.007245,-0.007245,-0.007242,Histéresis
+0.007856,0.007857,0.007849,1,-0.000005,Histéresis,3.5,0.007851,0.007851,0.007845,Histéresis
+0.020734,0.020734,0.020719,1,-0.000002,Histéresis,6.5,0.020732,0.020732,0.020716,Histéresis
+-0.007235,-0.007235,-0.007231,2,-0.000004,Histéresis,0.0,-0.007239,-0.007239,-0.007236,Histéresis
+0.007860,0.007860,0.007853,2,-0.000004,Histéresis,3.5,0.007855,0.007855,0.007848,Histéresis
+0.020737,0.020737,0.020721,2,-0.000004,Histéresis,6.5,0.020733,0.020733,0.020717,Histéresis
+-0.007236,-0.007235,-0.007232,Promedio General,-0.000007,Histéresis,0.0,-0.007242,-0.007242,-0.007239,Histéresis
+0.007858,0.007858,0.007851,Promedio General,-0.000005,Histéresis,3.5,0.007853,0.007853,0.007846,Histéresis
+0.020736,0.020736,0.020720,Promedio General,-0.000003,Histéresis,6.5,0.020732,0.020732,0.020717,Histéresis
+
+FIN DEL ARCHIVO
