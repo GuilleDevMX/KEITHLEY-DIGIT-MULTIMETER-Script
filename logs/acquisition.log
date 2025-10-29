@@ -23593,3 +23593,6 @@
 2025-10-29 16:29:49,014 - INFO - Setpoints generados: [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.5, 6.8, 6.5, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.5, 6.8, 6.5, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0]
 2025-10-29 16:29:50,019 - INFO - Iniciando estabilización inicial para setpoint: 0.0 kPA
 2025-10-29 16:29:55,151 - INFO - Presión estabilizada - Promedio: 0.000 kPA (setpoint: 0.000)
+2025-10-29 16:30:15,174 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000004 V
+2025-10-29 16:30:15,174 - INFO - Adquisición iniciada - Archivo: Rack de Datos Repetibilidad CON FILTRO a temperatura 10 C_20251029_162947.csv
+2025-10-29 16:30:15,178 - INFO - Configuración: 2 ciclos, 2 puntos intermedios, Setpoint inicial: 0.0 kPA
