@@ -18032,3 +18032,7 @@
 2025-10-29 11:34:00,440 - INFO - Limpiando figuras de análisis...
 2025-10-29 11:34:00,440 - INFO - Figuras de análisis limpiadas correctamente
 2025-10-29 11:34:00,440 - INFO - Limpieza de recursos completada exitosamente
+2025-10-29 12:36:45,892 - INFO - Escaneados 4 puertos seriales
+2025-10-29 12:37:11,009 - INFO - Datos CSV cargados: 11382 filas, 11 columnas
+2025-10-29 12:37:11,722 - INFO - Gráficas principales generadas exitosamente
+2025-10-29 12:37:22,279 - INFO - Análisis 'histeresis' completado exitosamente
