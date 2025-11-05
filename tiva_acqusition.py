@@ -121,7 +121,7 @@ def acquire_data():
         filtered_values = []  # To accumulate filtered values for averaging
         temp_values = []  # To accumulate temp values for averaging
 
-        while time.time() - start_time < 10:  # Acquire for 60 seconds
+        while time.time() - start_time < 20:  # Acquire for 20 seconds
             result = [None, None, None]
             read_tiva(ser_tiva, result)
             current_time = time.time() - start_time  # Relative time in seconds

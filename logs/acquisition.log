@@ -23596,3 +23596,1881 @@
 2025-10-29 16:30:15,174 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000004 V
 2025-10-29 16:30:15,174 - INFO - Adquisición iniciada - Archivo: Rack de Datos Repetibilidad CON FILTRO a temperatura 10 C_20251029_162947.csv
 2025-10-29 16:30:15,178 - INFO - Configuración: 2 ciclos, 2 puntos intermedios, Setpoint inicial: 0.0 kPA
+2025-10-29 16:30:36,218 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 1.0 kPA
+2025-10-29 16:30:36,270 - INFO - Iniciando estabilización para setpoint: 1.0 kPA
+2025-10-29 16:30:51,461 - INFO - Presión estabilizada - Promedio: 1.000 kPA (setpoint: 1.000)
+2025-10-29 16:31:11,466 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000448 V
+2025-10-29 16:31:31,514 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 2.0 kPA
+2025-10-29 16:31:31,566 - INFO - Iniciando estabilización para setpoint: 2.0 kPA
+2025-10-29 16:31:41,651 - INFO - Presión estabilizada - Promedio: 1.998 kPA (setpoint: 2.000)
+2025-10-29 16:32:01,688 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:32:21,697 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:32:41,727 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:33:01,737 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:33:21,746 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:33:41,751 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:34:01,759 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:34:21,769 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:34:41,773 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000003 V
+2025-10-29 16:34:41,892 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:01,804 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 3.0 kPA
+2025-10-29 16:35:01,856 - INFO - Iniciando estabilización para setpoint: 3.0 kPA
+2025-10-29 16:35:12,045 - INFO - Presión estabilizada - Promedio: 3.000 kPA (setpoint: 3.000)
+2025-10-29 16:35:32,055 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:35:52,073 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000005 V
+2025-10-29 16:35:52,305 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:52,418 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:52,512 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:52,723 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:53,004 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:53,211 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:53,464 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:53,722 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:53,773 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:53,928 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:54,096 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:54,158 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:54,324 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:54,618 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:54,721 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:54,824 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,028 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,128 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,231 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,251 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,324 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,510 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,618 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,741 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:55,928 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:56,022 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:56,265 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:56,442 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:56,878 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:57,022 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:57,339 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:57,502 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:57,555 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:57,889 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:58,138 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:58,249 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:58,445 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:58,586 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:58,907 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:59,159 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:59,348 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:59,452 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:59,750 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:35:59,975 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:00,209 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:00,467 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:00,606 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:00,741 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:00,936 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:01,241 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:01,719 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:01,924 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:02,016 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:02,220 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:02,354 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:02,546 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:02,771 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:02,926 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,116 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,230 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,416 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,781 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,833 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,865 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,927 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:03,979 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,166 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,228 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,331 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,594 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,656 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,740 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:04,927 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:05,228 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:05,395 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:05,892 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,240 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,385 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,545 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,751 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,788 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,897 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:06,990 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:07,223 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:07,535 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:07,687 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:07,891 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:08,300 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:08,331 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:08,435 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:08,646 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:08,771 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:08,953 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:09,188 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:09,260 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:09,494 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:09,708 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:10,311 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:10,448 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:10,634 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:10,758 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:10,861 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,044 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,207 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,316 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,472 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,602 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,663 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,757 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:11,819 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:36:12,176 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 4.0 kPA
+2025-10-29 16:36:12,228 - INFO - Iniciando estabilización para setpoint: 4.0 kPA
+2025-10-29 16:36:22,437 - INFO - Presión estabilizada - Promedio: 3.998 kPA (setpoint: 4.000)
+2025-10-29 16:36:42,479 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:37:02,481 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:37:22,494 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000009 V
+2025-10-29 16:37:22,589 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:27,086 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:30,959 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:31,142 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:31,279 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:31,605 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:31,855 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:31,989 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:36,694 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:37,737 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:41,170 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:41,654 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:37:42,518 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 5.0 kPA
+2025-10-29 16:37:42,570 - INFO - Iniciando estabilización para setpoint: 5.0 kPA
+2025-10-29 16:37:52,827 - INFO - Presión estabilizada - Promedio: 4.999 kPA (setpoint: 5.000)
+2025-10-29 16:38:12,833 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:38:32,839 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000012 V
+2025-10-29 16:38:32,871 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:33,171 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:33,341 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:33,481 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:33,585 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:33,678 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:33,821 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:34,090 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:34,194 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:34,390 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:34,551 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:34,682 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:35,492 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:35,617 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:35,750 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:35,854 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:35,885 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:36,010 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:36,153 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:36,314 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:36,498 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:36,665 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:36,717 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:37,825 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:37,856 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:38,160 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:38,264 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:38,645 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:39,314 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:39,407 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:39,470 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:39,771 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:39,876 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:39,979 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,011 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,270 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,426 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,571 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,842 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,873 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:40,987 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,079 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,173 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,328 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,440 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,491 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,542 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,655 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:41,936 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:42,119 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:42,221 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:42,336 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:42,431 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:42,541 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:43,901 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:44,140 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:44,482 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:44,544 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:44,704 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:44,902 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:44,996 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:45,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:45,245 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:45,452 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:45,702 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,002 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,199 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,260 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,404 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,518 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,704 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:46,807 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:47,374 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:47,560 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:47,716 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:47,862 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:47,913 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:47,954 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:48,169 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:48,438 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:48,663 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:49,119 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:49,419 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:49,534 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:49,782 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:49,978 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,070 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,216 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,392 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,565 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,627 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,741 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,834 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:50,969 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:51,135 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:51,248 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:51,424 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:51,487 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:51,662 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:51,757 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:52,388 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:52,502 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:52,759 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:38:52,855 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.0 kPA
+2025-10-29 16:38:52,906 - INFO - Iniciando estabilización para setpoint: 6.0 kPA
+2025-10-29 16:39:08,045 - INFO - Presión estabilizada - Promedio: 6.000 kPA (setpoint: 6.000)
+2025-10-29 16:39:28,056 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:39:48,060 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:40:08,103 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:40:28,106 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000015 V
+2025-10-29 16:40:28,170 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,086 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,158 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,221 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,365 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,510 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,582 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,769 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:29,884 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:30,060 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:30,174 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:30,634 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:30,927 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:31,287 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:34,650 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:34,819 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:36,191 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:36,263 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:36,324 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:36,386 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:36,573 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:36,987 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:37,163 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:37,308 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:37,401 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:37,565 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:37,773 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:37,960 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,070 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,169 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,325 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,460 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,658 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,719 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,811 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:38,934 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,160 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,275 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,420 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,513 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,668 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,761 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:39,879 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:40,086 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:40,210 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:40,271 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:40,427 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:40,676 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:40,853 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:41,071 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:41,689 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:41,781 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:43,282 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:43,580 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:43,643 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:43,955 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:44,206 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:44,953 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:45,067 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:45,349 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:40:48,145 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.5 kPA
+2025-10-29 16:40:48,196 - INFO - Iniciando estabilización para setpoint: 6.5 kPA
+2025-10-29 16:40:58,425 - INFO - Presión estabilizada - Promedio: 6.499 kPA (setpoint: 6.500)
+2025-10-29 16:41:18,430 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:41:38,448 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:41:58,452 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000017 V
+2025-10-29 16:41:58,534 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:00,906 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,174 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,236 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,381 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,484 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,588 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,681 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,791 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,887 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:04,991 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,084 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,188 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,240 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,271 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,436 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,540 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,634 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,695 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:05,893 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:06,049 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:06,411 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:06,607 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:06,940 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:07,013 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:07,204 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:07,861 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,052 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,179 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,353 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,467 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,560 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,708 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:08,802 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,116 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,354 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,415 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,518 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,653 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,756 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,818 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,921 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:09,942 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,025 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,223 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,317 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,420 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,534 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,669 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:10,783 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,021 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,167 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,280 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,405 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,531 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,582 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,676 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,780 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:11,997 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:12,122 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:12,267 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:12,360 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:13,110 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:14,260 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:14,357 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:18,493 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.8 kPA
+2025-10-29 16:42:18,544 - INFO - Iniciando estabilización para setpoint: 6.8 kPA
+2025-10-29 16:42:28,776 - INFO - Presión estabilizada - Promedio: 6.799 kPA (setpoint: 6.800)
+2025-10-29 16:42:48,786 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000114 V
+2025-10-29 16:42:48,838 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:48,944 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:49,130 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:49,241 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:49,402 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:49,732 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:49,846 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:49,970 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,082 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,185 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,348 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,641 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,733 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,831 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:50,894 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:51,040 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:51,196 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:51,385 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:51,591 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:51,716 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:51,941 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:52,387 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:52,700 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:52,941 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:53,061 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:53,559 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:53,590 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:53,652 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:53,884 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:54,009 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:54,164 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:54,346 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:54,460 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:54,663 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:54,961 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:55,259 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:55,374 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:55,721 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:56,012 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:56,157 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:56,281 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:56,472 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:56,776 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:56,972 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:57,270 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:57,666 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:58,730 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:42:59,601 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:00,392 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:00,496 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:01,046 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:01,393 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:01,642 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:01,952 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:02,353 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:02,608 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:03,557 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:04,109 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:04,817 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:05,000 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:05,266 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:05,551 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:05,681 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:06,056 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:06,297 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:06,517 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:06,613 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:06,728 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:06,931 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:07,175 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:07,331 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:07,482 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:07,627 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:07,731 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:07,949 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:08,307 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:08,600 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:08,847 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.5 kPA
+2025-10-29 16:43:08,899 - INFO - Iniciando estabilización para setpoint: 6.5 kPA
+2025-10-29 16:43:19,054 - INFO - Presión estabilizada - Promedio: 6.500 kPA (setpoint: 6.500)
+2025-10-29 16:43:39,070 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000100 V
+2025-10-29 16:43:39,102 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:39,342 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:39,508 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:39,651 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:39,775 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:45,148 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:46,057 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:46,402 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:46,462 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:46,580 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:47,004 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:48,453 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:48,577 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:49,025 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:52,034 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:52,127 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:52,284 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:52,778 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:52,893 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:54,365 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:55,420 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:57,505 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:57,609 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:57,640 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:57,892 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:57,954 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:58,068 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:58,214 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:58,579 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:43:59,136 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 6.0 kPA
+2025-10-29 16:43:59,187 - INFO - Iniciando estabilización para setpoint: 6.0 kPA
+2025-10-29 16:44:09,291 - INFO - Presión estabilizada - Promedio: 6.000 kPA (setpoint: 6.000)
+2025-10-29 16:44:29,296 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000145 V
+2025-10-29 16:44:29,392 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:29,691 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:29,736 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:30,374 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:30,487 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:30,757 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:30,996 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:31,629 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:33,257 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:35,203 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:35,356 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:36,872 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:36,976 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:37,173 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:37,411 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:37,877 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:38,436 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:38,677 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:39,677 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:40,095 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:40,481 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:40,828 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:40,932 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:41,129 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:41,244 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:41,453 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:42,437 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:42,540 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:42,659 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:42,767 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:42,944 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:43,250 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:43,456 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:43,667 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:43,801 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:44,518 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:45,259 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:46,321 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:47,774 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:44:49,309 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 5.0 kPA
+2025-10-29 16:44:49,360 - INFO - Iniciando estabilización para setpoint: 5.0 kPA
+2025-10-29 16:44:59,454 - INFO - Presión estabilizada - Promedio: 5.000 kPA (setpoint: 5.000)
+2025-10-29 16:45:19,456 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:45:39,464 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000012 V
+2025-10-29 16:45:39,560 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:45:59,471 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 4.0 kPA
+2025-10-29 16:45:59,522 - INFO - Iniciando estabilización para setpoint: 4.0 kPA
+2025-10-29 16:46:09,638 - INFO - Presión estabilizada - Promedio: 4.000 kPA (setpoint: 4.000)
+2025-10-29 16:46:29,661 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:46:49,666 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000009 V
+2025-10-29 16:47:03,571 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:47:09,691 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 3.0 kPA
+2025-10-29 16:47:09,742 - INFO - Iniciando estabilización para setpoint: 3.0 kPA
+2025-10-29 16:47:19,928 - INFO - Presión estabilizada - Promedio: 3.000 kPA (setpoint: 3.000)
+2025-10-29 16:47:39,942 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:47:59,972 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000006 V
+2025-10-29 16:48:00,034 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:48:00,335 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:48:19,980 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 2.0 kPA
+2025-10-29 16:48:20,032 - INFO - Iniciando estabilización para setpoint: 2.0 kPA
+2025-10-29 16:48:30,188 - INFO - Presión estabilizada - Promedio: 2.000 kPA (setpoint: 2.000)
+2025-10-29 16:48:50,198 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:49:10,207 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:49:30,215 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:49:50,223 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000002 V
+2025-10-29 16:49:50,288 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:50:10,237 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 1.0 kPA
+2025-10-29 16:50:10,288 - INFO - Iniciando estabilización para setpoint: 1.0 kPA
+2025-10-29 16:50:20,338 - INFO - Presión estabilizada - Promedio: 1.000 kPA (setpoint: 1.000)
+2025-10-29 16:50:40,354 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:51:00,357 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000002 V
+2025-10-29 16:51:00,477 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:51:20,397 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 0.0 kPA
+2025-10-29 16:51:20,449 - INFO - Iniciando estabilización para setpoint: 0.0 kPA
+2025-10-29 16:51:30,605 - INFO - Presión estabilizada - Promedio: 0.000 kPA (setpoint: 0.000)
+2025-10-29 16:51:50,634 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:52:10,647 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:52:30,653 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:52:50,658 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:53:10,669 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000003 V
+2025-10-29 16:53:10,787 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:53:30,688 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 0.0 kPA
+2025-10-29 16:53:30,740 - INFO - Iniciando estabilización para setpoint: 0.0 kPA
+2025-10-29 16:53:35,762 - INFO - Presión estabilizada - Promedio: 0.000 kPA (setpoint: 0.000)
+2025-10-29 16:53:55,768 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:54:15,779 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000003 V
+2025-10-29 16:54:15,857 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:54:16,238 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:54:35,797 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 1.0 kPA
+2025-10-29 16:54:35,850 - INFO - Iniciando estabilización para setpoint: 1.0 kPA
+2025-10-29 16:54:45,958 - INFO - Presión estabilizada - Promedio: 0.999 kPA (setpoint: 1.000)
+2025-10-29 16:55:05,960 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000378 V
+2025-10-29 16:55:06,057 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:55:25,967 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 2.0 kPA
+2025-10-29 16:55:26,018 - INFO - Iniciando estabilización para setpoint: 2.0 kPA
+2025-10-29 16:55:36,128 - INFO - Presión estabilizada - Promedio: 2.000 kPA (setpoint: 2.000)
+2025-10-29 16:55:56,168 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:56:16,177 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:56:36,185 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000002 V
+2025-10-29 16:56:36,256 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 16:56:56,229 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 3.0 kPA
+2025-10-29 16:56:56,281 - INFO - Iniciando estabilización para setpoint: 3.0 kPA
+2025-10-29 16:57:11,498 - INFO - Presión estabilizada - Promedio: 3.000 kPA (setpoint: 3.000)
+2025-10-29 16:57:31,509 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000326 V
+2025-10-29 16:57:51,547 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 4.0 kPA
+2025-10-29 16:57:51,598 - INFO - Iniciando estabilización para setpoint: 4.0 kPA
+2025-10-29 16:58:01,628 - INFO - Presión estabilizada - Promedio: 3.998 kPA (setpoint: 4.000)
+2025-10-29 16:58:21,646 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:58:41,678 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:59:01,688 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:59:21,699 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 16:59:41,700 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:00:01,707 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:00:21,716 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000008 V
+2025-10-29 17:00:21,807 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:00:41,738 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 5.0 kPA
+2025-10-29 17:00:41,789 - INFO - Iniciando estabilización para setpoint: 5.0 kPA
+2025-10-29 17:00:51,898 - INFO - Presión estabilizada - Promedio: 4.998 kPA (setpoint: 5.000)
+2025-10-29 17:01:11,918 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000302 V
+2025-10-29 17:01:32,178 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 6.0 kPA
+2025-10-29 17:01:32,229 - INFO - Iniciando estabilización para setpoint: 6.0 kPA
+2025-10-29 17:01:42,488 - INFO - Presión estabilizada - Promedio: 5.999 kPA (setpoint: 6.000)
+2025-10-29 17:02:02,525 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:02:22,528 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:02:42,538 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000015 V
+2025-10-29 17:02:42,696 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:03:02,547 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 6.5 kPA
+2025-10-29 17:03:02,599 - INFO - Iniciando estabilización para setpoint: 6.5 kPA
+2025-10-29 17:03:12,778 - INFO - Presión estabilizada - Promedio: 6.500 kPA (setpoint: 6.500)
+2025-10-29 17:03:32,808 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:03:52,819 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000016 V
+2025-10-29 17:03:52,901 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:04:12,838 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 6.8 kPA
+2025-10-29 17:04:12,889 - INFO - Iniciando estabilización para setpoint: 6.8 kPA
+2025-10-29 17:04:23,028 - INFO - Presión estabilizada - Promedio: 6.799 kPA (setpoint: 6.800)
+2025-10-29 17:04:43,029 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:05:03,058 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:05:23,068 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:05:43,077 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:06:03,098 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000018 V
+2025-10-29 17:06:04,800 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:06,381 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:17,921 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:18,061 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:18,221 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:18,742 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:19,281 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:22,340 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:22,527 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:22,639 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:22,929 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:23,010 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:06:23,101 - INFO - Cambio de setpoint - Ciclo: 2, Fase: subida, Setpoint: 6.5 kPA
+2025-10-29 17:06:23,152 - INFO - Iniciando estabilización para setpoint: 6.5 kPA
+2025-10-29 17:06:33,236 - INFO - Presión estabilizada - Promedio: 6.500 kPA (setpoint: 6.500)
+2025-10-29 17:06:53,260 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:07:13,268 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:07:33,274 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:07:53,277 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000017 V
+2025-10-29 17:07:53,327 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:53,469 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:53,773 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:54,109 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:55,152 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:55,205 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:55,455 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:55,649 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:56,077 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:56,297 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:56,893 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:57,380 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:57,614 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:57,803 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:57,966 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:58,379 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:58,686 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:58,960 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:59,119 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:59,269 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:59,464 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:59,622 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:07:59,685 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:00,112 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:00,228 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:00,471 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:00,765 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:00,932 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:01,071 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:01,480 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:01,730 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:01,878 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:02,087 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:02,222 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:02,324 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:02,631 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:02,748 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:02,892 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:03,069 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:03,491 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:03,784 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:04,498 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:04,786 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:04,908 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:05,046 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:05,260 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:05,501 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:05,650 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:05,753 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:05,941 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:06,053 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:06,224 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:06,501 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:06,695 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:07,152 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:07,260 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:07,675 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:08,059 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:08,223 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:08,525 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:09,027 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:09,475 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:09,623 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:09,832 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:09,859 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,012 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,128 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,232 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,480 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,615 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,778 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:10,942 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:11,079 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:11,279 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:11,438 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:12,277 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:12,443 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:12,599 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:13,071 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:13,304 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 6.0 kPA
+2025-10-29 17:08:13,356 - INFO - Iniciando estabilización para setpoint: 6.0 kPA
+2025-10-29 17:08:23,429 - INFO - Presión estabilizada - Promedio: 6.000 kPA (setpoint: 6.000)
+2025-10-29 17:08:43,430 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000132 V
+2025-10-29 17:08:43,466 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:43,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:43,930 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:44,315 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:44,973 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:45,120 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:45,336 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:45,598 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:46,072 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:46,252 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:46,768 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:47,022 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:47,585 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:47,712 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:48,235 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:48,579 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:48,684 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:48,820 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:49,473 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:49,646 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:49,983 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:50,381 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:50,664 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:50,929 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:51,072 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:51,113 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:51,303 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:51,496 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:51,815 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:52,112 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:52,396 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:52,612 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:52,960 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:53,354 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:53,463 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:53,674 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:54,174 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:54,397 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:54,618 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:54,723 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:54,879 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:55,169 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:55,531 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:55,837 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:56,173 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:56,950 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:57,131 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:57,605 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:57,938 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:58,542 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:59,091 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:59,299 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:59,552 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:08:59,826 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:00,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:00,660 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:00,894 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:01,326 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:01,565 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:01,728 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:01,921 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:02,123 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:02,165 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:02,658 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:02,774 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:03,309 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:03,472 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:03,473 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 5.0 kPA
+2025-10-29 17:09:03,526 - INFO - Iniciando estabilización para setpoint: 5.0 kPA
+2025-10-29 17:09:13,672 - INFO - Presión estabilizada - Promedio: 5.000 kPA (setpoint: 5.000)
+2025-10-29 17:09:33,674 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000244 V
+2025-10-29 17:09:33,770 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:34,142 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:34,440 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:34,544 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:34,788 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:34,987 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:35,447 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:35,593 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:35,846 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:36,035 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:37,054 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:37,250 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:37,404 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:37,751 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:38,558 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:38,752 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:39,242 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:39,738 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:40,387 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:40,614 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:40,730 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:41,029 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:41,272 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:42,396 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:42,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:42,698 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:42,836 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:43,073 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:43,426 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:43,543 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:44,037 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:44,330 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:44,490 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:44,626 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:44,990 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:45,129 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:45,253 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:45,491 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:45,607 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:46,170 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:46,497 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:46,853 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:47,061 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:47,324 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:47,971 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:48,212 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:48,561 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:48,822 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:49,348 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:50,173 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:50,205 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:50,632 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:50,830 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:51,011 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:51,127 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:51,222 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:51,844 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:52,192 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:52,539 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:52,635 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:52,822 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:53,233 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:53,594 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:09:53,706 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 4.0 kPA
+2025-10-29 17:09:53,758 - INFO - Iniciando estabilización para setpoint: 4.0 kPA
+2025-10-29 17:10:03,955 - INFO - Presión estabilizada - Promedio: 4.000 kPA (setpoint: 4.000)
+2025-10-29 17:10:23,958 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:10:43,967 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:11:03,976 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:11:23,987 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:11:43,994 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:12:04,011 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000008 V
+2025-10-29 17:12:04,151 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:04,607 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:04,892 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,161 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,315 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,450 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,591 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,667 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,719 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,760 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:05,968 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:06,221 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:06,563 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:06,909 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:07,011 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:07,330 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:07,496 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:07,812 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:08,020 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:08,234 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:08,523 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:08,972 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:09,147 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:09,241 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:09,287 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:09,675 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:09,897 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:10,045 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:10,279 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:10,495 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:10,820 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:10,998 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:11,398 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:11,545 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:11,691 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:11,919 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:12,097 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:12,293 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:12,406 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,212 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,251 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,550 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,689 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,752 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:13,952 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:14,099 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:14,341 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:14,416 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:15,012 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:15,471 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:16,101 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:16,435 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:16,570 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:16,623 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:16,886 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:17,076 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:17,331 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:17,607 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:17,721 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:17,836 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:17,994 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:18,379 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:18,784 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:19,129 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:19,480 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:19,681 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:19,898 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:20,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:20,432 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:20,589 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:20,769 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:21,050 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:21,187 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:21,345 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:21,491 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:21,656 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:21,792 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:22,048 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:22,291 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:22,451 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:22,590 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:22,797 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:22,900 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:23,093 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:23,200 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:23,400 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:23,647 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:23,763 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:12:24,027 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 3.0 kPA
+2025-10-29 17:12:24,079 - INFO - Iniciando estabilización para setpoint: 3.0 kPA
+2025-10-29 17:12:34,191 - INFO - Presión estabilizada - Promedio: 3.000 kPA (setpoint: 3.000)
+2025-10-29 17:12:54,222 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:13:14,233 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:13:34,238 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000006 V
+2025-10-29 17:13:34,285 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:34,681 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:34,780 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:34,958 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:35,272 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:35,345 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:35,492 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:35,715 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:36,228 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:36,512 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:36,792 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:36,861 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:37,049 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:37,192 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:37,514 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:37,877 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:38,257 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:38,384 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:38,613 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:38,719 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:38,844 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:39,223 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:39,462 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:39,610 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:40,311 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:40,374 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:40,578 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:40,768 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:40,950 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:41,329 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:41,788 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:41,931 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:42,038 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:42,295 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:42,439 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:42,739 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:43,515 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:43,943 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:44,091 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:44,291 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:44,498 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:44,896 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:45,252 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:45,467 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:46,156 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:46,328 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:46,551 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:46,853 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:47,056 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:47,422 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:47,912 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:49,264 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:13:54,316 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 2.0 kPA
+2025-10-29 17:13:54,367 - INFO - Iniciando estabilización para setpoint: 2.0 kPA
+2025-10-29 17:14:04,581 - INFO - Presión estabilizada - Promedio: 2.000 kPA (setpoint: 2.000)
+2025-10-29 17:14:24,585 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000305 V
+2025-10-29 17:14:24,965 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:25,624 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:26,124 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:26,284 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:26,614 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:27,083 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:27,194 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:28,043 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:28,405 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:30,214 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:30,512 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:30,802 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:31,724 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:32,044 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:32,164 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:32,324 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:32,614 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:33,314 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:33,504 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:33,933 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:34,182 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:34,424 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:35,333 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:35,503 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:35,884 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:36,881 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:37,077 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:37,170 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:37,378 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:37,471 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:37,586 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:39,616 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:40,036 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:40,816 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:41,176 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:43,086 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:43,316 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:43,567 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:43,916 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:14:44,606 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 1.0 kPA
+2025-10-29 17:14:44,657 - INFO - Iniciando estabilización para setpoint: 1.0 kPA
+2025-10-29 17:14:54,756 - INFO - Presión estabilizada - Promedio: 1.000 kPA (setpoint: 1.000)
+2025-10-29 17:15:14,758 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000228 V
+2025-10-29 17:15:15,241 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:15,346 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:16,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:16,641 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:16,740 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:16,843 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:17,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:17,266 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:17,452 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:17,831 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:17,952 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:18,108 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:18,543 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:18,667 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:18,770 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:18,968 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:19,248 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:19,571 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:19,665 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:19,851 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:19,965 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:20,172 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:20,421 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:20,452 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:20,668 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:20,771 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:20,864 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,009 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,171 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,384 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,569 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,735 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,868 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:21,970 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:22,074 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:22,250 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:22,416 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:22,811 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:22,925 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,028 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,121 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,274 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,480 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,583 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,780 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:23,891 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:24,039 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:24,141 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:24,340 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:24,515 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:24,650 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:24,950 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:25,050 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:25,655 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:25,893 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:26,007 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:26,130 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:26,212 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:26,243 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:26,408 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:26,552 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,152 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,245 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,318 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,349 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,452 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,551 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,811 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:27,935 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:28,122 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:28,361 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:28,463 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:28,627 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:28,874 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:29,107 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:29,218 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:29,372 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:29,776 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:29,922 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:30,089 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:30,305 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:30,439 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:30,584 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:30,721 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:30,940 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:31,240 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:31,427 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:31,587 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:31,728 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:31,852 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:32,132 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:32,448 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:32,587 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:32,619 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:32,681 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:32,847 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:33,325 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:33,429 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:33,591 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:33,688 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:33,893 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:34,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:34,442 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:34,544 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:15:34,781 - INFO - Cambio de setpoint - Ciclo: 2, Fase: bajada, Setpoint: 0.0 kPA
+2025-10-29 17:15:34,832 - INFO - Iniciando estabilización para setpoint: 0.0 kPA
+2025-10-29 17:15:45,047 - INFO - Presión estabilizada - Promedio: 0.000 kPA (setpoint: 0.000)
+2025-10-29 17:16:05,061 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:16:25,065 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:16:45,070 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:17:05,090 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:17:25,100 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000003 V
+2025-10-29 17:17:25,146 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,349 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,514 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,638 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,700 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,800 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,888 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:25,992 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:26,116 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:26,240 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:26,312 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:26,528 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:26,560 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:26,971 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:27,214 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:27,339 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:27,512 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:27,720 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:27,825 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:27,917 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:28,136 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:28,303 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:28,550 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:28,612 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:28,727 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:28,904 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:29,008 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:29,112 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:29,238 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:29,560 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:29,675 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:29,883 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,174 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,277 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,370 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,626 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,720 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,865 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:30,938 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,072 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,280 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,481 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,580 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,684 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,787 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:31,880 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:32,085 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:32,278 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:32,356 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:32,583 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:32,800 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:32,976 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:33,100 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:33,141 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:33,389 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:33,501 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:33,709 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:33,897 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,072 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,187 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,301 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,488 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,582 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,694 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:34,798 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:35,059 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:35,235 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:35,454 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:35,843 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:35,967 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:36,152 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:36,411 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:36,669 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:37,062 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:37,113 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:37,280 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:37,484 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:38,458 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:38,562 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:38,676 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:38,935 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:39,132 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:39,266 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:39,412 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:39,588 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:39,785 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:39,920 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,023 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,126 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,261 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,334 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,519 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,622 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,870 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:40,932 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,187 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,218 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,341 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,434 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,590 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,631 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,735 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:41,891 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,087 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,191 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,253 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,295 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,430 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,601 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:42,842 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:43,393 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:43,517 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:43,662 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:43,703 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:44,051 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:44,302 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:44,468 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:44,861 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:17:45,120 - INFO - Secuencia de adquisición completada
+2025-10-29 17:17:45,245 - INFO - Instrument connection closed
+2025-10-29 17:17:45,250 - INFO - Resource manager closed
+2025-10-29 17:17:45,251 - INFO - Adquisición finalizada - Recursos liberados
+2025-10-29 17:17:45,449 - INFO - Adquisición completada automáticamente
+2025-10-29 17:18:06,190 - INFO - Adquisición iniciada
+2025-10-29 17:18:06,191 - INFO - Archivo CSV creado: Rack de Datos Histéresis CON FILTRO a temperatura 10 C_20251029_171806.csv
+2025-10-29 17:18:06,202 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-10-29 17:18:06,352 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR', 'ASRL6::INSTR', 'ASRL7::INSTR']
+2025-10-29 17:18:06,353 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-10-29 17:18:06,360 - INFO - Instrument connection opened
+2025-10-29 17:18:06,360 - INFO - Timeout set to 30000ms
+2025-10-29 17:18:07,876 - INFO - Instrument initialized successfully
+2025-10-29 17:18:07,878 - INFO - Setpoints generados: [0.0, 3.5, 6.5, 6.8, 6.5, 3.5, 0.0]
+2025-10-29 17:18:08,884 - INFO - Iniciando estabilización inicial para setpoint: 0.0 kPA
+2025-10-29 17:18:13,895 - INFO - Presión estabilizada - Promedio: 0.000 kPA (setpoint: 0.000)
+2025-10-29 17:18:18,496 - INFO - Datos CSV cargados: 13034 filas, 11 columnas
+2025-10-29 17:18:19,103 - INFO - Gráficas principales generadas exitosamente
+2025-10-29 17:18:22,686 - INFO - Pestaña de análisis 'histeresis' limpiada
+2025-10-29 17:18:23,515 - INFO - Análisis 'histeresis' completado exitosamente
+2025-10-29 17:18:33,918 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:18:53,926 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000003 V
+2025-10-29 17:18:53,927 - INFO - Adquisición iniciada - Archivo: Rack de Datos Histéresis CON FILTRO a temperatura 10 C_20251029_171806.csv
+2025-10-29 17:18:53,929 - INFO - Configuración: 1 ciclos, 2 puntos intermedios, Setpoint inicial: 0.0 kPA
+2025-10-29 17:18:59,791 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:05,194 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:05,424 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:05,738 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:06,005 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:06,929 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:07,666 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:07,861 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:07,973 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:08,437 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:10,567 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:12,156 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:12,445 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:12,784 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:12,887 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:13,379 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:13,545 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,348 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,445 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,493 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,688 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,709 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,896 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:19:14,937 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 3.5 kPA
+2025-10-29 17:19:14,988 - INFO - Iniciando estabilización para setpoint: 3.5 kPA
+2025-10-29 17:19:25,209 - INFO - Presión estabilizada - Promedio: 3.499 kPA (setpoint: 3.500)
+2025-10-29 17:19:45,239 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:20:05,266 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:20:25,271 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000007 V
+2025-10-29 17:20:25,329 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:25,780 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:30,517 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:31,744 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:31,837 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:35,290 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:36,973 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:37,860 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:43,880 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:44,092 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:44,330 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:44,441 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:44,585 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:44,838 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:44,940 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:20:45,292 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.5 kPA
+2025-10-29 17:20:45,344 - INFO - Iniciando estabilización para setpoint: 6.5 kPA
+2025-10-29 17:20:55,426 - INFO - Presión estabilizada - Promedio: 6.499 kPA (setpoint: 6.500)
+2025-10-29 17:21:15,435 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:21:35,455 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:21:55,460 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000017 V
+2025-10-29 17:21:55,504 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:55,621 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:55,663 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:55,821 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:56,127 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:56,334 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:56,605 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:56,937 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:57,131 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:57,472 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:57,642 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:57,831 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:57,980 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:58,180 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:58,368 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:58,474 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:58,632 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:58,883 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:59,083 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:59,283 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:59,440 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:21:59,630 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:00,094 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:00,291 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:00,399 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:00,491 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:00,800 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:00,943 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:01,447 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:01,606 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:01,966 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:02,092 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:02,213 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:02,398 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:02,451 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:02,513 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:02,860 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:03,249 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:03,440 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:03,672 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:03,862 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:04,328 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:04,485 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:04,795 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:05,122 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:05,520 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:05,635 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:05,984 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:06,333 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:06,532 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:06,829 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:07,133 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:07,175 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:07,495 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:07,679 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:07,878 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:07,994 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:08,143 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:08,492 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:08,523 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:08,701 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:09,141 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:09,285 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:09,695 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:09,969 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:10,291 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:10,496 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:10,601 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:10,757 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:11,145 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:11,400 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:11,600 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:11,864 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:11,991 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:12,172 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:12,508 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:12,603 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:12,799 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:12,859 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:13,014 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:13,367 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:13,577 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:13,723 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:13,946 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:14,262 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:14,566 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:14,663 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:14,880 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:15,222 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:15,421 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:22:15,464 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.8 kPA
+2025-10-29 17:22:15,516 - INFO - Iniciando estabilización para setpoint: 6.8 kPA
+2025-10-29 17:22:25,593 - INFO - Presión estabilizada - Promedio: 6.799 kPA (setpoint: 6.800)
+2025-10-29 17:22:45,632 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:23:05,641 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000019 V
+2025-10-29 17:23:05,682 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:05,887 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:06,352 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:06,613 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:06,866 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:07,094 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:07,263 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:07,509 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:07,706 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:07,808 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:07,961 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:08,417 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:08,570 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:08,927 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:09,117 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:09,213 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:09,319 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:09,431 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:09,730 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:09,973 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:10,379 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:10,573 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:10,783 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:10,971 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:11,075 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:11,178 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:11,774 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:11,984 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:12,142 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:12,542 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:12,800 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:12,991 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:13,022 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:13,159 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:13,390 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:13,601 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:13,791 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:14,002 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:14,202 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:14,605 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:14,750 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:14,952 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:15,701 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:16,062 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:16,705 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:16,838 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:17,010 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:17,118 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:17,370 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:17,814 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:18,309 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:18,469 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:18,677 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:19,269 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:19,374 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:19,584 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:19,785 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:19,985 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,195 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,531 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,568 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,722 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,774 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,838 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:20,974 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:21,232 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:21,380 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:21,507 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:21,680 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:21,804 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:22,236 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:22,352 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:22,395 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:22,616 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:22,891 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:23,114 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:23,430 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:23,494 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:23,642 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:23,790 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:24,096 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:24,202 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:24,392 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:24,602 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:24,707 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:25,057 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:25,367 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:25,555 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:25,661 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:23:25,661 - INFO - Cambio de setpoint - Ciclo: 1, Fase: subida, Setpoint: 6.5 kPA
+2025-10-29 17:23:25,714 - INFO - Iniciando estabilización para setpoint: 6.5 kPA
+2025-10-29 17:23:35,881 - INFO - Presión estabilizada - Promedio: 6.500 kPA (setpoint: 6.500)
+2025-10-29 17:23:55,920 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:24:15,925 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000016 V
+2025-10-29 17:24:15,979 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:16,295 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:16,734 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:17,196 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:17,428 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:17,502 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:17,541 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:17,754 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:17,924 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:18,136 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:18,601 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:18,833 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:18,992 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:19,202 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:19,360 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:19,544 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:19,692 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:19,798 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:19,956 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:20,151 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:20,250 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:20,460 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:20,650 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:20,756 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:20,903 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:21,063 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:21,495 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:21,926 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:22,316 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:22,590 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:22,758 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:22,915 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:23,021 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:23,421 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:23,699 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:23,868 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:24,121 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:24,321 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:24,565 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:24,723 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:25,028 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:25,181 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:25,491 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:25,748 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:25,981 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:26,192 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:26,433 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:26,802 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:27,129 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:27,310 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:27,543 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:27,776 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:27,980 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:28,253 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:28,607 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:28,963 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:29,352 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:29,638 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:29,858 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:29,958 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:30,154 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:30,352 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:30,547 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:31,212 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:31,550 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:31,677 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:31,823 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:32,001 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:32,508 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:32,772 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:33,543 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:33,776 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:33,933 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:34,238 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:34,458 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:34,795 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:34,932 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:35,142 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:35,332 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:35,595 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:24:35,954 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 3.5 kPA
+2025-10-29 17:24:36,006 - INFO - Iniciando estabilización para setpoint: 3.5 kPA
+2025-10-29 17:24:46,179 - INFO - Presión estabilizada - Promedio: 3.500 kPA (setpoint: 3.500)
+2025-10-29 17:25:06,199 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:25:26,204 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000008 V
+2025-10-29 17:25:26,251 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:26,414 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:26,568 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:26,765 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:27,159 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:27,321 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:27,830 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:28,103 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:28,367 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:28,939 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:29,070 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:29,263 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:29,556 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:29,627 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:29,781 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:29,925 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:30,117 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:30,421 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:30,742 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:30,793 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:30,830 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:31,035 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:31,235 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:31,539 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:31,740 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:31,889 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:32,036 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:32,310 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:32,415 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:32,603 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:33,049 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:33,314 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:33,809 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:34,055 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:34,403 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:34,657 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:34,959 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:35,158 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:35,464 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:35,674 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:35,875 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:36,065 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:36,265 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:36,504 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:36,682 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:36,721 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:37,071 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:37,349 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:37,723 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:37,912 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:38,028 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:38,186 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:38,323 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:38,469 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:38,616 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:38,680 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:39,428 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:39,531 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:39,742 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:40,038 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:40,185 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:40,333 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:40,701 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:41,195 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:41,447 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:41,591 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:41,731 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:42,152 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:42,551 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:42,811 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:43,112 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:43,301 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:43,342 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:43,414 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:43,656 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:43,856 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:44,066 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:44,224 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:44,432 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:44,656 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:44,803 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:45,024 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:45,363 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:45,562 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:45,868 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:46,037 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:46,237 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:25:46,237 - INFO - Cambio de setpoint - Ciclo: 1, Fase: bajada, Setpoint: 0.0 kPA
+2025-10-29 17:25:46,290 - INFO - Iniciando estabilización para setpoint: 0.0 kPA
+2025-10-29 17:25:56,451 - INFO - Presión estabilizada - Promedio: 0.000 kPA (setpoint: 0.000)
+2025-10-29 17:26:01,728 - INFO - Pestaña de análisis 'histeresis' limpiada
+2025-10-29 17:26:16,464 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:26:36,485 - WARNING - Tiempo de espera excedido para estabilización de voltaje: 20s
+2025-10-29 17:26:56,504 - INFO - Voltaje TIVA estabilizado - Promedio diff: 0.000003 V
+2025-10-29 17:26:56,566 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:57,638 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:57,961 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:58,109 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:58,214 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:58,591 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:58,713 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:59,030 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:59,220 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:59,369 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:26:59,618 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,126 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,239 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,373 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,445 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,477 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,580 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:00,970 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:01,177 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:01,579 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:02,081 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:02,453 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:02,830 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:02,942 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:03,851 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:04,644 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:04,736 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:04,850 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:04,991 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:05,356 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:05,662 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:06,101 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:06,358 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:06,603 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:06,842 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:06,914 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:07,356 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:07,502 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:08,841 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:09,614 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:09,861 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:10,364 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:10,872 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:11,232 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:11,335 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:11,428 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:11,582 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:11,850 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:12,088 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:12,119 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:12,191 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:12,377 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:12,699 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:12,845 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:13,030 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:13,207 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:13,591 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:13,694 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:13,840 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,286 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,389 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,482 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,585 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,708 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,851 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:14,994 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:15,202 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:15,301 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:15,389 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:15,482 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:15,553 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:15,864 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:16,019 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:16,267 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:16,392 - WARNING - Datos incompletos - algunos sensores no respondieron
+2025-10-29 17:27:16,527 - INFO - Secuencia de adquisición completada
+2025-10-29 17:27:16,566 - INFO - Adquisición completada automáticamente
+2025-10-29 17:27:16,652 - INFO - Instrument connection closed
+2025-10-29 17:27:16,657 - INFO - Resource manager closed
+2025-10-29 17:27:16,658 - INFO - Adquisición finalizada - Recursos liberados
+2025-10-29 17:27:31,255 - INFO - Datos CSV cargados: 2773 filas, 11 columnas
+2025-10-29 17:27:31,741 - INFO - Gráficas principales generadas exitosamente
+2025-10-29 17:27:34,951 - INFO - Análisis 'histeresis' completado exitosamente
+2025-10-29 17:27:53,198 - INFO - Pestaña de análisis 'histeresis' limpiada
+2025-10-29 17:27:58,526 - INFO - Iniciando limpieza de recursos...
+2025-10-29 17:27:58,526 - INFO - Esperando que los threads terminen...
+2025-10-29 17:27:58,526 - INFO - Cerrando figuras de matplotlib...
+2025-10-29 17:27:58,526 - INFO - Limpiando figuras de análisis...
+2025-10-29 17:27:58,526 - INFO - Figuras de análisis limpiadas correctamente
+2025-10-29 17:27:58,526 - INFO - Limpieza de recursos completada exitosamente
+2025-10-31 15:31:22,968 - INFO - Escaneados 3 puertos seriales
+2025-10-31 15:31:43,403 - INFO - Datos CSV cargados: 11297 filas, 11 columnas
+2025-10-31 15:31:44,285 - INFO - Gráficas principales generadas exitosamente
+2025-10-31 15:31:53,000 - INFO - Análisis 'histeresis' completado exitosamente
+2025-10-31 23:03:29,365 - INFO - Iniciando limpieza de recursos...
+2025-10-31 23:03:29,365 - INFO - Esperando que los threads terminen...
+2025-10-31 23:03:29,366 - INFO - Cerrando figuras de matplotlib...
+2025-10-31 23:03:29,366 - INFO - Limpiando figuras de análisis...
+2025-10-31 23:03:29,366 - INFO - Figuras de análisis limpiadas correctamente
+2025-10-31 23:03:29,366 - INFO - Limpieza de recursos completada exitosamente
+2025-11-02 23:03:34,081 - INFO - Escaneados 3 puertos seriales
+2025-11-02 23:06:15,995 - INFO - Datos CSV cargados: 3110 filas, 11 columnas
+2025-11-02 23:06:16,839 - INFO - Gráficas principales generadas exitosamente
+2025-11-02 23:11:34,231 - INFO - Análisis 'histeresis' completado exitosamente
+2025-11-02 23:26:06,826 - INFO - Iniciando limpieza de recursos...
+2025-11-02 23:26:06,826 - INFO - Esperando que los threads terminen...
+2025-11-02 23:26:06,826 - INFO - Cerrando figuras de matplotlib...
+2025-11-02 23:26:06,840 - INFO - Limpiando figuras de análisis...
+2025-11-02 23:26:06,840 - INFO - Figuras de análisis limpiadas correctamente
+2025-11-02 23:26:06,840 - INFO - Limpieza de recursos completada exitosamente
