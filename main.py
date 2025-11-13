@@ -633,7 +633,8 @@ class AcquisitionGUI:
             'flowcontrol': 'None'
         }
         self.tiva_serial_config = {
-            'baudrate': 115200,
+            'baudrate': 230400,
+            'timeout': 1.0,
             'bytesize': serial.EIGHTBITS,
             'parity': serial.PARITY_NONE,
             'stopbits': serial.STOPBITS_ONE,
@@ -1401,7 +1402,6 @@ class AcquisitionGUI:
             ("spectrum", "🌊 Análisis Espectral"),
             ("trend", "📈 Análisis de Tendencias"),
             ("snr", "📡 Análisis SNR (Raw)"),
-            ("snr_filtered", "📡 Análisis SNR (Filtrado)"),
             ("histeresis", "🔄 Análisis de Histéresis"),
             ("cycle_average", "🔁 Análisis de Ciclos Promedio"),
             ("whitestone_bridge", "🌉 Análisis Puente Wheatstone"),
@@ -2371,12 +2371,12 @@ class AcquisitionGUI:
             # Gráfica 1: Voltajes vs Tiempo - mejorada
             if 'Sample' in self.csv_data.columns:
                 # Graficar TIVA voltages
+                # TIVA Voltage (V) in another y axis but same plot for better visibility
+
                 if 'TIVA Voltage (V)' in self.csv_data.columns:
                     axes[0].plot(self.csv_data['Sample'], self.csv_data['TIVA Voltage (V)'],
                                'b-', label='TIVA Raw', linewidth=1.5, alpha=0.8)
-                if 'TIVA Voltage w/FPB(V)' in self.csv_data.columns:
-                    axes[0].plot(self.csv_data['Sample'], self.csv_data['TIVA Voltage w/FPB(V)'],
-                               'r--', label='TIVA Filtrado', linewidth=1.5, alpha=0.8)
+
                 # Graficar KEITHLEY voltage si está disponible
                 if 'KEITHLEY Voltage (V)' in self.csv_data.columns:
                     axes[0].plot(self.csv_data['Sample'], self.csv_data['KEITHLEY Voltage (V)'],
@@ -3989,10 +3989,6 @@ class AcquisitionGUI:
             ax12 = plt.subplot(4, 4, 12)
             self._plot_snr_trends(ax12, keithley_voltage, tiva_raw, samples)
 
-            # Panel 13: Comparación con señal filtrada (si disponible)
-            ax13 = plt.subplot(4, 4, 13)
-            self._plot_raw_vs_filtered_comparison(ax13, samples)
-
             # Panel 14: Resumen estadístico SNR
             ax14 = plt.subplot(4, 4, 14)
             self._plot_snr_summary_stats(ax14, keithley_voltage, tiva_raw, samples)
@@ -4010,104 +4006,6 @@ class AcquisitionGUI:
         # Crear canvas y añadir a la interfaz        # Crear canvas usando el nuevo sistema de pestañas
         self.create_analysis_canvas(fig, 'correlation')
 
-    def plot_snr_filtrado(self):
-        """Análisis comprehensivo de SNR para señal TIVA Filtrada vs Keithley"""
-        required_cols = ['Sample', 'KEITHLEY Voltage (V)', 'TIVA Voltage w/FPB(V)']
-        missing_cols = [col for col in required_cols if col not in self.csv_data.columns]
-
-        if missing_cols or len(self.csv_data) < 50:
-            fig, ax = plt.subplots(figsize=(8, 6))
-            if missing_cols:
-                ax.text(0.5, 0.5, f'Columnas faltantes: {", ".join(missing_cols)}',
-                       transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                       bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-            else:
-                ax.text(0.5, 0.5, f'Datos insuficientes (mínimo 50 puntos)\nPuntos disponibles: {len(self.csv_data)}',
-                       transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                       bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-            ax.set_title('SNR TIVA Filtrada - Datos Insuficientes')
-            ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
-            ax.axis('off')
-        else:
-            # Crear figura con layout 4x4 para análisis comprehensivo
-            fig = plt.figure(figsize=(14, 10), dpi=100)  # Tamaño más razonable
-            fig.suptitle('Análisis Comprehensivo SNR - TIVA Filtrada vs Keithley', fontsize=14, fontweight='bold')
-
-            # Preparar datos
-            samples = self.csv_data['Sample'].values
-            keithley_voltage = self.csv_data['KEITHLEY Voltage (V)'].values
-            tiva_filtered = self.csv_data['TIVA Voltage w/FPB(V)'].values
-
-            # Panel 1: Evolución temporal del SNR
-            ax1 = plt.subplot(4, 4, 1)
-            self._plot_snr_temporal(ax1, keithley_voltage, tiva_filtered, samples, 'Filtrada')
-
-            # Panel 2: Componentes de señal mejorados por filtro
-            ax2 = plt.subplot(4, 4, 2)
-            self._plot_signal_components_filtered(ax2, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 3: Histogramas de SNR mejorados
-            ax3 = plt.subplot(4, 4, 3)
-            self._plot_snr_histogram(ax3, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 4: Análisis de estabilidad SNR mejorada
-            ax4 = plt.subplot(4, 4, 4)
-            self._plot_snr_stability(ax4, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 5: Comparación de métodos SNR
-            ax5 = plt.subplot(4, 4, 5)
-            self._plot_snr_methods_comparison(ax5, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 6: Análisis de ruido residual
-            ax6 = plt.subplot(4, 4, 6)
-            self._plot_noise_analysis_filtered(ax6, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 7: SNR vs amplitud de señal
-            ax7 = plt.subplot(4, 4, 7)
-            self._plot_snr_vs_amplitude(ax7, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 8: Detección de outliers en SNR
-            ax8 = plt.subplot(4, 4, 8)
-            self._plot_snr_outliers(ax8, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 9: Autocorrelación del ruido residual
-            ax9 = plt.subplot(4, 4, 9)
-            self._plot_noise_autocorr(ax9, keithley_voltage, tiva_filtered)
-
-            # Panel 10: Espectro del ruido residual
-            ax10 = plt.subplot(4, 4, 10)
-            self._plot_noise_spectrum(ax10, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 11: Métricas de calidad de señal mejorada
-            ax11 = plt.subplot(4, 4, 11)
-            self._plot_signal_quality_metrics(ax11, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 12: Análisis de tendencias SNR
-            ax12 = plt.subplot(4, 4, 12)
-            self._plot_snr_trends(ax12, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 13: Comparación directa Raw vs Filtrada
-            ax13 = plt.subplot(4, 4, 13)
-            self._plot_raw_vs_filtered_direct(ax13, samples)
-
-            # Panel 14: Resumen estadístico SNR mejorado
-            ax14 = plt.subplot(4, 4, 14)
-            self._plot_snr_summary_stats(ax14, keithley_voltage, tiva_filtered, samples)
-
-            # Panel 15: Análisis de mejora por filtrado
-            ax15 = plt.subplot(4, 4, 15)
-            self._plot_filtering_improvement(ax15, samples)
-
-            # Panel 16: Matriz de correlación mejorada
-            ax16 = plt.subplot(4, 4, 16)
-            self._plot_snr_correlation_matrix(ax16, keithley_voltage, tiva_filtered, samples)
-
-            plt.tight_layout(h_pad=0.3)
-
-        # Crear canvas y añadir a la interfaz        # Crear canvas usando el nuevo sistema de pestañas
-        self.create_analysis_canvas(fig, 'correlation')
-    # Métodos auxiliares para análisis SNR
     def _plot_snr_temporal(self, ax, ref_signal, meas_signal, samples, signal_type):
         """Panel: Evolución temporal del SNR"""
         times, snr = self.calculate_snr_sliding(ref_signal, meas_signal, samples, window_size=30, step=5)
@@ -4563,69 +4461,9 @@ class AcquisitionGUI:
             ax.grid(True, alpha=0.3)
             ax.tick_params(labelsize=7)
 
-    def _plot_raw_vs_filtered_comparison(self, ax, samples):
-        """Panel: Comparación Raw vs Filtrada (solo para método raw)"""
-        if 'TIVA Voltage (V)' in self.csv_data.columns and 'TIVA Voltage w/FPB(V)' in self.csv_data.columns:
-            raw_signal = self.csv_data['TIVA Voltage (V)'].values
-            filtered_signal = self.csv_data['TIVA Voltage w/FPB(V)'].values
-
-            # Calcular SNR para ambas señales vs Keithley
-            if 'KEITHLEY Voltage (V)' in self.csv_data.columns:
-                keithley = self.csv_data['KEITHLEY Voltage (V)'].values
-
-                _, snr_raw = self.calculate_snr_sliding(keithley, raw_signal, samples, window_size=25, step=5)
-                _, snr_filtered = self.calculate_snr_sliding(keithley, filtered_signal, samples, window_size=25, step=5)
-
-                if snr_raw and snr_filtered:
-                    min_len = min(len(snr_raw), len(snr_filtered))
-                    x_vals = range(min_len)
-
-                    ax.plot(x_vals, snr_raw[:min_len], 'r-', linewidth=2, label='SNR Raw', alpha=0.8)
-                    ax.plot(x_vals, snr_filtered[:min_len], 'b-', linewidth=2, label='SNR Filtrado', alpha=0.8)
-
-                    # Calcular mejora promedio
-                    improvement = np.mean(snr_filtered[:min_len]) - np.mean(snr_raw[:min_len])
-                    ax.text(0.02, 0.98, f'Mejora promedio: {improvement:.1f} dB',
-                           transform=ax.transAxes, verticalalignment='top', fontsize=7,
-                           bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.8))
-
-                    ax.legend(fontsize=6)
-        else:
-            ax.text(0.5, 0.5, 'Se requieren ambas\nseñales TIVA', ha='center', va='center', transform=ax.transAxes)
-
         ax.set_xlabel('Ventana', fontsize=8)
         ax.set_ylabel('SNR (dB)', fontsize=8)
         ax.set_title('Raw vs\nFiltrado', fontsize=9, fontweight='bold')
-        ax.grid(True, alpha=0.3)
-        ax.tick_params(labelsize=7)
-
-    def _plot_raw_vs_filtered_direct(self, ax, samples):
-        """Panel: Comparación directa Raw vs Filtrada (solo para método filtrado)"""
-        if 'TIVA Voltage (V)' in self.csv_data.columns and 'TIVA Voltage w/FPB(V)' in self.csv_data.columns:
-            raw_signal = self.csv_data['TIVA Voltage (V)'].values
-            filtered_signal = self.csv_data['TIVA Voltage w/FPB(V)'].values
-
-            # Plot directo de las señales
-            ax.plot(samples, raw_signal, 'r-', linewidth=1, label='TIVA Raw', alpha=0.7)
-            ax.plot(samples, filtered_signal, 'b-', linewidth=1.5, label='TIVA Filtrado')
-
-            # Calcular y mostrar reducción de ruido
-            noise_raw = raw_signal - filtered_signal  # Aproximación
-            rms_raw = np.sqrt(np.mean(raw_signal**2))
-            rms_filtered = np.sqrt(np.mean(filtered_signal**2))
-            reduction = (rms_raw - rms_filtered) / rms_raw * 100 if rms_raw != 0 else 0
-
-            ax.text(0.02, 0.98, f'Reducción ruido: {reduction:.1f}%',
-                   transform=ax.transAxes, verticalalignment='top', fontsize=7,
-                   bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.8))
-
-            ax.legend(fontsize=6)
-        else:
-            ax.text(0.5, 0.5, 'Se requieren ambas\nseñales TIVA', ha='center', va='center', transform=ax.transAxes)
-
-        ax.set_xlabel('Muestras', fontsize=8)
-        ax.set_ylabel('Voltaje (V)', fontsize=8)
-        ax.set_title('Señales: Raw vs\nFiltrado', fontsize=9, fontweight='bold')
         ax.grid(True, alpha=0.3)
         ax.tick_params(labelsize=7)
 
@@ -4662,57 +4500,6 @@ class AcquisitionGUI:
             table.scale(1, 1.0)
 
         ax.set_title('Resumen\nEstadístico SNR', fontsize=9, fontweight='bold')
-
-    def _plot_filtering_improvement(self, ax, samples):
-        """Panel: Análisis cuantitativo de mejora por filtrado"""
-        if 'TIVA Voltage (V)' in self.csv_data.columns and 'TIVA Voltage w/FPB(V)' in self.csv_data.columns and 'KEITHLEY Voltage (V)' in self.csv_data.columns:
-            raw_signal = self.csv_data['TIVA Voltage (V)'].values
-            filtered_signal = self.csv_data['TIVA Voltage w/FPB(V)'].values
-            keithley = self.csv_data['KEITHLEY Voltage (V)'].values
-
-            # Calcular SNR para ambas
-            _, snr_raw = self.calculate_snr_sliding(keithley, raw_signal, samples, window_size=25, step=5)
-            _, snr_filtered = self.calculate_snr_sliding(keithley, filtered_signal, samples, window_size=25, step=5)
-
-            if snr_raw and snr_filtered:
-                min_len = min(len(snr_raw), len(snr_filtered))
-
-                # Calcular mejora punto a punto
-                improvement = np.array(snr_filtered[:min_len]) - np.array(snr_raw[:min_len])
-
-                # Estadísticas de mejora
-                mean_improv = np.mean(improvement)
-                std_improv = np.std(improvement)
-                max_improv = np.max(improvement)
-                min_improv = np.min(improvement)
-
-                # Crear gráfico de barras para estadísticas de mejora
-                metrics = ['Media', 'Std', 'Máx', 'Mín']
-                values = [mean_improv, std_improv, max_improv, min_improv]
-                colors = ['green' if v > 0 else 'red' for v in values]
-
-                bars = ax.bar(metrics, values, color=colors, alpha=0.7, edgecolor='black', linewidth=0.5)
-
-                # Añadir línea base en cero
-                ax.axhline(y=0, color='black', linestyle='-', alpha=0.5, linewidth=1)
-
-                # Añadir valores en las barras
-                for bar, val in zip(bars, values):
-                    height = bar.get_height()
-                    ax.text(bar.get_x() + bar.get_width()/2.,
-                           height + (0.01 if height >= 0 else -0.01),
-                           f'{val:.1f}', ha='center',
-                           va='bottom' if height >= 0 else 'top', fontsize=7)
-
-                ax.set_ylabel('Mejora SNR (dB)', fontsize=8)
-                ax.set_title('Mejora por\nFiltrado', fontsize=9, fontweight='bold')
-                ax.grid(True, axis='y', alpha=0.3)
-                ax.tick_params(labelsize=7)
-
-        else:
-            ax.text(0.5, 0.5, 'Se requieren todas\nlas señales', ha='center', va='center', transform=ax.transAxes)
-            ax.set_title('Mejora por\nFiltrado')
-            ax.axis('off')
 
     def _plot_snr_variability(self, ax, ref_signal, meas_signal, samples):
         """Panel: Análisis de variabilidad del SNR"""
@@ -4968,16 +4755,7 @@ class AcquisitionGUI:
                 • Evaluación de calidad de señal
 
                 Requiere: Columnas 'TIVA Voltage (V)' y 'KEITHLEY Voltage (V)'"""
-        elif analysis_type == "snr_filtered":
-            info_text = """📡 ANÁLISIS SNR (FILTRADO)
 
-                Mide la relación señal-ruido usando datos filtrados.
-
-                • Comparación TIVA Filtrada vs Keithley
-                • Análisis de mejora por filtrado
-                • Evaluación de efectividad del filtro
-
-                Requiere: Columnas 'TIVA Voltage w/FPB(V)' y 'KEITHLEY Voltage (V)'"""
         elif analysis_type == "histeresis":
             info_text = """🔄 ANÁLISIS DE HISTÉRESIS
 
@@ -5151,7 +4929,7 @@ class AcquisitionGUI:
         # pero adaptada para el nuevo sistema de pestañas
 
         # Verificar que tenemos las columnas necesarias
-        required_cols = ['Ciclo', 'Fase', 'Setpoint Enviado (kPA)', 'TIVA Voltage (V)', 'TIVA Voltage w/FPB(V)', 'KEITHLEY Voltage (V)']
+        required_cols = ['Ciclo', 'Fase', 'Setpoint Enviado (kPA)', 'TIVA Voltage (V)', 'KEITHLEY Voltage (V)']
         missing_cols = [col for col in required_cols if col not in self.csv_data.columns]
 
         if missing_cols:
@@ -5189,9 +4967,7 @@ class AcquisitionGUI:
 
         total_histeresis_area = 0
         cycle_areas = []
-        cycle_areas_w_FP = []
         cycle_areas_keithley = []
-        total_histeresis_area_w_FP = 0
         total_histeresis_area_keithley = 0
 
         for i, ciclo in enumerate(ciclos_unicos):
@@ -5202,27 +4978,19 @@ class AcquisitionGUI:
 
             # Calcular promedios por fase y setpoint
             subida_data_Tiva_Voltaje = []
-            subida_data_Tiva_Voltaje_w_FP = []
             subida_data_KEITHLEY_Voltaje = []
             
             bajada_data_Tiva_Voltaje = []
-            bajada_data_Tiva_Voltaje_w_FP = []
             bajada_data_KEITHLEY_Voltaje = []
 
             for setpoint in setpoints_unicos:
                 setpoint_data = cycle_data[cycle_data['Setpoint Enviado (kPA)'] == setpoint]
-                # TIVA Voltage (V),TIVA Voltage w/FPB(V),KEITHLEY Voltage (V)
 
                 # Promedio subida
                 subida_vals = setpoint_data[setpoint_data['Fase'] == 'subida']['TIVA Voltage (V)']
                 if len(subida_vals) > 0:
                     subida_avg = np.mean(subida_vals)
                     subida_data_Tiva_Voltaje.append((setpoint, subida_avg))
-
-                subida_vals = setpoint_data[setpoint_data['Fase'] == 'subida']['TIVA Voltage w/FPB(V)']
-                if len(subida_vals) > 0:
-                    subida_avg = np.mean(subida_vals)
-                    subida_data_Tiva_Voltaje_w_FP.append((setpoint, subida_avg))
 
                 subida_vals = setpoint_data[setpoint_data['Fase'] == 'subida' ]['KEITHLEY Voltage (V)']
                 if len(subida_vals) > 0:
@@ -5235,11 +5003,6 @@ class AcquisitionGUI:
                     bajada_avg = np.mean(bajada_vals)
                     bajada_data_Tiva_Voltaje.append((setpoint, bajada_avg))
 
-                bajada_vals = setpoint_data[setpoint_data['Fase'] == 'bajada']['TIVA Voltage w/FPB(V)']
-                if len(bajada_vals) > 0:
-                    bajada_avg = np.mean(bajada_vals)
-                    bajada_data_Tiva_Voltaje_w_FP.append((setpoint, bajada_avg))
-
                 bajada_vals = setpoint_data[setpoint_data['Fase'] == 'bajada']['KEITHLEY Voltage (V)']
                 if len(bajada_vals) > 0:
                     bajada_avg = np.mean(bajada_vals)
@@ -5248,10 +5011,8 @@ class AcquisitionGUI:
             cycle_info = {
                 'ciclo': int(ciclo),
                 'subida_data_Tiva_Voltaje': subida_data_Tiva_Voltaje.copy(),
-                'subida_data_Tiva_Voltaje_w_FP': subida_data_Tiva_Voltaje_w_FP.copy(),
                 'subida_data_KEITHLEY_Voltaje': subida_data_KEITHLEY_Voltaje.copy(),
                 'bajada_data_Tiva_Voltaje': bajada_data_Tiva_Voltaje.copy(),
-                'bajada_data_Tiva_Voltaje_w_FP': bajada_data_Tiva_Voltaje_w_FP.copy(),
                 'bajada_data_KEITHLEY_Voltaje': bajada_data_KEITHLEY_Voltaje.copy(),
                 'setpoints_comunes': [],
                 'hist_error': [],
@@ -5259,18 +5020,16 @@ class AcquisitionGUI:
                 'valid_data': False
             }
 
-            if len(subida_data_Tiva_Voltaje) > 0 and len(bajada_data_Tiva_Voltaje) > 0 and len(subida_data_Tiva_Voltaje_w_FP) > 0 and len(bajada_data_Tiva_Voltaje_w_FP) > 0 and len(subida_data_KEITHLEY_Voltaje) > 0 and len(bajada_data_KEITHLEY_Voltaje):
+            if len(subida_data_Tiva_Voltaje) > 0 and len(bajada_data_Tiva_Voltaje) > 0 and len(subida_data_KEITHLEY_Voltaje) > 0 and len(bajada_data_KEITHLEY_Voltaje):
                 # Crear arrays para interpolación
                 subida_setpoints = np.array([x[0] for x in subida_data_Tiva_Voltaje])
 
                 subida_voltajes_tiva = np.array([x[1] for x in subida_data_Tiva_Voltaje])
-                subida_voltajes_w_FP = np.array([x[1] for x in subida_data_Tiva_Voltaje_w_FP])
                 subida_voltajes_keithley = np.array([x[1] for x in subida_data_KEITHLEY_Voltaje])
 
                 bajada_setpoints = np.array([x[0] for x in bajada_data_Tiva_Voltaje])
 
                 bajada_voltajes_tiva = np.array([x[1] for x in bajada_data_Tiva_Voltaje])
-                bajada_voltajes_w_FP = np.array([x[1] for x in bajada_data_Tiva_Voltaje_w_FP])
                 bajada_voltajes_keithley = np.array([x[1] for x in bajada_data_KEITHLEY_Voltaje])
 
                 # Encontrar setpoints comunes
@@ -5280,46 +5039,36 @@ class AcquisitionGUI:
                 if len(setpoints_comunes) > 1:
                     # Interpolar valores para setpoints comunes
                     subida_interp = np.interp(setpoints_comunes, subida_setpoints, subida_voltajes_tiva)
-                    subida_interp_w_FP = np.interp(setpoints_comunes, subida_setpoints, subida_voltajes_w_FP)
                     subida_interp_keithley = np.interp(setpoints_comunes, subida_setpoints, subida_voltajes_keithley)
 
                     bajada_interp = np.interp(setpoints_comunes, bajada_setpoints, bajada_voltajes_tiva)
-                    bajada_interp_w_FP = np.interp(setpoints_comunes, bajada_setpoints, bajada_voltajes_w_FP)
                     bajada_interp_keithley = np.interp(setpoints_comunes, bajada_setpoints, bajada_voltajes_keithley)
 
                     # Calcular error de histéresis
                     hist_error = subida_interp - bajada_interp
-                    hist_error_w_FP = subida_interp_w_FP - bajada_interp_w_FP
                     hist_error_keithley = subida_interp_keithley - bajada_interp_keithley
 
 
                     # Calcular área del error de histéresis usando integración trapezoidal
                     cycle_area = np.trapz(np.abs(hist_error), setpoints_comunes)
-                    cycle_area_w_FP = np.trapz(np.abs(hist_error_w_FP), setpoints_comunes)
                     cycle_area_keithley = np.trapz(np.abs(hist_error_keithley), setpoints_comunes)
                     
                     cycle_areas.append(cycle_area)
-                    cycle_areas_w_FP.append(cycle_area_w_FP)
                     cycle_areas_keithley.append(cycle_area_keithley)
                     
                     total_histeresis_area += cycle_area
-                    total_histeresis_area_w_FP += cycle_area_w_FP
                     total_histeresis_area_keithley += cycle_area_keithley
 
                     # Almacenar datos para exportación
                     cycle_info.update({
                         'setpoints_comunes': setpoints_comunes.tolist(),
                         'subida_interp': subida_interp.tolist(),
-                        'subida_interp_w_FP': subida_interp_w_FP.tolist(),
                         'subida_interp_keithley': subida_interp_keithley.tolist(),
                         'bajada_interp': bajada_interp.tolist(),
-                        'bajada_interp_w_FP': bajada_interp_w_FP.tolist(),
                         'bajada_interp_keithley': bajada_interp_keithley.tolist(),
                         'hist_error': hist_error.tolist(),
-                        'hist_error_w_FP': hist_error_w_FP.tolist(),
                         'hist_error_keithley': hist_error_keithley.tolist(),
                         'cycle_area': float(cycle_area),
-                        'cycle_area_w_FP': float(cycle_area_w_FP),
                         'cycle_area_keithley': float(cycle_area_keithley),
                         'valid_data': True
                     })
@@ -5356,14 +5105,11 @@ class AcquisitionGUI:
         # punto decimal de .2f a float para compatibilidad JSON
         results['global_summary'] = {
             'total_histeresis_area': f"{total_histeresis_area:.6f}",
-            'total_histeresis_area_w_FP': f"{total_histeresis_area_w_FP:.6f}",
             'total_histeresis_area_keithley': f"{total_histeresis_area_keithley:.6f}",
             'num_cycles_analyzed': len(cycle_areas),
             'average_area_per_cycle': f"{float(total_histeresis_area / len(cycle_areas)):.6f}" if cycle_areas else "0.0",
-            'average_area_per_cycle_w_FP': f"{float(total_histeresis_area_w_FP / len(cycle_areas_w_FP)):.6f}" if cycle_areas_w_FP else "0.0",
             'average_area_per_cycle_keithley': f"{float(total_histeresis_area_keithley / len(cycle_areas_keithley)):.6f}" if cycle_areas_keithley else "0.0",
             'cycle_areas': [f"{float(area):.6f}" for area in cycle_areas],
-            'cycle_areas_w_FP': [f"{float(area):.6f}" for area in cycle_areas_w_FP],
             'cycle_areas_keithley': [f"{float(area):.6f}" for area in cycle_areas_keithley]
         }
 
@@ -5379,15 +5125,6 @@ class AcquisitionGUI:
                     'Setpoint (kPA)': setpoint,
                     'TIVA Raw (V)': f"{avg_voltage:.6f}",
                     'Tipo': 'TIVA Raw'
-                })
-
-            for setpoint, avg_voltage in cycle['subida_data_Tiva_Voltaje_w_FP']:
-                results['export_data'].append({
-                    'Ciclo': cycle['ciclo'],
-                    'Fase': 'Subida',
-                    'Setpoint (kPA)': setpoint,
-                    'TIVA Filtrado (V)': f"{avg_voltage:.6f}",
-                    'Tipo': 'TIVA Filtrado'
                 })
 
             for setpoint, avg_voltage in cycle['subida_data_KEITHLEY_Voltaje']:
@@ -5409,15 +5146,6 @@ class AcquisitionGUI:
                     'Tipo': 'TIVA Raw'
                 })
 
-            for setpoint, avg_voltage in cycle['bajada_data_Tiva_Voltaje_w_FP']:
-                results['export_data'].append({
-                    'Ciclo': cycle['ciclo'],
-                    'Fase': 'Bajada',
-                    'Setpoint (kPA)': setpoint,
-                    'TIVA Filtrado (V)': f"{avg_voltage:.6f}",
-                    'Tipo': 'TIVA Filtrado'
-                })
-
             for setpoint, avg_voltage in cycle['bajada_data_KEITHLEY_Voltaje']:
                 results['export_data'].append({
                     'Ciclo': cycle['ciclo'],
@@ -5429,16 +5157,14 @@ class AcquisitionGUI:
 
             # Exportar datos de histéresis (interpolados) si hay datos válidos
             if cycle['valid_data']:
-                for sp, sub, sub_w_FP, sub_K, baj, baj_w_FP, baj_K, err in zip(cycle['setpoints_comunes'], cycle['subida_interp'], cycle['subida_interp_w_FP'], cycle['subida_interp_keithley'], cycle['bajada_interp'], cycle['bajada_interp_w_FP'], cycle['bajada_interp_keithley'], cycle['hist_error']):
+                for sp, sub, sub_K, baj, baj_K, err in zip(cycle['setpoints_comunes'], cycle['subida_interp'], cycle['subida_interp_keithley'], cycle['bajada_interp'], cycle['bajada_interp_keithley'], cycle['hist_error']):
                     results['export_data'].append({
                         'Ciclo': cycle['ciclo'],
                         'Fase': 'Histéresis',
                         'Setpoint (kPA)': sp,
                         'Subida (V)': f"{sub:.6f}",
-                        'Subida (V) w/ FP': f"{sub_w_FP:.6f}",
                         'Subida KEITHLEY (V)': f"{sub_K:.6f}",
                         'Bajada (V)': f"{baj:.6f}",
-                        'Bajada (V) w/ FP': f"{baj_w_FP:.6f}",
                         'Bajada KEITHLEY (V)': f"{baj_K:.6f}",
                         'Error Histéresis (V)': f"{err:.6f}",
                         'Tipo': 'Histéresis'
@@ -5446,12 +5172,10 @@ class AcquisitionGUI:
 
                     # Acumular para promedio general
                     if sp not in setpoint_summary:
-                        setpoint_summary[sp] = {'subida': [], 'subida_w_FP': [], 'subida_KEITHLEY': [], 'bajada': [], 'bajada_w_FP': [], 'bajada_KEITHLEY': [], 'error': []}
+                        setpoint_summary[sp] = {'subida': [], 'subida_KEITHLEY': [], 'bajada': [], 'bajada_KEITHLEY': [], 'error': []}
                     setpoint_summary[sp]['subida'].append(sub)
-                    setpoint_summary[sp]['subida_w_FP'].append(sub_w_FP)
                     setpoint_summary[sp]['subida_KEITHLEY'].append(sub_K)
                     setpoint_summary[sp]['bajada'].append(baj)
-                    setpoint_summary[sp]['bajada_w_FP'].append(baj_w_FP)
                     setpoint_summary[sp]['bajada_KEITHLEY'].append(baj_K)
                     setpoint_summary[sp]['error'].append(err)
 
@@ -5460,10 +5184,8 @@ class AcquisitionGUI:
             for sp, data in setpoint_summary.items():
                 if len(data['subida']) > 1:  # Solo si hay datos de múltiples ciclos
                     avg_sub = np.mean(data['subida'])
-                    avg_sub_w_FP = np.mean(data['subida_w_FP'])
                     avg_sub_keithley = np.mean(data['subida_KEITHLEY'])
                     avg_baj = np.mean(data['bajada'])
-                    avg_baj_w_FP = np.mean(data['bajada_w_FP'])
                     avg_baj_keithley = np.mean(data['bajada_KEITHLEY'])
                     avg_err = np.mean(data['error'])
                     results['export_data'].append({
@@ -5471,10 +5193,8 @@ class AcquisitionGUI:
                         'Fase': 'Histéresis',
                         'Setpoint (kPA)': sp,
                         'Subida (V)': f"{avg_sub:.6f}",
-                        'Subida (V) w/ FP': f"{avg_sub_w_FP:.6f}",
                         'Subida KEITHLEY (V)': f"{avg_sub_keithley:.6f}",
                         'Bajada (V)': f"{avg_baj:.6f}",
-                        'Bajada (V) w/ FP': f"{avg_baj_w_FP:.6f}",
                         'Bajada KEITHLEY (V)': f"{avg_baj_keithley:.6f}",
                         'Error Histéresis (V)': f"{avg_err:.6f}",
                         'Tipo': 'Histéresis'
@@ -5486,7 +5206,6 @@ class AcquisitionGUI:
         # Añadir resumen global
         if cycle_areas:
             summary_text = f'Área Total de Histéresis (TIVA): {total_histeresis_area:.6f} V·kPa\n'
-            summary_text += f'Área Total de Histéresis (TIVA w/FP): {total_histeresis_area_w_FP:.6f} V·kPa\n'
             summary_text += f'Área Total de Histéresis (KEITHLEY): {total_histeresis_area_keithley:.6f} V·kPa\n'
             summary_text += f'Número de Ciclos Analizados: {len(cycle_areas)}\n'
             summary_text += f'Área Promedio por Ciclo (TIVA): {total_histeresis_area/len(cycle_areas):.6f} V·kPa'
@@ -5506,7 +5225,6 @@ class AcquisitionGUI:
         self.analysis_info_text.insert(tk.END, f"Análisis de Histéresis completado\n\n")
         self.analysis_info_text.insert(tk.END, f"Ciclos analizados: {len(cycle_areas)}\n")
         self.analysis_info_text.insert(tk.END, f"Área total de histéresis (TIVA): {total_histeresis_area:.6f} V·kPa\n")
-        self.analysis_info_text.insert(tk.END, f"Área total de histéresis (TIVA w/FP): {total_histeresis_area_w_FP:.6f} V·kPa\n")
         self.analysis_info_text.insert(tk.END, f"Área total de histéresis (KEITHLEY): {total_histeresis_area_keithley:.6f} V·kPa\n")
         if cycle_areas:
             self.analysis_info_text.insert(tk.END, f"Área promedio por ciclo (TIVA): {total_histeresis_area/len(cycle_areas):.6f} V·kPa\n")
@@ -5584,7 +5302,6 @@ class AcquisitionGUI:
             ('spectrum', '🌊 Análisis Espectral'),
             ('trend', '📈 Análisis de Tendencias'),
             ('snr', '📡 Análisis SNR (Raw)'),
-            ('snr_filtered', '📡 Análisis SNR (Filtrado)'),
             ('cycle_average', '🔁 Análisis de Ciclos Promedio'),
             ('whitestone_bridge', '🌉 Análisis Puente Wheatstone'),
             ('presion', '💨 Análisis de Presión'),
@@ -5660,7 +5377,7 @@ class AcquisitionGUI:
                 writer.writerow([])
 
                 # Separar datos por tipo para mejor organización
-                phase_averages = [row for row in results['export_data'] if row.get('Tipo') in ['TIVA Raw', 'TIVA Filtrado', 'KEITHLEY']]
+                phase_averages = [row for row in results['export_data'] if row.get('Tipo') in ['TIVA Raw', 'KEITHLEY']]
                 hysteresis_data = [row for row in results['export_data'] if row.get('Tipo') == 'Histéresis']
 
                 # Exportar promedios por fase
@@ -5735,7 +5452,7 @@ class AcquisitionGUI:
             # Datos específicos
             if analysis_type == 'histeresis' and 'export_data' in results:
                 # Separar datos por tipo para mejor organización
-                phase_averages = [row for row in results['export_data'] if row.get('Tipo') in ['TIVA Raw', 'TIVA Filtrado', 'KEITHLEY']]
+                phase_averages = [row for row in results['export_data'] if row.get('Tipo') in ['TIVA Raw', 'KEITHLEY']]
                 hysteresis_data = [row for row in results['export_data'] if row.get('Tipo') == 'Histéresis']
 
                 # Exportar promedios por fase en hoja separada
@@ -5925,10 +5642,6 @@ class AcquisitionGUI:
             required_cols = ['Sample', 'KEITHLEY Voltage (V)', 'TIVA Voltage (V)']
             signal_col = 'TIVA Voltage (V)'
             title_suffix = 'TIVA Raw vs Keithley'
-        else:
-            required_cols = ['Sample', 'KEITHLEY Voltage (V)', 'TIVA Voltage w/FPB(V)']
-            signal_col = 'TIVA Voltage w/FPB(V)'
-            title_suffix = 'TIVA Filtrado vs Keithley'
 
         # Verificar columnas requeridas
         missing_cols = [col for col in required_cols if col not in self.csv_data.columns]
@@ -6002,13 +5715,6 @@ class AcquisitionGUI:
         # Panel 12: Análisis de tendencias SNR
         ax12 = plt.subplot(4, 4, 12)
         self._plot_snr_trends(ax12, keithley_voltage, signal_voltage, samples)
-
-        # Panel 13: Comparación Raw vs Filtrado (si aplica)
-        ax13 = plt.subplot(4, 4, 13)
-        if raw and 'TIVA Voltage w/FPB(V)' in self.csv_data.columns:
-            self._plot_raw_vs_filtered_comparison(ax13, samples)
-        else:
-            self._plot_raw_vs_filtered_direct(ax13, samples)
 
         # Panel 14: Resumen estadístico SNR
         ax14 = plt.subplot(4, 4, 14)

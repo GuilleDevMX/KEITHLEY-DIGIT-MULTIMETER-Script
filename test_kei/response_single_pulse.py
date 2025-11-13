@@ -1,69 +1,34 @@
-import serial # permite comunicación serial
-import time # para manejo de tiempos
-import csv # para manejo de archivos CSV
-import os # para verificar existencia de archivos
-import threading # Permite ejecutar la adquisición en un hilo separado para no bloquear la interfaz gráfica
-import tkinter as tk # Permite crear la ventana gráfica y los botones de control
-import logging
-import struct
-import ast # para evaluación segura de expresiones literales
-from contextlib import contextmanager
-from typing import List, Dict, Optional, Any
+import serial
+import time
+import csv
+import os
+import threading
+import numpy as np  
+import matplotlib.pyplot as plt
+import pandas as pd
 import pyvisa
-from datetime import datetime
+import datetime
+import logging
+import ast
+from typing import Dict, Any, Optional, List
+from contextlib import contextmanager
 
-# Configurar logging para adquisición
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('./logs/acquisition.log')
-    ]
-)
-logger = logging.getLogger(__name__)
-
-# Configuración de CSV y puertos
-csv_file = f"Datos_{time.strftime('%Y%m%d_%H%M%S')}.csv" # Archivo CSV para guardar datos (valor por defecto)
-# Parámetros de ciclo de histéresis
-num_ciclos = 1
-punto_inicio = 0
-punto_final = 6.867
-setpoint_intervalo = 60 # Intervalo en segundos para cambiar el setpoint
-num_puntos_intermedios = 2
-stability_time = 15  # Tiempo de estabilización en segundos después de cambiar el setpoint
-
-# Modo de puntos intermedios
-intermediate_mode = "automatic"  # "automatic" o "manual"
-custom_points_text = "[0, 1, 2, 3, 4, 5, 6, 6.5, 6.8]"  # Puntos personalizados para modo manual
-
-# Configuración de puertos seriales
-alicat_port = "COM5"
-tiva_port = "COM6"
-
-# Configuración Keithley (simplificada para integración)
-keithley_config = {
-    'experiment_label': 'integrated_acquisition',
-    'samples_per_count': 1,  # Una lectura por iteración para sincronizar
-    'nplc_cycles': 1,
-    'infinite_mode': False,
-    'num_blocks': 1,  # No usado en este contexto
-    'no_stats': True,
-    'output_dir': '.',  # Directorio actual
-    'quiet': True
-}
-
-# Variables de control globales
-acquisition_running = False  # Bandera para saber si la adquisición está activa
-acquisition_paused = False   # Bandera para saber si la adquisición está pausada
-thread_acquisition = None # Variable donde se guarda el hilo de adquisición para poder detenerlo/join
-
-# Variables globales para conexiones
-ser_tiva_global = None
+acquisition_running = False
+thread_acquisition = None
 ser_alicat_global = None
 keithley_acquirer_global = None
 
+class KeithleyConnectionError(Exception):
+    """Excepción personalizada para errores de conexión con Keithley"""
+    pass
+
+class KeithleyAcquisitionError(Exception):
+    """Excepción personalizada para errores de adquisición con Keithley"""
+    pass
+
 class KeithleyAcquisition:
     """Clase principal para adquisición de datos Keithley"""
+
     def __init__(self, config: Dict[str, Any], logger: Optional[logging.Logger] = None):
         self.config = config
         self.logger = logger or logging.getLogger(__name__)
@@ -164,17 +129,22 @@ class KeithleyAcquisition:
         # Configurar medición de voltaje DC
         self.inst.write('CONFigure:VOLTage:DC')
 
+        # Configurar trigger para muestreo inmediato
+        self.inst.write('TRIGger:SOURce IMM')
+
         # Auto-ranging
         self.inst.write('VOLTage:DC:RANGe:AUTO ON')
 
         # NPLCycles
         self.inst.write(f'SENSe:VOLTage:DC:NPLCycles {self.config["nplc_cycles"]}')
 
-        # Verificar configuración
-        # cast to float for comparison
-        current_nplc = float(self.inst.query('SENSe:VOLTage:DC:NPLCycles?').strip())
-        if current_nplc != float(self.config['nplc_cycles']):
-            self.logger.warning(f"NPLCycles verification failed: expected {self.config['nplc_cycles']}, got {current_nplc}")
+        # Verificar configuración (opcional)
+        try:
+            current_nplc = float(self.inst.query('SENSe:VOLTage:DC:NPLCycles?').strip())
+            if current_nplc != float(self.config['nplc_cycles']):
+                self.logger.warning(f"NPLCycles verification failed: expected {self.config['nplc_cycles']}, got {current_nplc}")
+        except Exception as e:
+            self.logger.warning(f"Could not verify NPLCycles setting: {e}")
 
         self.logger.info("Instrument initialized successfully")
 
@@ -485,6 +455,17 @@ class KeithleyAcquisition:
             progress_percent = (results['blocks_completed'] / self.config['num_blocks']) * 100
             print(f"📋 Bloques completados: {results['blocks_completed']}/{self.config['num_blocks']} ({progress_percent:.1f}%)")
 
+def setup_serial_connections():
+    global alicat_ser
+    try:
+        alicat_ser = serial.Serial('COM5', 115200, timeout=1)
+        time.sleep(2)  # Allow time for connections to establish
+        print("Serial connections established on COM5")
+    except serial.SerialException as e:
+        print(f"Error opening serial ports: {e}")
+        print("Please check if the devices are connected and the ports are correct.")
+        raise
+
 def ciclo(num_ciclos, punto_inicio, punto_final, num_puntos_intermedios):
     setpoints = []
     for _ in range(num_ciclos):
@@ -497,6 +478,113 @@ def ciclo(num_ciclos, punto_inicio, punto_final, num_puntos_intermedios):
             sp = punto_final - (punto_final - punto_inicio) * i / num_puntos_intermedios
             setpoints.append(round(sp, 3))
     return setpoints
+
+def stability_setpoint(ser_alicat, setpoint, threshold=0.002, expected_time=30, averaging_time=5):
+    """
+    Espera hasta que la presión se estabilice cerca del setpoint, verificando el promedio durante averaging_time
+
+    Args:
+        ser_alicat: Puerto serial del Alicat
+        setpoint: Valor de presión objetivo (kPa)
+        threshold: Umbral de tolerancia para considerar estabilizado (kPa)
+        expected_time: Tiempo máximo de espera (segundos)
+        averaging_time: Tiempo de ventana para promediar lecturas (segundos)
+
+    Returns:
+        bool: True si se estabilizó, False si timeout
+    """
+    logger = logging.getLogger(__name__)
+
+    # Validación de parámetros
+    if not ser_alicat or not ser_alicat.is_open:
+        logger.error("Puerto serial del Alicat no está abierto")
+        return False
+
+    if setpoint < 0:
+        logger.error(f"Setpoint inválido: {setpoint} kPa")
+        return False
+
+    if threshold <= 0 or expected_time <= 0 or averaging_time <= 0:
+        logger.error(f"Parámetros inválidos: threshold={threshold}, expected_time={expected_time}, averaging_time={averaging_time}")
+        return False
+
+    logger.info(f"Iniciando estabilización - Setpoint: {setpoint:.3f} kPa, Threshold: {threshold:.3f} kPa, Timeout: {expected_time}s")
+
+    start_time = time.time()
+    pressures = []
+    stable_readings = 0
+    required_stable_readings = max(3, int(averaging_time / 0.5))  # Al menos 3 lecturas estables
+
+    try:
+        while time.time() - start_time < expected_time:
+            # Enviar comando de consulta
+            ser_alicat.write(b"A @ @\r")
+            time.sleep(0.1)  # Espera respuesta
+
+            # Leer respuesta
+            if ser_alicat.in_waiting > 0:
+                response = ser_alicat.readline().decode('ascii', errors='ignore').strip()
+
+                if response:
+                    campos = response.split()
+                    if len(campos) >= 3:
+                        try:
+                            presion_actual = float(campos[1])
+
+                            # Validar rango razonable de presión
+                            if 0 <= presion_actual <= 10.0:  # Rango típico 0-10 kPa
+                                pressures.append(presion_actual)
+
+                                # Mantener solo las últimas lecturas para el promedio móvil
+                                if len(pressures) > 50:  # Máximo 50 lecturas en buffer
+                                    pressures.pop(0)
+
+                                # Calcular promedio de las últimas lecturas
+                                if len(pressures) >= 5:  # Necesitamos al menos 5 lecturas
+                                    avg_pressure = sum(pressures[-10:]) / len(pressures[-10:])  # Promedio de últimas 10
+                                    deviation = abs(avg_pressure - setpoint)
+
+                                    logger.debug(f"Presión actual: {presion_actual:.4f} kPa, Promedio: {avg_pressure:.4f} kPa, Desviación: {deviation:.4f} kPa")
+
+                                    if deviation <= threshold:
+                                        stable_readings += 1
+                                        if stable_readings >= required_stable_readings:
+                                            # Detener streaming antes de retornar
+                                            ser_alicat.write(b"@@ A\r")
+                                            logger.info(f"Presión estabilizada - Promedio: {avg_pressure:.4f} kPa (setpoint: {setpoint:.3f} kPa, desviación: {deviation:.4f} kPa)")
+                                            return True
+                                    else:
+                                        stable_readings = 0  # Reset contador si no está estable
+                            else:
+                                logger.warning(f"Presión fuera de rango: {presion_actual:.3f} kPa")
+
+                        except (ValueError, IndexError) as e:
+                            logger.debug(f"Error parseando respuesta del Alicat: {response} - {e}")
+                            continue
+                    else:
+                        logger.debug(f"Respuesta incompleta del Alicat: {response}")
+                else:
+                    logger.debug("No se recibió respuesta del Alicat")
+            else:
+                logger.debug("No hay datos disponibles en el puerto serial")
+
+            # Pequeña pausa entre lecturas
+            time.sleep(0.2)
+
+        # Timeout alcanzado
+        elapsed_time = time.time() - start_time
+        if pressures:
+            final_avg = sum(pressures[-10:]) / len(pressures[-10:])
+            final_deviation = abs(final_avg - setpoint)
+            logger.warning(f"Tiempo de espera excedido ({elapsed_time:.1f}s) - Presión final: {final_avg:.4f} kPa (desviación: {final_deviation:.4f} kPa)")
+        else:
+            logger.warning(f"Tiempo de espera excedido ({elapsed_time:.1f}s) - No se obtuvieron lecturas válidas")
+
+        return False
+
+    except Exception as e:
+        logger.error(f"Error durante estabilización de presión: {e}")
+        return False
 
 def generar_setpoints(num_ciclos, punto_inicio, punto_final, num_puntos_intermedios, intermediate_mode, custom_points_text):
     """Genera lista de setpoints basada en el modo seleccionado"""
@@ -530,121 +618,15 @@ def generar_setpoints(num_ciclos, punto_inicio, punto_final, num_puntos_intermed
         # Modo automático
         return ciclo(num_ciclos, punto_inicio, punto_final, num_puntos_intermedios)
 
-def calcular_crc16_ccitt(data: bytes) -> int:
-    crc = 0xFFFF
-    for byte in data:
-        crc ^= (byte << 8)
-        for _ in range(8):
-            if crc & 0x8000:
-                crc = (crc << 1) ^ 0x1021
-            else:
-                crc <<= 1
-            crc &= 0xFFFF
-    return crc
+def read_keithley(keithley_acquirer, result):
+    """Leer datos del Keithley de manera optimizada"""
+    try:
+        block_readings = keithley_acquirer.acquire_block(1)
+        result[0] = block_readings[0] if block_readings else None
+    except Exception:
+        result[0] = None
 
-def recibir_paquete(data_12bytes: bytes):
-    if len(data_12bytes) != 12 or data_12bytes[10:] != b'\r\n':
-        return None, None
-
-    payload = data_12bytes[:8]
-    crc_recibido = int.from_bytes(data_12bytes[8:10], 'little')
-    crc_calculado = calcular_crc16_ccitt(payload)
-
-    if crc_recibido != crc_calculado:
-        print(f"CRC error: recibido 0x{crc_recibido:04X}, calculado 0x{crc_calculado:04X}")
-        return None, None
-
-    voltage, temperature = struct.unpack('<ff', payload)
-    return voltage, temperature
-
-def read_tiva(ser_tiva, keithley_acquirer, result):
-    """Leer datos del TIVA de manera optimizada"""
-    # Leer Keithley inmediatamente después de TIVA
-    keithley_local_result = [None]
-    read_keithley(keithley_acquirer, keithley_local_result)
-
-    linea_raw = ser_tiva.readline()
-    recibir_paquete_result = recibir_paquete(linea_raw)
-    com_tiva_count, com_tiva_temp = recibir_paquete_result
-    if recibir_paquete_result == (None, None):
-        result[:] = [None, None, keithley_local_result[0]]
-        return
-        
-    result[:] = [com_tiva_count, com_tiva_temp, keithley_local_result[0]]
-
-def conversion_counts_to_voltage(counts):
-    # Suponiendo que los counts son de un ADC de 24 bits con referencia de 2.5V, PGA = 32
-    V_ref = 5
-    pga = 1
-    max_counts = 2**24 - 1
-    voltage = (counts / max_counts) * V_ref / pga
-    return voltage
-
-def stability_setpoint(ser_alicat, setpoint, threshold=0.002, expected_time=30, averaging_time=5):
-    """Espera hasta que la presión se estabilice cerca del setpoint, verificando el promedio durante averaging_time"""
-    start_time = time.time()
-    pressures = []
-    averaging_start = start_time
-    while time.time() - start_time < expected_time:
-        ser_alicat.write(b"A @ @\r")
-        time.sleep(0.1)  # Pequeña espera para respuesta
-        linea = ser_alicat.readline().decode('ascii', errors='ignore').strip()
-        if not linea:
-            continue
-        campos = linea.split()
-        if len(campos) >= 3:
-            try:
-                presion_actual = float(campos[1])
-                pressures.append(presion_actual)
-                current_time = time.time()
-                if current_time - averaging_start >= averaging_time and len(pressures) > 0:
-                    avg_pressure = sum(pressures) / len(pressures)
-                    if abs(avg_pressure - setpoint) <= threshold:
-                        ser_alicat.write(b"@@ A\r")
-                        logger.info(f"Presión estabilizada - Promedio: {avg_pressure:.3f} kPA (setpoint: {setpoint:.3f})")
-                        return True
-                    else:
-                        # Reset para nueva ventana de promediado
-                        pressures = []
-                        averaging_start = current_time
-            except (ValueError, IndexError):
-                continue
-    logger.warning(f"Tiempo de espera excedido para estabilización de presión: {expected_time}s")
-    return False
-
-def stability_keithley_reference_to_tiva(ser_tiva, keithley_acquirer, threshold=0.0001, expected_time=30, averaging_time=20) -> bool:
-    """Espera hasta que la tensión de TIVA se estabilice cerca de la referencia de Keithley, verificando el promedio durante averaging_time"""
-    start_time = time.time()
-    differences = []
-    voltages = []
-    averaging_start = start_time
-    while time.time() - start_time < expected_time:
-        # Leer TIVA y Keithley
-        tiva_result = [None, None, None]
-        read_tiva(ser_tiva, keithley_acquirer, tiva_result)
-        com_tiva_count, com_tiva_temp, voltage_v = tiva_result
-
-        if voltage_v is not None and com_tiva_count is not None:
-            diff = abs(com_tiva_count - voltage_v)
-            differences.append(diff)
-            voltages.append(voltage_v)
-            current_time = time.time()
-            if current_time - averaging_start >= averaging_time and len(differences) > 0:
-                avg_diff = sum(differences) / len(differences)
-                print(f"Averaging completed: avg_diff={avg_diff:.6f} threshold={threshold:.6f}")
-                if avg_diff <= threshold:
-                    logger.info(f"Voltaje TIVA estabilizado - Promedio diff: {avg_diff:.6f} V")
-                    return True
-                else:
-                    differences = []
-                    voltages = []
-                    averaging_start = current_time
-        time.sleep(0.01)
-    logger.warning(f"Tiempo de espera excedido para estabilización de voltaje: {expected_time}s")
-    # Reset para nueva ventana de promediado
-    return False
-
-def read_alicat(ser_alicat, result):
+def read_alicat(ser_alicat, result):    
     """Leer datos del Alicat de manera optimizada"""
     try:
         dato_alicat = ser_alicat.readline().decode('ascii', errors='ignore').strip()
@@ -663,18 +645,37 @@ def read_alicat(ser_alicat, result):
     except Exception:
         result[:] = [None, None]
 
-def read_keithley(keithley_acquirer, result):
-    """Leer datos del Keithley de manera optimizada"""
-    try:
-        block_readings = keithley_acquirer.acquire_block(1)
-        result[0] = block_readings[0] if block_readings else None
-    except Exception:
-        result[0] = None
-
-def acquisition_loop(params):
+def acquisition_loop(params, keithley_config=None):
     global acquisition_running, acquisition_paused
     global logger
-    global ser_tiva_global, ser_alicat_global, keithley_acquirer_global
+    global ser_alicat_global, keithley_acquirer_global
+
+    # Inicializar logger si no existe
+    if 'logger' not in globals() or logger is None:
+        logger = logging.getLogger(__name__)
+        if not logger.handlers:
+            # Configurar logger básico si no está configurado
+            logging.basicConfig(
+                level=logging.INFO,
+                format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+
+    # Inicializar acquisition_paused si no existe
+    if 'acquisition_paused' not in globals():
+        global acquisition_paused
+        acquisition_paused = False
+
+    # Usar configuración por defecto si no se proporciona
+    if keithley_config is None:
+        keithley_config = {
+            'output_dir': 'lecturas',
+            'experiment_label': 'adquisicion_presion',
+            'nplc_cycles': 0.02,
+            'samples_per_counst': 1,
+            'num_blocks': 50,
+            'infinite_mode': False,
+            'quiet': False
+        }
 
     # Extraer parámetros
     setpoint_inicial = params['setpoint_inicial']
@@ -694,17 +695,10 @@ def acquisition_loop(params):
     csv_writer = csv.writer(csv_f)
 
     if not file_exists:
-        csv_writer.writerow(["Timestamp", "Sample", "Ciclo", "Fase", "TIVA Voltage (V)","KEITHLEY Voltage (V)", "TIVA Temp (C)", "Alicat Presion (kPA)", "Alicat Setpoint (kPA)", "Setpoint Enviado (kPA)"])
+        csv_writer.writerow(["Timestamp", "Sample", "Ciclo", "KEITHLEY Voltage (V)", "Setpoint Enviado (kPA)"])
         logger.info(f"Archivo CSV creado: {csv_file}")
 
     # Inicializar conexiones seriales optimizadas
-    ser_tiva = serial.Serial(port=tiva_port, 
-            baudrate=230400, 
-            timeout=1.0, 
-            bytesize=serial.EIGHTBITS,
-            parity=serial.PARITY_NONE,
-            stopbits=serial.STOPBITS_ONE,
-            xonxoff=False)
     ser_alicat = serial.Serial(port="COM5", baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=0.01)
 
     # Configurar Keithley
@@ -712,7 +706,6 @@ def acquisition_loop(params):
     keithley_acquirer._connect_instrument()
 
     # Asignar a variables globales para acceso desde detener_adquisicion
-    ser_tiva_global = ser_tiva
     ser_alicat_global = ser_alicat
     keithley_acquirer_global = keithley_acquirer
 
@@ -743,13 +736,12 @@ def acquisition_loop(params):
     if stability_time > 0:
         logger.info(f"Iniciando estabilización inicial para setpoint: {nuevo_setpoint:.1f} kPA")
         stability_setpoint(ser_alicat, nuevo_setpoint, threshold=0.002, expected_time=stability_time)
-        while not stability_keithley_reference_to_tiva(ser_tiva, keithley_acquirer, threshold=0.0015, expected_time=stability_time, averaging_time=20):
-            time.sleep(0.001)
 
     # Logging de inicio optimizado
     logger.info(f"Adquisición iniciada - Archivo: {csv_file}")
     logger.info(f"Configuración: {num_ciclos} ciclos, {num_puntos_intermedios} puntos intermedios, Setpoint inicial: {nuevo_setpoint:.1f} kPA")
     time.sleep(1)
+    acquisition_running = True
     ultimo_ajuste = time.time()
     sample_counter = 0
     ser_alicat.write(b"A @ @\r")  # Comando para iniciar lecturas
@@ -762,34 +754,31 @@ def acquisition_loop(params):
             timestamp = time.strftime('%H:%M:%S')
             current_time = time.time()
 
-            # Cálculo optimizado de ciclo y fase
+            # Cálculo optimizado de ciclo
             ciclo_num = (current_setpoint_index // puntos_por_ciclo) + 1
             posicion_en_ciclo = current_setpoint_index % puntos_por_ciclo
-            fase = "subida" if posicion_en_ciclo < puntos_subida else "bajada"
 
             # Cambio de setpoint optimizado
             if current_time - ultimo_ajuste >= setpoint_intervalo:
-                time.sleep(1)  # Pequeña espera antes de cambiar setpoint
                 if current_setpoint_index + 1 < len(setpoint_list):
                     current_setpoint_index += 1
                     nuevo_setpoint = setpoint_list[current_setpoint_index]
 
                     if stability_time > 0:
-                        logger.info(f"Cambio de setpoint - Ciclo: {ciclo_num}, Fase: {fase}, Setpoint: {nuevo_setpoint:.1f} kPA")
+                        logger.info(f"Cambio de setpoint - Ciclo: {ciclo_num}, Setpoint: {nuevo_setpoint:.1f} kPA")
 
                     # Comando optimizado
                     ser_alicat.write(b"@@ A\r")
-                    time.sleep(0.05) 
+                    time.sleep(0.5) 
                     ser_alicat.write(f"A S {nuevo_setpoint:.3f}\r".encode('ascii'))
 
                     # Espera de estabilización usando métodos específicos
                     if stability_time > 0:
                         logger.info(f"Iniciando estabilización para setpoint: {nuevo_setpoint:.1f} kPA")
                         # Estabilizar presión del Alicat
-                        stability_setpoint(ser_alicat, nuevo_setpoint, threshold=0.002, expected_time=stability_time)
-                        # Estabilizar voltaje TIVA respecto a Keithley
-                        while not stability_keithley_reference_to_tiva(ser_tiva, keithley_acquirer, threshold=0.0015, expected_time=stability_time, averaging_time=20):
-                            time.sleep(0.001)
+                        while not stability_setpoint(ser_alicat, nuevo_setpoint, threshold=0.002, expected_time=stability_time):
+                            logger.warning(f"No se logró estabilizar en {stability_time}s, reintentando...")
+                        time.sleep(1)
                         ser_alicat.write(b"A @ @\r")
                 else:
                     ser_alicat.write(b"@@ A\r")
@@ -800,47 +789,26 @@ def acquisition_loop(params):
                 ultimo_ajuste = time.time()
             
             # Lectura de datos optimizada con hilos
-            tiva_result = [None, None, None, None]
+            keithley_result = [None]
             alicat_result = [None, None]
 
-            tiva_thread = threading.Thread(target=read_tiva, args=(ser_tiva, keithley_acquirer, tiva_result))
-            # alicat_thread = threading.Thread(target=read_alicat, args=(ser_alicat, alicat_result))
-            
-            # read_tiva(ser_tiva, keithley_acquirer, tiva_result)
-            read_alicat(ser_alicat, alicat_result)
-            
-            tiva_thread.start()
-            # alicat_thread.start()
-
-            tiva_thread.join()
-            # alicat_thread.join()
+            read_keithley(keithley_acquirer, keithley_result)
 
             # Desempaquetar resultados
-            com_tiva_count, com_tiva_temp, voltage_v = tiva_result
-            alicat_presion, alicat_setpoint = alicat_result
+            voltage_v = keithley_result[0]
 
-            # Validación y guardado optimizado usando funciones de utilidad
-            if validar_datos(com_tiva_count, com_tiva_temp, alicat_presion, alicat_setpoint, voltage_v):
-                # Filtro de picos optimizado
-                if not (abs(com_tiva_count) > 0.1 and abs(com_tiva_temp) > 50):
-                    fila_csv = formatear_fila_csv(
-                        timestamp, sample_counter, ciclo_num, fase,
-                        alicat_presion, alicat_setpoint, nuevo_setpoint,
-                        com_tiva_count, voltage_v, com_tiva_temp 
-                    )
-                    csv_writer.writerow(fila_csv)
-                else:
-                    logger.warning(f"Pico detectado - Count: {com_tiva_count:.6f}, Temp: {com_tiva_temp:.6f}")
+            if voltage_v is not None:
+                fila_csv = formatear_fila_csv(
+                    timestamp, sample_counter, ciclo_num,
+                    voltage_v, nuevo_setpoint
+                )
+                csv_writer.writerow(fila_csv)
             else:
-                logger.warning("Datos incompletos - algunos sensores no respondieron")
-
+                logger.warning("Datos incompletos - voltaje del Keithley no disponible")
     except Exception as e:
         logger.error(f"Error en adquisición: {e}")
     finally:
         # Limpieza optimizada de recursos
-        if ser_tiva_global:
-            ser_tiva_global.close()
-            ser_tiva_global = None
         if ser_alicat_global:
             ser_alicat_global.close()
             ser_alicat_global = None
@@ -850,30 +818,27 @@ def acquisition_loop(params):
             keithley_acquirer_global = None
         logger.info("Adquisición finalizada - Recursos liberados")
 
-def iniciar_adquisicion(params):
+def iniciar_adquisicion(params, keithley_config=None):
     """Iniciar adquisición de manera optimizada"""
     global acquisition_running, thread_acquisition
     if not acquisition_running:
         acquisition_running = True
-        thread_acquisition = threading.Thread(target=acquisition_loop, args=(params,))
+        thread_acquisition = threading.Thread(target=acquisition_loop, args=(params, keithley_config))
         thread_acquisition.start()
         print("Adquisición iniciada.")
 
-def formatear_fila_csv(timestamp, sample, ciclo, fase, alicat_presion, alicat_setpoint, nuevo_setpoint, *valores):
+def formatear_fila_csv(timestamp, sample, ciclo, *valores):
     """Formatear fila CSV de manera optimizada"""
-    return [timestamp, sample, ciclo, fase] + [f"{v:.6f}" if isinstance(v, (int, float)) and v is not None else str(v) for v in valores] + [alicat_presion, alicat_setpoint, nuevo_setpoint]
+    return [timestamp, sample, ciclo] + [f"{v:.6f}" if isinstance(v, (int, float)) and v is not None else str(v) for v in valores]
 
 def detener_adquisicion():
     """Detener adquisición de manera optimizada"""
     global acquisition_running, thread_acquisition
-    global ser_tiva_global, ser_alicat_global, keithley_acquirer_global
+    global ser_alicat_global, keithley_acquirer_global
     acquisition_running = False
     if thread_acquisition:
         thread_acquisition.join()
     # Cerrar comunicaciones seriales
-    if ser_tiva_global:
-        ser_tiva_global.close()
-        ser_tiva_global = None
     if ser_alicat_global:
         ser_alicat_global.write(b"@@ A\r")
         ser_alicat_global.close()
@@ -894,6 +859,89 @@ def validar_datos(*valores):
     return all(v is not None for v in valores)
 
 def calcular_promedio(valores):
-    """Calculapromedio de valores válidos de manera optimizada"""
+    """Calcular promedio de valores válidos de manera optimizada"""
     valores_validos = [v for v in valores if v is not None]
     return sum(valores_validos) / len(valores_validos) if valores_validos else None
+
+
+# =============================================================================
+# EJEMPLO DE USO DE acquisition_loop
+# =============================================================================
+
+def ejemplo_uso_acquisition_loop():
+    """
+    Ejemplo completo de cómo usar la función acquisition_loop
+    """
+
+    # 1. Configurar variables globales requeridas
+    global acquisition_running, acquisition_paused, logger
+    global ser_alicat_global, keithley_acquirer_global
+
+    # Inicializar variables globales
+    acquisition_running = False
+    acquisition_paused = False
+
+    # Configurar logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    logger = logging.getLogger(__name__)
+
+    # 2. Configurar Keithley (esto debe definirse antes)
+    # Nota: Esta configuración debe adaptarse a tu setup específico
+    keithley_config = {
+        'output_dir': 'lecturas',
+        'experiment_label': 'prueba_acquisition_loop',
+        'nplc_cycles': 1.0,
+        'samples_per_count': 1000,
+        'num_blocks': 10,  # Solo si no es modo infinito
+        'infinite_mode': True,
+        'quiet': False
+    }
+
+    # 3. Definir parámetros para acquisition_loop
+    params = {
+        'setpoint_inicial': 0.0,        # Presión inicial (kPa)
+        'setpoint_final': 6.86,         # Presión final (kPa)
+        'setpoint_intervalo': 10.0,     # Tiempo entre cambios de setpoint (segundos)
+        'num_puntos_intermedios': 1,    # Puntos intermedios en cada rampa
+        'num_ciclos': 1,                # Número de ciclos completos
+        'intermediate_mode': 'auto',    # 'auto' o 'manual'
+        'custom_points_text': '[0, 2, 4, 6.86]',  # Solo si intermediate_mode='manual'
+        'enable_stability': False,       # Habilitar estabilización de presión
+        'stability_time': 15.0,         # Tiempo máximo para estabilizar (segundos)
+        'file_label': 'MiExperimento'   # Prefijo para el archivo CSV
+    }
+
+    # 4. Ejecutar acquisition_loop en un thread separado
+    try:
+        # Iniciar la adquisición
+        acquisition_running = True
+        thread_acquisition = threading.Thread(target=acquisition_loop, args=(params, keithley_config))
+        thread_acquisition.start()
+
+        print("Adquisición iniciada. Presiona Ctrl+C para detener...")
+
+        # Mantener el programa corriendo
+        while acquisition_running:
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        print("\nDeteniendo adquisición...")
+        detener_adquisicion()
+
+    except Exception as e:
+        print(f"Error: {e}")
+        detener_adquisicion()
+
+    # Esperar a que termine el thread
+    if 'thread_acquisition' in locals():
+        thread_acquisition.join()
+
+    print("Programa finalizado.")
+
+
+if __name__ == "__main__":
+    # Ejecutar el ejemplo
+    ejemplo_uso_acquisition_loop()

@@ -357,8 +357,6 @@ class AlicatController:
             # Enviar comando
             cmd_bytes = f"{command}\r".encode('ascii')
             self.serial_conn.write(cmd_bytes)
-            self.logger.debug(f"Comando enviado: {command}")
-
             # Esperar respuesta
             time.sleep(0.1)
             response = self.serial_conn.readline().decode('ascii', errors='ignore').strip()
@@ -420,13 +418,74 @@ class AlicatController:
         if not 0 <= setpoint <= 100:
             raise ValueError("Setpoint debe estar entre 0 y 100")
 
-        command = self._format_command("change_setpoint", setpoint_value=f"{setpoint:.2f}")
+        command = self._format_command("change_setpoint", setpoint_value=f"{setpoint:.3f}")
+        print(command)
         response = self._send_command(command)
 
         if response:
             self.logger.info(f"Setpoint establecido en {setpoint}")
         else:
             raise AlicatCalibrationError("No se pudo establecer el setpoint")
+
+    def start_streaming(self):
+        """Inicia el modo streaming de datos"""
+        command = self._format_command("start_streaming")
+        response = self._send_command(command)
+        if response:
+            self.logger.info("Streaming mode started")
+        # else:
+        #     raise AlicatCalibrationError("No se pudo iniciar streaming mode")
+        return response
+
+    def stop_streaming(self):
+        """Detiene el modo streaming de datos"""
+        command = self._format_command("stop_streaming", new_unit_id=self.unit_id)
+        response = self._send_command(command)
+        if response:
+            self.logger.info("Streaming mode stopped")
+        # else:
+        #     raise AlicatCalibrationError("No se pudo detener streaming mode")
+        return response
+
+    def read_streaming_data(self) -> Optional[Dict[str, float]]:
+        """
+        Lee datos del modo streaming
+        Returns: Dict con caudal, presión, temperatura o None si no hay datos
+        """
+        if not self.serial_conn or not self.serial_conn.is_open:
+            return None
+
+        try:
+            # Leer línea del stream
+            if self.serial_conn.in_waiting > 0:
+                response = self.serial_conn.readline().decode('ascii', errors='ignore').strip()
+
+                if response:
+                    # Formato típico del streaming: mismo que poll_device_data
+                    parts = response.split()
+
+                    if len(parts) >= 3:
+                        try:
+                            # Parsear valores (asumiendo formato: unit_id flow pressure temperature)
+                            flow_rate = float(parts[1]) if len(parts) > 1 else 0.0
+                            pressure = float(parts[2]) if len(parts) > 2 else 0.0
+                            temperature = float(parts[3]) if len(parts) > 3 else 25.0  # Default temp
+
+                            return {
+                                'flow_rate': flow_rate,
+                                'pressure': pressure,
+                                'temperature': temperature,
+                                'timestamp': time.time()
+                            }
+                        except (ValueError, IndexError) as e:
+                            self.logger.debug(f"Error parseando streaming data: {response} - {e}")
+                            return None
+
+            return None
+
+        except Exception as e:
+            self.logger.error(f"Error leyendo datos de streaming: {e}")
+            return None
 
     def _validate_setpoint(self, setpoint: float):
         """Valida que el setpoint esté en rango válido"""
