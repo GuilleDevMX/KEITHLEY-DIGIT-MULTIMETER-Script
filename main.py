@@ -14,6 +14,7 @@ from datetime import datetime
 from typing import List, Dict, Optional, Any
 import logging
 import csv
+import struct
 from scipy import stats
 from contextlib import contextmanager
 import pyvisa
@@ -1789,6 +1790,9 @@ class AcquisitionGUI:
         # Detener monitoreo
         self.monitoring_active = False
 
+        # cerrar comunicaciones seriales alicar, keit y tiva
+
+
         # Actualizar botones
         self.btn_start.config(state=tk.NORMAL)
         self.btn_pause.config(state=tk.DISABLED)
@@ -2080,14 +2084,181 @@ class AcquisitionGUI:
             return
         messagebox.showerror("Error", "Error conectando con Alicat: Timeout de conexión")
 
+    # ========================= CONFIGURACIÓN =========================
+
     def test_tiva_connection(self):
-        """Probar conexión con TIVA"""
-        try:
-            ser = serial.Serial(port=self.tiva_port.get(), baudrate=115200, timeout=1)
-            ser.close()
-            messagebox.showinfo("Éxito", "Conexión TIVA exitosa")
-        except Exception as e:
-            messagebox.showerror("Error", f"Error conectando con TIVA: {e}")
+        """Probar conexión con TIVA usando una ventana con actualización en tiempo real"""
+
+        # Crear ventana de prueba
+        test_window = tk.Toplevel(self.root)
+        test_window.title("Prueba de Conexión TIVA")
+        test_window.geometry("600x400")
+
+        # Variables para mostrar datos
+        count_var = tk.StringVar(value="0")
+        v_dif_var = tk.StringVar(value="0.0000000")
+        v_a_var = tk.StringVar(value="0.000000")
+        v_b_var = tk.StringVar(value="0.00000000")
+        temp_var = tk.StringVar(value="0.00")
+        comp_var = tk.StringVar(value="0.000000")
+        i_exc_var = tk.StringVar(value="0.000000")
+        rate_var = tk.StringVar(value="0.0")
+        status_var = tk.StringVar(value="Conectando...")
+
+        # Layout
+        ttk.Label(test_window, text="Prueba de Conexión Serial TIVA", font=("Arial", 14, "bold")).pack(pady=10)
+
+        # Frame para datos
+        data_frame = ttk.Frame(test_window)
+        data_frame.pack(pady=10, padx=20, fill=tk.X)
+
+        # Labels para datos
+        ttk.Label(data_frame, text="Paquetes:").grid(row=0, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=count_var).grid(row=0, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Vdif (V):").grid(row=1, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=v_dif_var).grid(row=1, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Va (V):").grid(row=2, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=v_a_var).grid(row=2, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Vb (V):").grid(row=3, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=v_b_var).grid(row=3, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Temperatura (°C):").grid(row=4, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=temp_var).grid(row=4, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Compensación:").grid(row=5, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=comp_var).grid(row=5, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Iexc:").grid(row=6, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=i_exc_var).grid(row=6, column=1, sticky=tk.W)
+
+        ttk.Label(data_frame, text="Frecuencia (Hz):").grid(row=7, column=0, sticky=tk.W)
+        ttk.Label(data_frame, textvariable=rate_var).grid(row=7, column=1, sticky=tk.W)
+
+        # Status
+        ttk.Label(test_window, textvariable=status_var, foreground="blue").pack(pady=10)
+
+        # Variables de control
+        ser = None
+        running = True
+        count = 0
+        t0 = time.time()
+
+        # ========================= TABLA CRC (perfecta) =========================
+        crc16_table = [
+            0x0000,0x1021,0x2042,0x3063,0x4084,0x50A5,0x60C6,0x70E7,0x8108,0x9129,0xA14A,0xB16B,0xC18C,0xD1AD,0xE1CE,0xF1EF,
+            0x1231,0x0210,0x3273,0x2252,0x52B5,0x4294,0x72F7,0x62D6,0x9339,0x8318,0xB37B,0xA35A,0xD3BD,0xC39C,0xF3FF,0xE3DE,
+            0x2462,0x3443,0x0420,0x1401,0x64E6,0x74C7,0x44A4,0x5485,0xA56A,0xB54B,0x8528,0x9509,0xE5EE,0xF5CF,0xC5AC,0xD58D,
+            0x3653,0x2672,0x1611,0x0630,0x76D7,0x66F6,0x5695,0x46B4,0xB75B,0xA77A,0x9719,0x8738,0xF7DF,0xE7FE,0xD79D,0xC7BC,
+            0x48C4,0x58E5,0x6886,0x78A7,0x0840,0x1861,0x2802,0x3823,0xC9CC,0xD9ED,0xE98E,0xF9AF,0x8948,0x9969,0xA90A,0xB92B,
+            0x5AF5,0x4AD4,0x7AB7,0x6A96,0x1A71,0x0A50,0x3A33,0x2A12,0xDBFD,0xCBDC,0xFBBF,0xEB9E,0x9B79,0x8B58,0xBB3B,0xAB1A,
+            0x6CA6,0x7C87,0x4CE4,0x5CC5,0x2C22,0x3C03,0x0C60,0x1C41,0xEDAE,0xFD8F,0xCDEC,0xDDCD,0xAD2A,0xBD0B,0x8D68,0x9D49,
+            0x7E97,0x6EB6,0x5ED5,0x4EF4,0x3E13,0x2E32,0x1E51,0x0E70,0xFF9F,0xEFBE,0xDFDD,0xCFFC,0xBF1B,0xAF3A,0x9F59,0x8F78,
+            0x9188,0x81A9,0xB1CA,0xA1EB,0xD10C,0xC12D,0xF14E,0xE16F,0x1080,0x00A1,0x30C2,0x20E3,0x5004,0x4025,0x7046,0x6067,
+            0x83B9,0x9398,0xA3FB,0xB3DA,0xC33D,0xD31C,0xE37F,0xF35E,0x02B1,0x1290,0x22F3,0x32D2,0x4235,0x5214,0x6277,0x7256,
+            0xB5EA,0xA5CB,0x95A8,0x8589,0xF56E,0xE54F,0xD52C,0xC50D,0x34E2,0x24C3,0x14A0,0x0481,0x7466,0x6447,0x5424,0x4405,
+            0xA7DB,0xB7FA,0x8799,0x97B8,0xE75F,0xF77E,0xC71D,0xD73C,0x26D3,0x36F2,0x0691,0x16B0,0x6657,0x7676,0x4615,0x5634,
+            0xD94C,0xC96D,0xF90E,0xE92F,0x99C8,0x89E9,0xB98A,0xA9AB,0x5844,0x4865,0x7806,0x6827,0x18C0,0x08E1,0x3882,0x28A3,
+            0xCB7D,0xDB5C,0xEB3F,0xFB1E,0x8BF9,0x9BD8,0xABBB,0xBB9A,0x4A75,0x5A54,0x6A37,0x7A16,0x0AF1,0x1AD0,0x2AB3,0x3A92,
+            0xFD2E,0xED0F,0xDD6C,0xCD4D,0xBDAA,0xAD8B,0x9DE8,0x8DC9,0x7C26,0x6C07,0x5C64,0x4C45,0x3CA2,0x2C83,0x1CE0,0x0CC1,
+            0xEF1F,0xFF3E,0xCF5D,0xDF7C,0xAF9B,0xBFBA,0x8FD9,0x9FF8,0x6E17,0x7E36,0x4E55,0x5E74,0x2E93,0x3EB2,0x0ED1,0x1EF0
+        ]
+
+        def calcular_crc16_ccitt(data: bytes) -> int:
+            crc = 0xFFFF
+            for b in data:
+                crc = (crc << 8) ^ crc16_table[( (crc >> 8) ^ b) & 0xFF]
+            return crc & 0xFFFF 
+
+        def update_data():
+            nonlocal count, t0
+            try:
+                # -------- 1. Sincronización con header 0xAA 0x55 --------
+                sync_attempts = 0
+                while running and sync_attempts < 100:
+                    if ser.read(1) == b'\xAA':
+                        if ser.read(1) == b'\x55':
+                            break
+                    sync_attempts += 1
+                else:
+                    if running:
+                        status_var.set("Error: No se pudo sincronizar")
+                    return
+
+                # -------- 2. Leer los 26 bytes completos (24 + 2 CRC) --------
+                packet = ser.read(26)
+                if len(packet) != 26:
+                    status_var.set(f"Paquete incompleto: {len(packet)} bytes")
+                    return
+
+                # -------- 3. Separar payload y CRC --------
+                payload = packet[:24]        # 6 floats = 24 bytes
+                crc_recibido = struct.unpack('<H', packet[24:26])[0]
+
+                # -------- 4. Verificar CRC --------
+                crc_calculado = calcular_crc16_ccitt(payload)
+
+                if crc_calculado != crc_recibido:
+                    status_var.set(f"CRC ERROR → Recibido: 0x{crc_recibido:04X} | Calculado: 0x{crc_calculado:04X}")
+                    return
+
+                # -------- 5. Desempaquetar los 6 floats --------
+                v_dif, v_a, v_b, temp, comp, i_exc = struct.unpack('<6f', payload)
+                count += 1
+                elapsed = time.time() - t0
+                rate = count / elapsed if elapsed > 0 else 0
+
+                # Actualizar variables
+                count_var.set(f"{count}")
+                v_dif_var.set(f"{v_dif:.7f}")
+                v_a_var.set(f"{v_a:.6f}")
+                v_b_var.set(f"{v_b:.8f}")
+                temp_var.set(f"{temp:.2f}")
+                comp_var.set(f"{comp:.6f}")
+                i_exc_var.set(f"{i_exc:.6f}")
+                rate_var.set(f"{rate:.1f}")
+                status_var.set("Conectado - Recibiendo datos...")
+
+                # Programar siguiente actualización
+                if running:
+                    test_window.after(100, update_data)  # Actualizar cada 100ms
+
+            except Exception as e:
+                if running:
+                    status_var.set(f"Error: {str(e)}")
+
+        def start_connection():
+            SERIAL_PORT = 'COM6'
+            BAUDRATE = 230400
+
+            nonlocal ser
+            try:
+                import serial
+                import struct
+                import time
+
+                ser = serial.Serial(SERIAL_PORT, BAUDRATE, timeout=1)
+                time.sleep(2)
+                ser.reset_input_buffer()
+                status_var.set("Conectado y buffer limpiado. Esperando paquetes...")
+                update_data()
+            except Exception as e:
+                status_var.set(f"Error de conexión: {str(e)}")
+
+        def stop_connection():
+            nonlocal running, ser
+            running = False
+            if ser:
+                ser.close()
+            test_window.destroy()
+
+        # Botón para cerrar
+        ttk.Button(test_window, text="Cerrar Conexión", command=stop_connection).pack(pady=10)
+
+        # Iniciar conexión
+        start_connection()
 
     def test_keithley_connection(self):
         """Probar conexión con Keithley"""
@@ -2365,7 +2536,7 @@ class AcquisitionGUI:
             fig_height = min(container_height / dpi * 0.85, 10)
 
             # Crear figura con subplots en columna (2 filas, 1 columna)
-            fig, axes = plt.subplots(2, 1, figsize=(fig_width, fig_height), dpi=dpi)
+            fig, axes = plt.subplots(4, 1, figsize=(fig_width, fig_height), dpi=dpi)
             fig.suptitle('Análisis de Datos de Adquisición', fontsize=14, fontweight='bold')
 
             # Gráfica 1: Voltajes vs Tiempo - mejorada
@@ -2374,8 +2545,8 @@ class AcquisitionGUI:
                 # TIVA Voltage (V) in another y axis but same plot for better visibility
 
                 if 'TIVA Voltage (V)' in self.csv_data.columns:
-                    axes[0].plot(self.csv_data['Sample'], self.csv_data['TIVA Voltage (V)'],
-                               'b-', label='TIVA Raw', linewidth=1.5, alpha=0.8)
+                    axes[0].plot(self.csv_data['Sample'], self.csv_data['Bridge VAB (V)'],
+                               'b-', label='Bridge VAB', linewidth=1.5, alpha=0.8)
 
                 # Graficar KEITHLEY voltage si está disponible
                 if 'KEITHLEY Voltage (V)' in self.csv_data.columns:
@@ -2406,6 +2577,16 @@ class AcquisitionGUI:
                 axes[1].grid(True, alpha=0.3)
                 axes[1].tick_params(axis='both', which='major', labelsize=9)
 
+            # Gráfica 3: Calculo de Resistencia R1 y R4
+            if 'Sample' in self.csv_data_columns:
+                # Gráfica de las resistencias R1 y R4
+                if 'Bridge Current (A)' in self.csv_data.columns:
+                    pass  # TODO: Implementar gráfica de resistencias R1 y R4
+
+
+            # Gráfica 4: Calculo de Resistencia R2 y R3
+            # TODO: Implementar gráfica de resistencias R2 y R3
+
             plt.tight_layout(h_pad=0.3)
 
             # Crear canvas y añadir a la interfaz
@@ -2431,915 +2612,45 @@ class AcquisitionGUI:
             messagebox.showerror("Error", error_msg)
             self.logger.error(f"Error generating plots: {e}")
 
-    def plot_correlation_analysis(self):
-        """Gráfica de correlación entre variables con análisis estadístico mejorado"""
-        # Verificar que tenemos datos numéricos suficientes
-        numeric_cols = self.csv_data.select_dtypes(include=[np.number]).columns
+    def calcular_resistencias(self):
+        """Función para el calculo de las resistencias para un puente de wheatstone """
+        # # Ecuaciones
+        # I1 = I/2; I2 = I/2;
+        # I1 = I2; I3 = I4;
+        # R1 = (Vs - Va) / I1;
+        # R2 = (Vs - Vb) / I2;
+        # R3 = (Va) / I3;
+        # R4 = (Vb) / I4;
+        try:
+            if 'Bridge Current (A)' in self.csv_data.columns:
 
-        if len(numeric_cols) < 2:
-            # Mostrar mensaje si no hay suficientes variables numéricas
-            fig, ax = plt.subplots(figsize=(8, 6))
-            ax.text(0.5, 0.5, 'Se requieren al menos 2 variables numéricas\npara análisis de correlación',
-                   transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                   bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-            ax.set_title('Análisis de Correlación - Datos Insuficientes')
-            ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
-            ax.axis('off')
-        else:
-            # Calcular matriz de correlación
-            corr_matrix = self.csv_data[numeric_cols].corr()
+                # Calcular resistencias R1, R2, R3 y R4
+                Vs = 5.0033
+                I = self.csv_data['Bridge Current (A)']
+                Vab = self.csv_data['Bridge VAB (V)']
+                Va = self.csv_data['Bridge VA (V)']
+                Vb = self.csv_data['Bridge VB (V)']
 
-            # Crear figura con subplots para más información
-            fig = plt.figure(figsize=(12, 10))
+                R1 = (Vs - Va) / (I / 2)
+                R2 = (Vs - Vb) / (I / 2)
+                R3 = Va / (I / 2)
+                R4 = Vb / (I / 2)
 
-            # Subplot principal: heatmap de correlación
-            ax1 = plt.subplot(2, 2, (1, 3))  # Ocupa filas 1-2, columnas 1-3
+                # Añadir resistencias al final del csv cargado
+                self.csv_data['R1 (Ohm)'] = R1
+                self.csv_data['R2 (Ohm)'] = R2
+                self.csv_data['R3 (Ohm)'] = R3
+                self.csv_data['R4 (Ohm)'] = R4
 
-            # Crear máscara para la diagonal y valores NaN
-            mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
-            corr_matrix_masked = corr_matrix.copy()
-            corr_matrix_masked[mask] = np.nan
-
-            # Crear heatmap con mejor colormap
-            im = ax1.imshow(corr_matrix_masked, cmap='RdYlBu_r', aspect='auto',
-                           vmin=-1, vmax=1, interpolation='nearest')
-
-            # Añadir etiquetas con mejor formato
-            ax1.set_xticks(range(len(corr_matrix.columns)))
-            ax1.set_yticks(range(len(corr_matrix.columns)))
-            ax1.set_xticklabels([col.replace(' (', '\n(') for col in corr_matrix.columns],
-                               rotation=45, ha='right', fontsize=9)
-            ax1.set_yticklabels([col.replace(' (', '\n(') for col in corr_matrix.columns],
-                               fontsize=9)
-
-            # Añadir valores en las celdas con formato mejorado
-            for i in range(len(corr_matrix.columns)):
-                for j in range(len(corr_matrix.columns)):
-                    if not mask[i, j]:  # Solo mostrar valores en la parte inferior
-                        corr_val = corr_matrix.iloc[i, j]
-                        # Usar diferentes colores para valores positivos/negativos
-                        color = 'white' if abs(corr_val) > 0.7 else 'black'
-                        # Formato: mostrar 2 decimales, con signo
-                        text = ax1.text(j, i, f'{corr_val:.2f}',
-                                       ha="center", va="center", color=color,
-                                       fontsize=8, fontweight='bold' if abs(corr_val) > 0.8 else 'normal')
-
-            ax1.set_title('Matriz de Correlación de Pearson', fontsize=12, fontweight='bold')
-
-            # Añadir colorbar con mejor formato
-            cbar = plt.colorbar(im, ax=ax1, shrink=0.8)
-            cbar.set_label('Coeficiente de Correlación', rotation=270, labelpad=15)
-            cbar.ax.tick_params(labelsize=8)
-
-            # Subplot derecho superior: estadísticas descriptivas
-            ax2 = plt.subplot(2, 2, 2)
-
-            # Calcular estadísticas básicas
-            stats_data = []
-            for col in numeric_cols:
-                data = self.csv_data[col].dropna()
-                if len(data) > 0:
-                    stats_data.append({
-                        'Variable': col.replace(' (', '\n('),
-                        'Media': data.mean(),
-                        'Std': data.std(),
-                        'Min': data.min(),
-                        'Max': data.max(),
-                        'N': len(data)
-                    })
-
-            if stats_data:
-                stats_df = pd.DataFrame(stats_data)
-
-                # Crear tabla de estadísticas
-                ax2.axis('tight')
-                ax2.axis('off')
-
-                # Crear tabla con colores alternados
-                table = ax2.table(cellText=stats_df.round(3).values,
-                                colLabels=stats_df.columns,
-                                cellLoc='center',
-                                loc='center',
-                                colColours=['lightblue']*len(stats_df.columns))
-
-                table.auto_set_font_size(False)
-                table.set_fontsize(8)
-                table.scale(1, 1.2)
-
-                ax2.set_title('Estadísticas Descriptivas', fontsize=10, fontweight='bold')
-
-            # Subplot derecho inferior: distribución de correlaciones
-            ax3 = plt.subplot(2, 2, 4)
-
-            # Extraer correlaciones (excluyendo diagonal)
-            corr_values = []
-            for i in range(len(corr_matrix.columns)):
-                for j in range(i+1, len(corr_matrix.columns)):  # Solo parte superior
-                    corr_values.append(corr_matrix.iloc[i, j])
-
-            if corr_values:
-                # Histograma de valores de correlación
-                n, bins, patches = ax3.hist(corr_values, bins=20, alpha=0.7,
-                                          color='skyblue', edgecolor='black')
-
-                # Colorear barras basado en fuerza de correlación
-                for patch, corr_val in zip(patches, np.digitize(corr_values, bins[:-1])):
-                    if abs(corr_val) > 0.8:
-                        patch.set_facecolor('darkred')
-                    elif abs(corr_val) > 0.6:
-                        patch.set_facecolor('red')
-                    elif abs(corr_val) > 0.4:
-                        patch.set_facecolor('orange')
-                    else:
-                        patch.set_facecolor('lightgreen')
-
-                ax3.axvline(x=0, color='black', linestyle='--', alpha=0.5)
-                ax3.set_xlabel('Coeficiente de Correlación')
-                ax3.set_ylabel('Frecuencia')
-                ax3.set_title('Distribución de Correlaciones', fontsize=10, fontweight='bold')
-                ax3.grid(True, alpha=0.3)
-
-                # Añadir texto con resumen
-                strong_corr = sum(1 for c in corr_values if abs(c) > 0.8)
-                moderate_corr = sum(1 for c in corr_values if 0.6 <= abs(c) <= 0.8)
-                weak_corr = sum(1 for c in corr_values if 0.3 <= abs(c) < 0.6)
-
-                summary_text = f'Correlaciones Fuertes (>0.8): {strong_corr}\nModeradas (0.6-0.8): {moderate_corr}\nDébiles (0.3-0.6): {weak_corr}'
-                ax3.text(0.02, 0.98, summary_text, transform=ax3.transAxes,
-                        verticalalignment='top', fontsize=8,
-                        bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
-
-            plt.tight_layout(h_pad=0.3)
-
-        # Crear canvas y añadir a la pestaña correspondiente
-        plot_frame = self.get_current_analysis_plot_frame()
-        if plot_frame:
-            canvas = FigureCanvasTkAgg(fig, master=plot_frame)
-            canvas.draw()
-            canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
-
-            # Almacenar figuras por tipo de análisis
-            figures_list = self.get_analysis_figures_list('correlation')
-            figures_list.append(fig)
-
-    def plot_histogram_analysis(self):
-        """Histogramas de las variables principales"""
-        fig, axes = plt.subplots(2, 2, figsize=(12, 8))
-        fig.suptitle('Histogramas de Variables Principales')
-
-        plot_vars = []
-        if 'TIVA Voltage (V)' in self.csv_data.columns:
-            plot_vars.append(('TIVA Voltage (V)', 'b'))
-        if 'Alicat Presion (kPA)' in self.csv_data.columns:
-            plot_vars.append(('Alicat Presion (kPA)', 'g'))
-        if 'TIVA Temp (C)' in self.csv_data.columns:
-            plot_vars.append(('TIVA Temp (C)', 'r'))
-        if 'KEITHLEY Voltage (V)' in self.csv_data.columns:
-            plot_vars.append(('KEITHLEY Voltage (V)', 'orange'))
-
-        for i, (var, color) in enumerate(plot_vars[:4]):
-            ax = axes[i//2, i%2]
-            ax.hist(self.csv_data[var].dropna(), bins=50, alpha=0.7, color=color, edgecolor='black')
-            ax.set_xlabel(var)
-            ax.set_ylabel('Frecuencia')
-            ax.set_title(f'Histograma de {var}')
-            ax.grid(True, alpha=0.3)
-
-        # plt.tight_layout()
-
-        # Crear canvas y añadir a la pestaña correspondiente
-        plot_frame = self.get_current_analysis_plot_frame()
-        if plot_frame:
-            canvas = FigureCanvasTkAgg(fig, master=plot_frame)
-            canvas.draw()
-            canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
-
-            # Almacenar figuras por tipo de análisis
-            figures_list = self.get_analysis_figures_list('histogram')
-            figures_list.append(fig)
-
-    def plot_spectrum_analysis(self):
-        """Análisis espectral avanzado con FFT, PSD y análisis de frecuencias"""
-        # Determinar qué señales están disponibles
-        available_signals = []
-        if 'TIVA Voltage (V)' in self.csv_data.columns:
-            available_signals.append(('TIVA Voltage (V)', 'Voltaje TIVA'))
-        if 'KEITHLEY Voltage (V)' in self.csv_data.columns:
-            available_signals.append(('KEITHLEY Voltage (V)', 'Voltaje KEITHLEY'))
-        if 'Alicat Presion (kPA)' in self.csv_data.columns:
-            available_signals.append(('Alicat Presion (kPA)', 'Presión Alicat'))
-
-        if len(available_signals) == 0:
-            # Mostrar mensaje de no data
-            fig, ax = plt.subplots(figsize=(8, 6))
-            ax.text(0.5, 0.5, 'No hay datos numéricos disponibles para análisis espectral',
-                   transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                   bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-            ax.set_title('Análisis Espectral - Datos Insuficientes')
-            ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
-            ax.axis('off')
-        else:
-            # Estimar frecuencia de muestreo si hay columna de tiempo
-            if 'Timestamp' in self.csv_data.columns:
-                try:
-                    # Convertir timestamp a tiempo numérico
-                    timestamps = pd.to_datetime(self.csv_data['Timestamp'], errors='coerce')
-                    time_diffs = timestamps.diff().dt.total_seconds().dropna()
-                    if len(time_diffs) > 0:
-                        fs = 1.0 / time_diffs.mean()  # Frecuencia de muestreo
-                    else:
-                        fs = 1.0  # Valor por defecto
-                except:
-                    fs = 1.0
+                messagebox.showinfo("Cálculo de Resistencias", "Resistencias R1, R2, R3 y R4 calculadas y añadidas al dataset.")
+                self.log_message("Resistencias R1, R2, R3 y R4 calculadas exitosamente.")
             else:
-                fs = 1.0  # Valor por defecto
-
-            # Crear figura con layout mejorado
-            n_signals = min(len(available_signals), 3)
-            fig = plt.figure(figsize=(15, 5*n_signals))
-
-            # Procesar cada señal
-            for i, (col_name, title) in enumerate(available_signals[:n_signals]):
-                signal = self.csv_data[col_name].dropna().values
-
-                if len(signal) < 10:
-                    continue  # Saltar señales muy cortas
-
-                # Remover tendencia lineal
-                signal_detrended = signal - np.polyval(np.polyfit(np.arange(len(signal)), signal, 1), np.arange(len(signal)))
-
-                # Aplicar ventana de Hann para reducir leakage
-                window = np.hanning(len(signal_detrended))
-                signal_windowed = signal_detrended * window
-
-                # Calcular FFT
-                fft = np.fft.fft(signal_windowed)
-                freq = np.fft.fftfreq(len(signal_windowed), d=1/fs)
-
-                # Calcular PSD usando Welch
-                from scipy.signal import welch
-                freqs_psd, psd = welch(signal_detrended, fs=fs, nperseg=min(1024, len(signal)//4))
-
-                # Solo frecuencias positivas
-                pos_mask = freq > 0
-                freq_pos = freq[pos_mask]
-                fft_pos = np.abs(fft)[pos_mask]
-
-                # Normalizar FFT
-                fft_normalized = fft_pos / len(signal)
-
-                # Crear subplots para cada señal (3 columnas: FFT, PSD, Análisis)
-                base_row = i * 3
-
-                # 1. FFT - Magnitud
-                ax1 = plt.subplot(n_signals, 3, base_row + 1)
-                ax1.plot(freq_pos, fft_normalized, 'b-', linewidth=1.5, alpha=0.8)
-                ax1.set_xlabel('Frecuencia (Hz)')
-                ax1.set_ylabel('Magnitud Normalizada')
-                ax1.set_title(f'FFT - {title}')
-                ax1.grid(True, alpha=0.3)
-                ax1.set_xlim(0, freq_pos.max())
-
-                # Encontrar picos principales
-                from scipy.signal import find_peaks
-                peaks, properties = find_peaks(fft_normalized, height=np.max(fft_normalized)*0.1, distance=len(freq_pos)//20)
-                if len(peaks) > 0:
-                    top_peaks = sorted(zip(peaks, properties['peak_heights']), key=lambda x: x[1], reverse=True)[:3]
-                    for peak_idx, height in top_peaks:
-                        freq_peak = freq_pos[peak_idx]
-                        ax1.plot(freq_peak, height, 'ro', markersize=6)
-                        ax1.annotate('.2f', xy=(freq_peak, height),
-                                   xytext=(5, 5), textcoords='offset points',
-                                   fontsize=8, bbox=dict(boxstyle='round,pad=0.2', facecolor='yellow', alpha=0.8))
-
-                # 2. PSD (Power Spectral Density)
-                ax2 = plt.subplot(n_signals, 3, base_row + 2)
-                ax2.semilogy(freqs_psd, psd, 'r-', linewidth=1.5, alpha=0.8)
-                ax2.set_xlabel('Frecuencia (Hz)')
-                ax2.set_ylabel('Densidad Espectral de Potencia')
-                ax2.set_title(f'PSD - {title}')
-                ax2.grid(True, alpha=0.3)
-                ax2.set_xlim(0, freqs_psd.max())
-
-                # 3. Análisis de frecuencia y estadísticas
-                ax3 = plt.subplot(n_signals, 3, base_row + 3)
-                ax3.axis('off')
-
-                # Calcular estadísticas espectrales
-                total_power = np.sum(psd)
-                dc_power = psd[0]  # Componente DC
-                ac_power = total_power - dc_power
-
-                # Frecuencia dominante
-                dominant_freq_idx = np.argmax(psd[1:]) + 1  # Excluir DC
-                dominant_freq = freqs_psd[dominant_freq_idx]
-                dominant_power = psd[dominant_freq_idx]
-
-                # Ancho de banda efectivo (frecuencia donde se concentra el 95% de la energía)
-                cumulative_power = np.cumsum(psd) / total_power
-                bandwidth_idx = np.where(cumulative_power >= 0.95)[0]
-                if len(bandwidth_idx) > 0:
-                    bandwidth = freqs_psd[bandwidth_idx[0]]
-                else:
-                    bandwidth = freqs_psd[-1]
-
-                # SNR estimado (relación señal-ruido)
-                if dominant_power > 0:
-                    noise_power = (total_power - dominant_power) / (len(psd) - 1)
-                    snr = 10 * np.log10(dominant_power / noise_power) if noise_power > 0 else float('inf')
-                else:
-                    snr = 0
-
-                # Crear tabla de información
-                info_text = ".2f"".2f"".2f"".2f"".1f"".2f"".2f"f"""
-                        Análisis Espectral - {title}
-
-                        Frecuencia de Muestreo: {fs:.2f} Hz
-                        Puntos de Datos: {len(signal)}
-                        Resolución Espectral: {freq_pos[1]-freq_pos[0]:.4f} Hz
-
-                        Potencia Total: {total_power:.2e}
-                        Potencia DC: {dc_power:.2e} ({dc_power/total_power*100:.1f}%)
-                        Potencia AC: {ac_power:.2e} ({ac_power/total_power*100:.1f}%)
-
-                        Frecuencia Dominante: {dominant_freq:.3f} Hz
-                        Potencia Dominante: {dominant_power:.2e}
-                        Ancho de Banda (95%): {bandwidth:.3f} Hz
-                        SNR Estimado: {snr:.1f} dB
-                        """
-
-                ax3.text(0.05, 0.95, info_text, transform=ax3.transAxes,
-                        verticalalignment='top', fontsize=9, family='monospace',
-                        bbox=dict(boxstyle='round,pad=0.5', facecolor='lightgray', alpha=0.8))
-
-            plt.tight_layout(h_pad=0.3)
-
-        # Crear canvas usando el nuevo sistema de pestañas
-        self.create_analysis_canvas(fig, 'spectrum')
-
-    def plot_trend_analysis(self):
-        """Análisis avanzado de tendencias con múltiples métodos estadísticos"""
-        # Determinar qué señales están disponibles para análisis de tendencias
-        available_signals = []
-        if 'TIVA Voltage (V)' in self.csv_data.columns:
-            available_signals.append(('TIVA Voltage (V)', 'Voltaje TIVA (V)'))
-        if 'KEITHLEY Voltage (V)' in self.csv_data.columns:
-            available_signals.append(('KEITHLEY Voltage (V)', 'Voltaje KEITHLEY (V)'))
-        if 'Alicat Presion (kPA)' in self.csv_data.columns:
-            available_signals.append(('Alicat Presion (kPA)', 'Presión Alicat (kPA)'))
-
-        if len(available_signals) == 0 or 'Sample' not in self.csv_data.columns:
-            # Mostrar mensaje de no data
-            fig, ax = plt.subplots(figsize=(8, 6))
-            ax.text(0.5, 0.5, 'No hay datos disponibles para análisis de tendencias',
-                   transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                   bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-            ax.set_title('Análisis de Tendencias - Datos Insuficientes')
-            ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
-            ax.axis('off')
-        else:
-            # Determinar eje X (tiempo o muestras)
-            if 'Timestamp' in self.csv_data.columns:
-                try:
-                    # Usar tiempo real si está disponible
-                    timestamps = pd.to_datetime(self.csv_data['Timestamp'], errors='coerce')
-                    x = (timestamps - timestamps.min()).dt.total_seconds()
-                    x_label = 'Tiempo (segundos)'
-                    time_based = True
-                except:
-                    x = self.csv_data['Sample']
-                    x_label = 'Muestras'
-                    time_based = False
-            else:
-                x = self.csv_data['Sample']
-                x_label = 'Muestras'
-                time_based = False
-
-            # Crear figura con layout mejorado
-            n_signals = min(len(available_signals), 3)
-            fig = plt.figure(figsize=(15, 5*n_signals))
-
-            # Procesar cada señal
-            for i, (col_name, y_label) in enumerate(available_signals[:n_signals]):
-                y = self.csv_data[col_name].dropna()
-
-                # Alinear x con y (eliminar NaN)
-                valid_indices = ~self.csv_data[col_name].isna()
-                x_valid = x[valid_indices]
-
-                if len(y) < 10:
-                    continue  # Saltar señales muy cortas
-
-                # Crear subplots para cada señal (3 columnas: Tendencia, Residuos, Estadísticas)
-                base_row = i * 3
-
-                # 1. Análisis de tendencias múltiples
-                ax1 = plt.subplot(n_signals, 3, base_row + 1)
-
-                # Datos originales
-                ax1.scatter(x_valid, y, alpha=0.6, s=8, color='blue', label='Datos', zorder=1)
-
-                # Regresión lineal
-                try:
-                    coeffs_linear = np.polyfit(x_valid, y, 1)
-                    y_linear = np.polyval(coeffs_linear, x_valid)
-                    slope_linear = coeffs_linear[0]
-                    intercept_linear = coeffs_linear[1]
-
-                    # Calcular R² para regresión lineal
-                    ss_res = np.sum((y - y_linear) ** 2)
-                    ss_tot = np.sum((y - np.mean(y)) ** 2)
-                    r_squared_linear = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
-
-                    ax1.plot(x_valid, y_linear, 'r-', linewidth=2, label='.4f', zorder=2)
-
-                except:
-                    slope_linear = 0
-                    r_squared_linear = 0
-
-                # Regresión polinomial (grado 2) si hay suficientes puntos
-                if len(y) > 20:
-                    try:
-                        coeffs_poly = np.polyfit(x_valid, y, 2)
-                        y_poly = np.polyval(coeffs_poly, x_valid)
-                        ax1.plot(x_valid, y_poly, 'g--', linewidth=2, label='Tendencia Polinomial', zorder=3)
-                    except:
-                        pass
-
-                # Tendencia móvil (media móvil)
-                if len(y) > 50:
-                    window_size = min(50, len(y) // 10)
-                    y_moving = y.rolling(window=window_size, center=True).mean()
-                    ax1.plot(x_valid, y_moving, 'orange', linewidth=2, label=f'Media Móvil (n={window_size})', zorder=4)
-
-                ax1.set_xlabel(x_label)
-                ax1.set_ylabel(y_label)
-                ax1.set_title(f'Análisis de Tendencias - {y_label.split(" (")[0]}')
-                ax1.legend(fontsize=8)
-                ax1.grid(True, alpha=0.3)
-
-                # 2. Análisis de residuos y diagnóstico
-                ax2 = plt.subplot(n_signals, 3, base_row + 2)
-
-                if 'slope_linear' in locals() and slope_linear != 0:
-                    # Calcular residuos
-                    residuals = y - y_linear
-
-                    # Gráfico de residuos vs tiempo
-                    ax2.scatter(x_valid, residuals, alpha=0.6, s=8, color='purple')
-                    ax2.axhline(y=0, color='red', linestyle='--', alpha=0.7)
-
-                    # Tendencia en residuos (debe ser aleatoria)
-                    if len(residuals) > 20:
-                        coeffs_resid = np.polyfit(x_valid, residuals, 1)
-                        y_resid_trend = np.polyval(coeffs_resid, x_valid)
-                        ax2.plot(x_valid, y_resid_trend, 'green', linewidth=1, alpha=0.7, label='Tendencia residual')
-
-                    ax2.set_xlabel(x_label)
-                    ax2.set_ylabel('Residuos')
-                    ax2.set_title('Análisis de Residuos')
-                    ax2.legend(fontsize=8)
-                    ax2.grid(True, alpha=0.3)
-
-                    # Estadísticas de residuos
-                    std_residuals = np.std(residuals)
-                    ax2.text(0.02, 0.98, f'σ = {std_residuals:.2e}', transform=ax2.transAxes,
-                            verticalalignment='top', fontsize=8,
-                            bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
-                else:
-                    ax2.text(0.5, 0.5, 'No hay tendencia lineal\npara analizar residuos',
-                            transform=ax2.transAxes, ha='center', va='center', fontsize=10)
-                    ax2.set_title('Análisis de Residuos')
-
-                # 3. Estadísticas y métricas de tendencia
-                ax3 = plt.subplot(n_signals, 3, base_row + 3)
-                ax3.axis('off')
-
-                # Calcular estadísticas de tendencia
-                mean_value = np.mean(y)
-                std_value = np.std(y)
-                min_value = np.min(y)
-                max_value = np.max(y)
-                range_value = max_value - min_value
-
-                # Estadísticas de cambio
-                if len(y) > 1:
-                    total_change = y.iloc[-1] - y.iloc[0]
-                    relative_change = (total_change / abs(y.iloc[0])) * 100 if y.iloc[0] != 0 else 0
-
-                    # Velocidad de cambio promedio
-                    if time_based and len(x_valid) > 1:
-                        time_span = x_valid.iloc[-1] - x_valid.iloc[0]
-                        change_rate = total_change / time_span if time_span > 0 else 0
-                    else:
-                        change_rate = total_change / len(y)
-                else:
-                    total_change = 0
-                    relative_change = 0
-                    change_rate = 0
-
-                # Monotonicidad (tendencia general)
-                diffs = np.diff(y)
-                increasing_ratio = np.sum(diffs > 0) / len(diffs) if len(diffs) > 0 else 0
-                if increasing_ratio > 0.6:
-                    monotonicity = "Tendencia Ascendente"
-                elif increasing_ratio < 0.4:
-                    monotonicity = "Tendencia Descendente"
-                else:
-                    monotonicity = "Tendencia Mixta"
-
-                # Crear tabla de información
-                info_text = ".2f"".2f"".2f"".2f"".2f"".2f"".2f"".3f"".1f"".2f"".2f"".2f"".2f"".2f"f"""
-                        Estadísticas de Tendencia - {y_label.split(' (')[0]}
-
-                        Estadísticas Básicas:
-                        Media: {mean_value:.4f}
-                        Desviación Estándar: {std_value:.4f}
-                        Mínimo: {min_value:.4f}
-                        Máximo: {max_value:.4f}
-                        Rango: {range_value:.4f}
-
-                        Análisis de Tendencia:
-                        Cambio Total: {total_change:.4f}
-                        Cambio Relativo: {relative_change:.1f}%
-                        Velocidad de Cambio: {change_rate:.2e} por unidad
-                        Monotonicidad: {monotonicity}
-
-                        Regresión Lineal:
-                        Pendiente: {slope_linear:.6f}
-                        R²: {r_squared_linear:.3f}
-                        Significancia: {'Alta' if r_squared_linear > 0.7 else 'Moderada' if r_squared_linear > 0.3 else 'Baja'}
-                        """
-
-                ax3.text(0.05, 0.95, info_text, transform=ax3.transAxes,
-                        verticalalignment='top', fontsize=8, family='monospace',
-                        bbox=dict(boxstyle='round,pad=0.5', facecolor='lightblue', alpha=0.8))
-
-            plt.tight_layout(h_pad=0.3)
-
-        # Crear canvas usando el nuevo sistema de pestañas
-        self.create_analysis_canvas(fig, 'trend')
-
-    def plot_snr_analysis(self):
-        """Análisis avanzado de Relación Señal-Ruido (SNR) con múltiples perspectivas"""
-        # Verificar que tenemos las señales necesarias
-        if 'KEITHLEY Voltage (V)' not in self.csv_data.columns:
-            fig, ax = plt.subplots(figsize=(8, 6))
-            ax.text(0.5, 0.5, 'Se requiere columna KEITHLEY Voltage (V) para análisis SNR',
-                   transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                   bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-            ax.set_title('Análisis SNR - Datos Insuficientes')
-            ax.set_xlim(0, 1)
-            ax.set_ylim(0, 1)
-            ax.axis('off')
-        else:
-            signal = self.csv_data['KEITHLEY Voltage (V)'].dropna()
-
-            if len(signal) < 10:
-                fig, ax = plt.subplots(figsize=(8, 6))
-                ax.text(0.5, 0.5, 'Se requieren al menos 10 muestras para análisis SNR',
-                       transform=ax.transAxes, ha='center', va='center', fontsize=12,
-                       bbox=dict(boxstyle="round,pad=0.3", facecolor="lightcoral", alpha=0.5))
-                ax.set_title('Análisis SNR - Datos Insuficientes')
-                ax.set_xlim(0, 1)
-                ax.set_ylim(0, 1)
-                ax.axis('off')
-            else:
-                # Crear figura con múltiples paneles de análisis
-                fig = plt.figure(figsize=(15, 12))
-                fig.suptitle('Análisis Avanzado de Relación Señal-Ruido (SNR)', fontsize=16, fontweight='bold')
-
-                # Panel 1: Señal original y componentes
-                ax1 = plt.subplot(3, 3, (1, 2))
-                ax1.plot(signal.index, signal.values, 'b-', linewidth=1.5, label='Señal KEITHLEY')
-                ax1.set_xlabel('Índice de Muestra')
-                ax1.set_ylabel('Voltaje (V)')
-                ax1.set_title('Señal Original', fontweight='bold')
-                ax1.grid(True, alpha=0.3)
-                ax1.legend()
-
-                # Calcular componentes de la señal
-                # Tendencia (señal de baja frecuencia)
-                from scipy import signal as scipy_signal
-                if len(signal) > 50:  # Solo si hay suficientes datos
-                    # Filtro pasa bajos para extraer tendencia
-                    b, a = scipy_signal.butter(4, 0.1, 'low')
-                    trend = scipy_signal.filtfilt(b, a, signal.values)
-                    ax1.plot(signal.index, trend, 'r--', linewidth=2, label='Tendencia (LPF)', alpha=0.8)
-
-                    # Componente de ruido (alta frecuencia)
-                    noise = signal.values - trend
-                    ax1.plot(signal.index, noise + signal.mean(), 'g-', linewidth=1, label='Ruido (HPF)', alpha=0.6)
-                    ax1.legend()
-
-                # Panel 2: Histograma y distribución de la señal
-                ax2 = plt.subplot(3, 3, 3)
-                n, bins, patches = ax2.hist(signal.values, bins=50, alpha=0.7, color='skyblue', edgecolor='black', density=True)
-
-                # Ajustar distribución normal
-                from scipy import stats
-                mu, std = stats.norm.fit(signal.values)
-                xmin, xmax = ax2.get_xlim()
-                x = np.linspace(xmin, xmax, 100)
-                p = stats.norm.pdf(x, mu, std)
-                ax2.plot(x, p, 'r-', linewidth=2, label=f'Normal\nμ={mu:.4f}\nσ={std:.4f}')
-
-                ax2.set_xlabel('Voltaje (V)')
-                ax2.set_ylabel('Densidad de Probabilidad')
-                ax2.set_title('Distribución de la Señal', fontweight='bold')
-                ax2.legend()
-                ax2.grid(True, alpha=0.3)
-
-                # Panel 3: Análisis de SNR en el tiempo
-                ax3 = plt.subplot(3, 3, (4, 5))
-
-                # Calcular SNR usando diferentes métodos
-                snr_methods = {}
-
-                # Método 1: SNR basado en varianza total vs varianza de residuo
-                if len(signal) > 50:
-                    # Usar filtro para separar señal y ruido
-                    b, a = scipy_signal.butter(4, 0.05, 'low')  # Frecuencia de corte baja
-                    signal_filtered = scipy_signal.filtfilt(b, a, signal.values)
-                    noise_component = signal.values - signal_filtered
-
-                    signal_power = np.var(signal_filtered)
-                    noise_power = np.var(noise_component)
-
-                    if noise_power > 0:
-                        snr_total = 10 * np.log10(signal_power / noise_power)
-                        snr_methods['Filtro Digital'] = snr_total
-
-                # Método 2: SNR usando promedio móvil
-                window_size = min(50, len(signal) // 10)
-                if window_size > 5:
-                    signal_smooth = pd.Series(signal.values).rolling(window=window_size, center=True).mean().dropna()
-                    noise_rolling = signal.values[len(signal)-len(signal_smooth):] - signal_smooth.values
-
-                    if len(noise_rolling) > 0:
-                        signal_power_roll = np.var(signal_smooth.values)
-                        noise_power_roll = np.var(noise_rolling)
-
-                        if noise_power_roll > 0:
-                            snr_rolling = 10 * np.log10(signal_power_roll / noise_power_roll)
-                            snr_methods['Promedio Móvil'] = snr_rolling
-
-                # Método 3: SNR en bandas de frecuencia
-                if len(signal) > 100:
-                    # FFT para análisis frecuencial
-                    fft = np.fft.fft(signal.values)
-                    freqs = np.fft.fftfreq(len(signal))
-
-                    # Bandas de frecuencia
-                    pos_freq_mask = freqs > 0
-                    freqs_pos = freqs[pos_freq_mask]
-                    fft_pos = np.abs(fft[pos_freq_mask])
-
-                    # Banda baja (señal principal)
-                    low_freq_mask = freqs_pos < 0.1
-                    if np.any(low_freq_mask):
-                        signal_band_power = np.sum(fft_pos[low_freq_mask]**2)
-                    else:
-                        signal_band_power = np.sum(fft_pos[:len(fft_pos)//10]**2)
-
-                    # Banda alta (ruido)
-                    high_freq_mask = freqs_pos > 0.3
-                    if np.any(high_freq_mask):
-                        noise_band_power = np.sum(fft_pos[high_freq_mask]**2)
-                    else:
-                        noise_band_power = np.sum(fft_pos[-len(fft_pos)//10:]**2)
-
-                    if noise_band_power > 0:
-                        snr_freq = 10 * np.log10(signal_band_power / noise_band_power)
-                        snr_methods['Análisis Espectral'] = snr_freq
-
-                # Graficar SNR por método
-                if snr_methods:
-                    methods = list(snr_methods.keys())
-                    values = list(snr_methods.values())
-
-                    bars = ax3.bar(methods, values, color=['skyblue', 'lightgreen', 'lightcoral'][:len(methods)], alpha=0.7)
-                    ax3.set_ylabel('SNR (dB)')
-                    ax3.set_title('SNR por Método de Cálculo', fontweight='bold')
-                    ax3.grid(True, alpha=0.3)
-
-                    # Añadir valores sobre las barras
-                    for bar, val in zip(bars, values):
-                        height = bar.get_height()
-                        ax3.text(bar.get_x() + bar.get_width()/2., height + 0.5,
-                                '.1f', ha='center', va='bottom', fontweight='bold')
-
-                    # Línea de referencia
-                    ax3.axhline(y=20, color='red', linestyle='--', alpha=0.7, label='SNR Bueno (20dB)')
-                    ax3.axhline(y=10, color='orange', linestyle='--', alpha=0.7, label='SNR Aceptable (10dB)')
-                    ax3.legend()
-                else:
-                    ax3.text(0.5, 0.5, 'Datos insuficientes para\ncálculo de SNR múltiple',
-                           transform=ax3.transAxes, ha='center', va='center', fontsize=10)
-                    ax3.set_xlim(0, 1)
-                    ax3.set_ylim(0, 1)
-                    ax3.axis('off')
-
-                # Panel 4: Espectro de potencia
-                ax4 = plt.subplot(3, 3, 6)
-                if len(signal) > 100:
-                    # Calcular PSD usando Welch
-                    from scipy.signal import welch
-                    freqs_welch, psd = welch(signal.values, fs=1.0, nperseg=min(256, len(signal)//4))
-
-                    ax4.semilogy(freqs_welch, psd, 'b-', linewidth=1.5)
-                    ax4.set_xlabel('Frecuencia Normalizada')
-                    ax4.set_ylabel('Densidad de Potencia')
-                    ax4.set_title('Espectro de Potencia', fontweight='bold')
-                    ax4.grid(True, alpha=0.3)
-
-                    # Marcar bandas
-                    ax4.axvspan(0, 0.1, alpha=0.2, color='green', label='Banda Señal')
-                    ax4.axvspan(0.3, 0.5, alpha=0.2, color='red', label='Banda Ruido')
-                    ax4.legend()
-                else:
-                    ax4.text(0.5, 0.5, 'Datos insuficientes para\nanálisis espectral',
-                           transform=ax4.transAxes, ha='center', va='center', fontsize=10)
-                    ax4.set_xlim(0, 1)
-                    ax4.set_ylim(0, 1)
-                    ax4.axis('off')
-
-                # Panel 5: SNR vs tiempo (ventanas deslizantes)
-                ax5 = plt.subplot(3, 3, (7, 8))
-                if len(signal) > 100:
-                    # Calcular SNR en ventanas deslizantes
-                    window_size = max(50, len(signal) // 20)
-                    step_size = window_size // 4
-
-                    snr_time_series = []
-                    time_indices = []
-
-                    for start in range(0, len(signal) - window_size + 1, step_size):
-                        end = start + window_size
-                        window_data = signal.values[start:end]
-
-                        # Filtro simple para separar señal y ruido
-                        trend_window = pd.Series(window_data).rolling(window=min(20, len(window_data)//5), center=True).mean().dropna()
-                        if len(trend_window) > 10:
-                            noise_window = window_data[len(window_data)-len(trend_window):] - trend_window.values
-
-                            signal_power_win = np.var(trend_window.values)
-                            noise_power_win = np.var(noise_window)
-
-                            if noise_power_win > 0:
-                                snr_win = 10 * np.log10(signal_power_win / noise_power_win)
-                                snr_time_series.append(snr_win)
-                                time_indices.append(start + window_size // 2)
-
-                    if snr_time_series:
-                        ax5.plot(time_indices, snr_time_series, 'b-', linewidth=2, marker='o', markersize=3)
-                        ax5.set_xlabel('Índice de Muestra')
-                        ax5.set_ylabel('SNR (dB)')
-                        ax5.set_title('Evolución Temporal del SNR', fontweight='bold')
-                        ax5.grid(True, alpha=0.3)
-
-                        # Estadísticas del SNR temporal
-                        snr_mean = np.mean(snr_time_series)
-                        snr_std = np.std(snr_time_series)
-                        ax5.axhline(y=snr_mean, color='red', linestyle='--', alpha=0.7,
-                                   label=f'Promedio: {snr_mean:.1f} dB')
-                        ax5.axhline(y=snr_mean + snr_std, color='orange', linestyle=':', alpha=0.7,
-                                   label=f'+1σ: {(snr_mean + snr_std):.1f} dB')
-                        ax5.axhline(y=snr_mean - snr_std, color='orange', linestyle=':', alpha=0.7,
-                                   label=f'-1σ: {(snr_mean - snr_std):.1f} dB')
-                        ax5.legend()
-                    else:
-                        ax5.text(0.5, 0.5, 'No se pudo calcular\nSNR temporal',
-                               transform=ax5.transAxes, ha='center', va='center', fontsize=10)
-                        ax5.set_xlim(0, 1)
-                        ax5.set_ylim(0, 1)
-                        ax5.axis('off')
-                else:
-                    ax5.text(0.5, 0.5, 'Datos insuficientes para\nanálisis temporal',
-                           transform=ax5.transAxes, ha='center', va='center', fontsize=10)
-                    ax5.set_xlim(0, 1)
-                    ax5.set_ylim(0, 1)
-                    ax5.axis('off')
-
-                # Panel 6: Estadísticas resumen
-                ax6 = plt.subplot(3, 3, 9)
-
-                # Calcular estadísticas básicas de la señal
-                signal_stats = {
-                    'Media': np.mean(signal.values),
-                    'Desv. Est.': np.std(signal.values),
-                    'Mínimo': np.min(signal.values),
-                    'Máximo': np.max(signal.values),
-                    'Rango': np.max(signal.values) - np.min(signal.values),
-                    'RMS': np.sqrt(np.mean(signal.values**2))
-                }
-
-                # SNR promedio (usando el mejor método disponible)
-                best_snr = None
-                if snr_methods:
-                    # Elegir el SNR más conservador (menor valor)
-                    best_snr = min(snr_methods.values())
-
-                if best_snr is not None:
-                    signal_stats['SNR Promedio'] = best_snr
-
-                # Crear tabla de estadísticas
-                ax6.axis('tight')
-                ax6.axis('off')
-
-                stat_labels = list(signal_stats.keys())
-                stat_values = [f'{v:.4f}' if isinstance(v, (int, float)) else str(v) for v in signal_stats.values()]
-
-                table_data = [[label, value] for label, value in zip(stat_labels, stat_values)]
-                table = ax6.table(cellText=table_data,
-                                colLabels=['Métrica', 'Valor'],
-                                cellLoc='center',
-                                loc='center',
-                                colColours=['lightblue', 'lightgreen'])
-
-                table.auto_set_font_size(False)
-                table.set_fontsize(9)
-                table.scale(1, 1.5)
-
-                ax6.set_title('Estadísticas de la Señal', fontsize=11, fontweight='bold')
-
-                plt.tight_layout(h_pad=0.3)
-
-        # Crear canvas usando el nuevo sistema de pestañas
-        self.create_analysis_canvas(fig, 'snr')
-
-    def calculate_snr_sliding(self, signal_ref, signal_meas, samples, window_size=20, step=10):
-        """Calcula SNR en ventanas deslizantes"""
-        snr_values = []
-        times = []
-
-        for i in range(0, len(signal_ref) - window_size + 1, step):
-            ref_window = signal_ref[i:i+window_size]
-            meas_window = signal_meas[i:i+window_size]
-            time_window = samples[i:i+window_size]
-
-            noise = np.array(meas_window) - np.array(ref_window)
-            var_signal = np.var(ref_window)
-            var_noise = np.var(noise)
-
-            if var_noise > 0:
-                snr = 10 * np.log10(var_signal / var_noise)
-            else:
-                snr = 50  # Cap at 50 dB if noise is zero
-
-            snr_values.append(snr)
-            times.append(np.mean(time_window))
-
-        return times, snr_values
-        """Panel: Matriz de correlación de métricas de ciclo"""
-        if len(cycle_data) < 3:
-            ax.text(0.5, 0.5, 'Insuficientes ciclos\npara correlación', ha='center', va='center', transform=ax.transAxes)
-            ax.set_title('Correlación')
-            ax.axis('off')
-            return
-
-        # Extraer métricas para correlación
-        durations = [c['duration'] for c in cycle_data]
-        setpoint_ranges = [c['setpoint_range'] for c in cycle_data]
-
-        if cycle_data[0]['signals']:
-            signal_name = list(cycle_data[0]['signals'].keys())[0]
-            hysteresis = [c['signals'][signal_name]['hysteresis'] for c in cycle_data]
-            efficiencies = [c['signals'][signal_name]['efficiency'] for c in cycle_data]
-
-            # Crear matriz de datos
-            data_matrix = np.array([durations, setpoint_ranges, hysteresis, efficiencies]).T
-            labels = ['Duración', 'Rango Setpoint', 'Histéresis', 'Eficiencia']
-
-            # Calcular correlación
-            corr_matrix = np.corrcoef(data_matrix.T)
-
-            # Crear heatmap
-            im = ax.imshow(corr_matrix, cmap='RdYlBu_r', aspect='auto', vmin=-1, vmax=1)
-
-            # Añadir etiquetas
-            ax.set_xticks(range(len(labels)))
-            ax.set_yticks(range(len(labels)))
-            ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=7)
-            ax.set_yticklabels(labels, fontsize=7)
-
-            # Añadir valores
-            for i in range(len(labels)):
-                for j in range(len(labels)):
-                    ax.text(j, i, f'{corr_matrix[i, j]:.2f}', ha='center', va='center',
-                           fontsize=6, fontweight='bold')
-
-            ax.set_title('Matriz de\nCorrelación', fontsize=9, fontweight='bold')
-
-            # Colorbar
-            plt.colorbar(im, ax=ax, shrink=0.8)
-        else:
-            ax.text(0.5, 0.5, 'Sin métricas\nde señal', ha='center', va='center', transform=ax.transAxes)
-            ax.set_title('Correlación')
-            ax.axis('off')
+                messagebox.showwarning("Advertencia", "La columna 'Bridge Current (A)' no está presente en los datos.")
+        except Exception as e:
+            error_msg = f"Error calculando resistencias: {str(e)}"
+            self.log_message(error_msg)
+            messagebox.showerror("Error", error_msg)
+            self.logger.error(f"Error calculating resistances: {e}")
 
     def _plot_box_plots(self, ax, available_vars, var_labels):
         """Panel 3: Box plots comparativos"""
@@ -5624,186 +4935,6 @@ class AcquisitionGUI:
             self.analysis_info_text.insert(tk.END, f"  Rango: [{stats['min']:.4f}, {stats['max']:.4f}]\n")
             self.analysis_info_text.insert(tk.END, f"  Asimetría: {stats['skewness']:.4f}\n")
             self.analysis_info_text.insert(tk.END, f"  Curtosis: {stats['kurtosis']:.4f}\n")
-
-    def run_spectrum_analysis(self):
-        """Placeholder for spectrum analysis"""
-        self.analysis_info_text.insert(tk.END, "Análisis espectral no implementado aún\n")
-
-    def run_trend_analysis(self):
-        """Placeholder for trend analysis"""
-        self.analysis_info_text.insert(tk.END, "Análisis de tendencias no implementado aún\n")
-
-    def run_snr_analysis(self, raw=True):
-        """Ejecutar análisis comprehensivo de SNR (Signal-to-Noise Ratio)"""
-        mode = "Raw" if raw else "Filtrado"
-
-        # Determinar qué columnas usar
-        if raw:
-            required_cols = ['Sample', 'KEITHLEY Voltage (V)', 'TIVA Voltage (V)']
-            signal_col = 'TIVA Voltage (V)'
-            title_suffix = 'TIVA Raw vs Keithley'
-
-        # Verificar columnas requeridas
-        missing_cols = [col for col in required_cols if col not in self.csv_data.columns]
-
-        if missing_cols:
-            self.analysis_info_text.insert(tk.END, f'Columnas requeridas faltantes para análisis SNR ({mode}): {", ".join(missing_cols)}\n')
-            return
-
-        if len(self.csv_data) < 50:
-            self.analysis_info_text.insert(tk.END, f'Datos insuficientes para análisis SNR ({mode}) - mínimo 50 puntos requeridos\n')
-            self.analysis_info_text.insert(tk.END, f'Puntos disponibles: {len(self.csv_data)}\n')
-            return
-
-        # Preparar datos
-        samples = self.csv_data['Sample'].values
-        keithley_voltage = self.csv_data['KEITHLEY Voltage (V)'].values
-        signal_voltage = self.csv_data[signal_col].values
-
-        # Obtener parámetros de la UI
-        window_size = self.analysis_window_size.get()
-        step_size = self.analysis_step_size.get()
-
-        # Crear figura comprehensiva con layout 4x4
-        fig = plt.figure(figsize=(16, 12), dpi=100)
-        fig.suptitle(f'Análisis Comprehensivo SNR - {title_suffix}', fontsize=16, fontweight='bold')
-
-        # Panel 1: Evolución temporal del SNR
-        ax1 = plt.subplot(4, 4, 1)
-        self._plot_snr_temporal(ax1, keithley_voltage, signal_voltage, samples, mode)
-
-        # Panel 2: Componentes de señal (señal vs ruido)
-        ax2 = plt.subplot(4, 4, 2)
-        self._plot_signal_components(ax2, keithley_voltage, signal_voltage, samples)
-
-        # Panel 3: Histogramas de SNR
-        ax3 = plt.subplot(4, 4, 3)
-        self._plot_snr_histogram(ax3, keithley_voltage, signal_voltage, samples)
-
-        # Panel 4: Análisis de estabilidad SNR
-        ax4 = plt.subplot(4, 4, 4)
-        self._plot_snr_stability(ax4, keithley_voltage, signal_voltage, samples)
-
-        # Panel 5: Comparación de métodos SNR
-        ax5 = plt.subplot(4, 4, 5)
-        self._plot_snr_methods_comparison(ax5, keithley_voltage, signal_voltage, samples)
-
-        # Panel 6: Análisis de ruido
-        ax6 = plt.subplot(4, 4, 6)
-        self._plot_noise_analysis(ax6, keithley_voltage, signal_voltage, samples)
-
-        # Panel 7: SNR vs amplitud de señal
-        ax7 = plt.subplot(4, 4, 7)
-        self._plot_snr_vs_amplitude(ax7, keithley_voltage, signal_voltage, samples)
-
-        # Panel 8: Detección de outliers en SNR
-        ax8 = plt.subplot(4, 4, 8)
-        self._plot_snr_outliers(ax8, keithley_voltage, signal_voltage, samples)
-
-        # Panel 9: Autocorrelación del ruido
-        ax9 = plt.subplot(4, 4, 9)
-        self._plot_noise_autocorr(ax9, keithley_voltage, signal_voltage)
-
-        # Panel 10: Espectro del ruido
-        ax10 = plt.subplot(4, 4, 10)
-        self._plot_noise_spectrum(ax10, keithley_voltage, signal_voltage, samples)
-
-        # Panel 11: Métricas de calidad de señal
-        ax11 = plt.subplot(4, 4, 11)
-        self._plot_signal_quality_metrics(ax11, keithley_voltage, signal_voltage, samples)
-
-        # Panel 12: Análisis de tendencias SNR
-        ax12 = plt.subplot(4, 4, 12)
-        self._plot_snr_trends(ax12, keithley_voltage, signal_voltage, samples)
-
-        # Panel 14: Resumen estadístico SNR
-        ax14 = plt.subplot(4, 4, 14)
-        self._plot_snr_summary_stats(ax14, keithley_voltage, signal_voltage, samples)
-
-        # Panel 15: Análisis de variabilidad
-        ax15 = plt.subplot(4, 4, 15)
-        self._plot_snr_variability(ax15, keithley_voltage, signal_voltage, samples)
-
-        # Panel 16: Matriz de correlación de métricas
-        ax16 = plt.subplot(4, 4, 16)
-        self._plot_snr_correlation_matrix(ax16, keithley_voltage, signal_voltage, samples)
-
-        plt.tight_layout(h_pad=0.3, w_pad=0.3)
-
-        # Determinar el tipo de análisis para el sistema de pestañas
-        analysis_type = 'snr' if raw else 'snr_filtered'
-
-        # Mostrar en la pestaña correspondiente
-        self.display_analysis_figure(fig, analysis_type)
-
-        # Calcular métricas globales para el resumen
-        times, snr_values = self.calculate_snr_sliding(keithley_voltage, signal_voltage, samples,
-                                                      window_size=window_size, step=step_size)
-
-        if snr_values:
-            snr_mean = np.mean(snr_values)
-            snr_std = np.std(snr_values)
-            snr_min = np.min(snr_values)
-            snr_max = np.max(snr_values)
-
-            # Almacenar resultados
-            results = {
-                'mode': mode,
-                'signal_type': 'raw' if raw else 'filtered',
-                'window_size': window_size,
-                'step_size': step_size,
-                'total_samples': len(samples),
-                'snr_samples': len(snr_values),
-                'snr_mean': float(snr_mean),
-                'snr_std': float(snr_std),
-                'snr_min': float(snr_min),
-                'snr_max': float(snr_max),
-                'snr_range': float(snr_max - snr_min),
-                'global_summary': {
-                    'SNR Promedio (dB)': f'{snr_mean:.2f}',
-                    'Desviación Estándar SNR (dB)': f'{snr_std:.2f}',
-                    'SNR Mínimo (dB)': f'{snr_min:.2f}',
-                    'SNR Máximo (dB)': f'{snr_max:.2f}',
-                    'Rango SNR (dB)': f'{snr_max - snr_min:.2f}',
-                    'Ventana de Análisis': f'{window_size} puntos',
-                    'Paso de Análisis': f'{step_size} puntos'
-                }
-            }
-
-            self.analysis_results[analysis_type] = results
-
-            # Actualizar información del análisis
-            self.analysis_info_text.delete(1.0, tk.END)
-            self.analysis_info_text.insert(tk.END, f"Análisis SNR ({mode}) completado exitosamente\n\n")
-            self.analysis_info_text.insert(tk.END, f"Parámetros utilizados:\n")
-            self.analysis_info_text.insert(tk.END, f"• Tamaño de ventana: {window_size} puntos\n")
-            self.analysis_info_text.insert(tk.END, f"• Paso: {step_size} puntos\n")
-            self.analysis_info_text.insert(tk.END, f"• Total de muestras: {len(samples)}\n")
-            self.analysis_info_text.insert(tk.END, f"• Muestras SNR calculadas: {len(snr_values)}\n\n")
-            self.analysis_info_text.insert(tk.END, f"Métricas SNR:\n")
-            self.analysis_info_text.insert(tk.END, f"• Promedio: {snr_mean:.2f} dB\n")
-            self.analysis_info_text.insert(tk.END, f"• Desviación estándar: {snr_std:.2f} dB\n")
-            self.analysis_info_text.insert(tk.END, f"• Rango: {snr_max - snr_min:.2f} dB\n")
-            self.analysis_info_text.insert(tk.END, f"• Mínimo: {snr_min:.2f} dB\n")
-            self.analysis_info_text.insert(tk.END, f"• Máximo: {snr_max:.2f} dB\n")
-        else:
-            self.analysis_info_text.insert(tk.END, f"No se pudieron calcular valores SNR para el análisis ({mode})\n")
-
-    def run_cycle_average_analysis(self):
-        """Placeholder for cycle average analysis"""
-        self.analysis_info_text.insert(tk.END, "Análisis de ciclos promedio no implementado aún\n")
-
-    def run_whitestone_bridge_analysis(self):
-        """Placeholder for Wheatstone bridge analysis"""
-        self.analysis_info_text.insert(tk.END, "Análisis puente Wheatstone no implementado aún\n")
-
-    def run_presion_analysis(self):
-        """Placeholder for pressure analysis"""
-        self.analysis_info_text.insert(tk.END, "Análisis de presión no implementado aún\n")
-
-    def run_estadisticas_analysis(self):
-        """Placeholder for statistics analysis"""
-        self.analysis_info_text.insert(tk.END, "Análisis estadístico no implementado aún\n")
 
     # Métodos de control de adquisición
     def start_acquisition(self):

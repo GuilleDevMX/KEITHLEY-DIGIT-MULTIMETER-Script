@@ -1,0 +1,16 @@
+2025-11-27 16:06:39,613 - ERROR - Error durante la adquisición: could not open port 'COM6': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)
+2025-11-27 16:09:48,210 - ERROR - Error durante la adquisición: unicode strings are not supported, please encode to bytes: 'S 0.000\r'
+2025-11-27 16:20:23,169 - ERROR - Error durante la adquisición: unicode strings are not supported, please encode to bytes: 'S 0.000\r'
+2025-11-27 16:23:28,881 - ERROR - Error durante la adquisición: unicode strings are not supported, please encode to bytes: 'S 0.000\r'
+2025-11-27 16:24:37,635 - ERROR - Error durante la adquisición: unicode strings are not supported, please encode to bytes: 'S 0.000\r'
+2025-11-27 16:36:34,003 - ERROR - Error durante la adquisición: read_alicat_pressure() missing 1 required positional argument: 'result'
+2025-11-27 16:37:12,628 - ERROR - Error durante la adquisición: read_alicat_pressure() missing 1 required positional argument: 'result'
+2025-11-27 16:38:11,825 - ERROR - Error durante la adquisición: name 'current_pressure' is not defined
+2025-11-27 16:51:54,348 - ERROR - Error durante la adquisición: stability_setpoint() got an unexpected keyword argument 'tolerance'
+2025-11-27 17:14:16,375 - ERROR - Error durante la adquisición: Unknown format code 'f' for object of type 'str'
+2025-11-27 17:15:09,419 - ERROR - Error durante la adquisición: list index out of range
+2025-11-27 17:15:25,412 - ERROR - Error durante la adquisición: float() argument must be a string or a real number, not 'list'
+2025-11-27 17:15:43,467 - ERROR - Error durante la adquisición: list index out of range
+2025-11-27 17:16:16,288 - ERROR - Error durante la adquisición: Unknown format code 'f' for object of type 'str'
+2025-11-27 17:37:25,176 - ERROR - Error durante la adquisición: list index out of range
+2025-11-27 17:38:18,275 - ERROR - Error durante la adquisición: list index out of range

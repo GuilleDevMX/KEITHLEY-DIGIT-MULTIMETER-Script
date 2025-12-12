@@ -1,0 +1,40 @@
+ANÁLISIS,HISTERESIS
+FECHA EXPORTACIÓN,2025-11-13 11:57:26
+
+RESUMEN GLOBAL
+Métrica,Valor
+total_histeresis_area,0.011032
+total_histeresis_area_keithley,0.010950
+num_cycles_analyzed,1
+average_area_per_cycle,0.011032
+average_area_per_cycle_keithley,0.010950
+cycle_areas,['0.011032']
+cycle_areas_keithley,['0.010950']
+
+DATOS DE HISTÉRESIS - ANÁLISIS COMPLETO
+"Este archivo contiene promedios por fase, datos interpolados de histéresis y promedios generales"
+
+PROMEDIOS POR FASE Y SETPOINT
+Ciclo,Fase,KEITHLEY (V),Setpoint (kPA),TIVA Raw (V),Tipo
+1,Subida,,0.0,-1.738529,TIVA Raw
+1,Subida,,3.5,-1.735506,TIVA Raw
+1,Subida,,6.5,-1.731628,TIVA Raw
+1,Subida,,6.8,-1.730449,TIVA Raw
+1,Subida,-1.737253,0.0,,KEITHLEY
+1,Subida,-1.734222,3.5,,KEITHLEY
+1,Subida,-1.730310,6.5,,KEITHLEY
+1,Subida,-1.729150,6.8,,KEITHLEY
+1,Bajada,,0.0,-1.737211,TIVA Raw
+1,Bajada,,3.5,-1.733363,TIVA Raw
+1,Bajada,,6.5,-1.730452,TIVA Raw
+1,Bajada,-1.735947,0.0,,KEITHLEY
+1,Bajada,-1.732097,3.5,,KEITHLEY
+1,Bajada,-1.729137,6.5,,KEITHLEY
+
+DATOS DE HISTÉRESIS (Interpolados)
+Bajada (V),Bajada KEITHLEY (V),Ciclo,Error Histéresis (V),Fase,Setpoint (kPA),Subida (V),Subida KEITHLEY (V),Tipo
+-1.737211,-1.735947,1,-0.001318,Histéresis,0.0,-1.738529,-1.737253,Histéresis
+-1.733363,-1.732097,1,-0.002143,Histéresis,3.5,-1.735506,-1.734222,Histéresis
+-1.730452,-1.729137,1,-0.001175,Histéresis,6.5,-1.731628,-1.730310,Histéresis
+
+FIN DEL ARCHIVO

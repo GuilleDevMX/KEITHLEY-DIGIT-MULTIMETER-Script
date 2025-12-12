@@ -1,0 +1,265 @@
+2025-12-03 16:03:45,228 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:03:45,306 - INFO - Iniciando adquisición...
+2025-12-03 16:03:45,307 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:03:45,579 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:03:45,579 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:03:45,584 - INFO - Instrument connection opened
+2025-12-03 16:03:45,585 - INFO - Timeout set to 30001ms
+2025-12-03 16:03:47,113 - INFO - Instrument initialized successfully
+2025-12-03 16:03:47,114 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_160347.csv
+2025-12-03 16:03:47,116 - INFO - Interruption monitor started
+2025-12-03 16:03:47,116 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:04:07,264 - INFO - Instrument connection closed
+2025-12-03 16:04:07,267 - INFO - Resource manager closed
+2025-12-03 16:04:07,312 - INFO - Interruption monitor stopped
+2025-12-03 16:05:59,721 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:05:59,844 - INFO - Iniciando adquisición...
+2025-12-03 16:05:59,848 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:06:00,170 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:06:00,170 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:06:00,175 - INFO - Instrument connection opened
+2025-12-03 16:06:00,176 - INFO - Timeout set to 30100ms
+2025-12-03 16:06:01,690 - INFO - Instrument initialized successfully
+2025-12-03 16:06:01,691 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_160601.csv
+2025-12-03 16:06:01,692 - INFO - Interruption monitor started
+2025-12-03 16:06:01,692 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:06:35,752 - ERROR - Error polling completion for block 1: VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.
+2025-12-03 16:06:35,752 - INFO - Instrument connection closed
+2025-12-03 16:06:35,755 - INFO - Resource manager closed
+2025-12-03 16:06:35,755 - ERROR - Acquisition error: Polling error for block 1: VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.
+2025-12-03 16:06:35,778 - INFO - Interruption monitor stopped
+2025-12-03 16:07:37,302 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:07:37,472 - INFO - Iniciando adquisición...
+2025-12-03 16:07:37,473 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:07:37,735 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:07:37,736 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:07:37,741 - INFO - Instrument connection opened
+2025-12-03 16:07:37,741 - INFO - Timeout set to 30100ms
+2025-12-03 16:07:39,260 - INFO - Instrument initialized successfully
+2025-12-03 16:07:39,261 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_160739.csv
+2025-12-03 16:07:39,262 - INFO - Interruption monitor started
+2025-12-03 16:07:39,262 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:08:11,664 - ERROR - Error polling completion for block 1: VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.
+2025-12-03 16:08:11,665 - INFO - Instrument connection closed
+2025-12-03 16:08:11,668 - INFO - Resource manager closed
+2025-12-03 16:08:11,668 - ERROR - Acquisition error: Polling error for block 1: VI_ERROR_TMO (-1073807339): Timeout expired before operation completed.
+2025-12-03 16:08:11,675 - INFO - Interruption monitor stopped
+2025-12-03 16:08:22,387 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:08:22,485 - INFO - Iniciando adquisición...
+2025-12-03 16:08:22,487 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:08:22,761 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:08:22,762 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:08:22,767 - INFO - Instrument connection opened
+2025-12-03 16:08:22,767 - INFO - Timeout set to 30010ms
+2025-12-03 16:08:38,122 - INFO - Instrument connection closed
+2025-12-03 16:08:38,125 - INFO - Resource manager closed
+2025-12-03 16:08:45,694 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:08:45,763 - INFO - Iniciando adquisición...
+2025-12-03 16:08:45,764 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:08:45,990 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:08:45,990 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:08:45,995 - INFO - Instrument connection opened
+2025-12-03 16:08:45,996 - INFO - Timeout set to 30010ms
+2025-12-03 16:08:47,511 - INFO - Instrument initialized successfully
+2025-12-03 16:08:47,512 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_160847.csv
+2025-12-03 16:08:47,512 - INFO - Interruption monitor started
+2025-12-03 16:08:47,513 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:09:15,500 - WARNING - Acquisition interrupted by user
+2025-12-03 16:09:18,942 - INFO - Instrument connection closed
+2025-12-03 16:09:18,945 - INFO - Resource manager closed
+2025-12-03 16:09:47,335 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:09:47,498 - INFO - Iniciando adquisición...
+2025-12-03 16:09:47,499 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:09:47,822 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:09:47,822 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:09:47,829 - INFO - Instrument connection opened
+2025-12-03 16:09:47,829 - INFO - Timeout set to 30010ms
+2025-12-03 16:09:49,344 - INFO - Instrument initialized successfully
+2025-12-03 16:09:49,345 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_160949.csv
+2025-12-03 16:09:49,346 - INFO - Interruption monitor started
+2025-12-03 16:09:49,346 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:11:36,052 - INFO - Instrument connection closed
+2025-12-03 16:11:36,056 - INFO - Resource manager closed
+2025-12-03 16:11:36,072 - INFO - Interruption monitor stopped
+2025-12-03 16:11:46,491 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:11:46,676 - INFO - Iniciando adquisición...
+2025-12-03 16:11:46,679 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:11:46,962 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:11:46,962 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:11:46,968 - INFO - Instrument connection opened
+2025-12-03 16:11:46,969 - INFO - Timeout set to 30000ms
+2025-12-03 16:11:48,483 - INFO - Instrument initialized successfully
+2025-12-03 16:11:48,485 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_161148.csv
+2025-12-03 16:11:48,485 - INFO - Interruption monitor started
+2025-12-03 16:11:48,486 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:21:11,503 - WARNING - Acquisition interrupted by user
+2025-12-03 16:21:11,556 - INFO - Instrument connection closed
+2025-12-03 16:21:11,559 - INFO - Resource manager closed
+2025-12-03 16:24:21,000 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:24:21,144 - INFO - Iniciando adquisición...
+2025-12-03 16:24:21,146 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:24:21,373 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:24:21,373 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:24:21,378 - INFO - Instrument connection opened
+2025-12-03 16:24:21,378 - INFO - Timeout set to 30000ms
+2025-12-03 16:24:22,893 - INFO - Instrument initialized successfully
+2025-12-03 16:24:22,894 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_162422.csv
+2025-12-03 16:24:22,895 - INFO - Interruption monitor started
+2025-12-03 16:24:22,896 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:34:10,015 - WARNING - Acquisition interrupted by user
+2025-12-03 16:34:10,020 - INFO - Instrument connection closed
+2025-12-03 16:34:10,026 - INFO - Resource manager closed
+2025-12-03 16:43:17,851 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 16:43:18,023 - INFO - Iniciando adquisición...
+2025-12-03 16:43:18,024 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 16:43:18,264 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 16:43:18,264 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 16:43:18,270 - INFO - Instrument connection opened
+2025-12-03 16:43:18,270 - INFO - Timeout set to 30000ms
+2025-12-03 16:43:19,785 - INFO - Instrument initialized successfully
+2025-12-03 16:43:19,786 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_164319.csv
+2025-12-03 16:43:19,787 - INFO - Interruption monitor started
+2025-12-03 16:43:19,788 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 16:52:43,981 - WARNING - Acquisition interrupted by user
+2025-12-03 16:52:44,052 - INFO - Instrument connection closed
+2025-12-03 16:52:44,055 - INFO - Resource manager closed
+2025-12-03 17:17:29,826 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 17:17:29,916 - INFO - Iniciando adquisición...
+2025-12-03 17:17:29,917 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 17:17:30,168 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 17:17:30,169 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 17:17:30,174 - INFO - Instrument connection opened
+2025-12-03 17:17:30,174 - INFO - Timeout set to 30000ms
+2025-12-03 17:17:31,697 - INFO - Instrument initialized successfully
+2025-12-03 17:17:31,698 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_171731.csv
+2025-12-03 17:17:31,699 - INFO - Interruption monitor started
+2025-12-03 17:17:31,699 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 17:27:02,609 - WARNING - Acquisition interrupted by user
+2025-12-03 17:27:02,626 - INFO - Instrument connection closed
+2025-12-03 17:27:02,629 - INFO - Resource manager closed
+2025-12-03 17:31:23,379 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 17:31:23,529 - INFO - Iniciando adquisición...
+2025-12-03 17:31:23,530 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 17:31:23,752 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 17:31:23,752 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 17:31:23,757 - INFO - Instrument connection opened
+2025-12-03 17:31:23,758 - INFO - Timeout set to 30000ms
+2025-12-03 17:31:25,273 - INFO - Instrument initialized successfully
+2025-12-03 17:31:25,274 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_173125.csv
+2025-12-03 17:31:25,275 - INFO - Interruption monitor started
+2025-12-03 17:31:25,275 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 17:40:49,533 - WARNING - Acquisition interrupted by user
+2025-12-03 17:40:49,544 - INFO - Instrument connection closed
+2025-12-03 17:40:49,547 - INFO - Resource manager closed
+2025-12-03 17:44:46,024 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-03 17:44:46,160 - INFO - Iniciando adquisición...
+2025-12-03 17:44:46,161 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-03 17:44:46,387 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-03 17:44:46,387 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-03 17:44:46,392 - INFO - Instrument connection opened
+2025-12-03 17:44:46,393 - INFO - Timeout set to 30000ms
+2025-12-03 17:44:47,909 - INFO - Instrument initialized successfully
+2025-12-03 17:44:47,910 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251203_174447.csv
+2025-12-03 17:44:47,911 - INFO - Interruption monitor started
+2025-12-03 17:44:47,911 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-03 17:54:13,527 - WARNING - Acquisition interrupted by user
+2025-12-03 17:54:13,529 - INFO - Instrument connection closed
+2025-12-03 17:54:13,532 - INFO - Resource manager closed
+2025-12-04 09:13:31,911 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 09:13:32,036 - INFO - Iniciando adquisición...
+2025-12-04 09:13:32,037 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 09:13:32,537 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-04 09:13:32,537 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 09:13:32,542 - INFO - Instrument connection opened
+2025-12-04 09:13:32,542 - INFO - Timeout set to 30000ms
+2025-12-04 09:13:34,059 - INFO - Instrument initialized successfully
+2025-12-04 09:13:34,060 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_091334.csv
+2025-12-04 09:13:34,061 - INFO - Interruption monitor started
+2025-12-04 09:13:34,062 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 09:23:00,970 - WARNING - Acquisition interrupted by user
+2025-12-04 09:23:01,030 - INFO - Instrument connection closed
+2025-12-04 09:23:01,038 - INFO - Resource manager closed
+2025-12-04 09:26:42,429 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 09:26:42,578 - INFO - Iniciando adquisición...
+2025-12-04 09:26:42,579 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 09:26:42,794 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-04 09:26:42,795 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 09:26:42,800 - INFO - Instrument connection opened
+2025-12-04 09:26:42,800 - INFO - Timeout set to 30000ms
+2025-12-04 09:26:44,316 - INFO - Instrument initialized successfully
+2025-12-04 09:26:44,317 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_092644.csv
+2025-12-04 09:26:44,318 - INFO - Interruption monitor started
+2025-12-04 09:26:44,318 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 09:36:07,628 - WARNING - Acquisition interrupted by user
+2025-12-04 09:36:07,687 - INFO - Instrument connection closed
+2025-12-04 09:36:07,690 - INFO - Resource manager closed
+2025-12-04 09:39:13,072 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 09:39:13,217 - INFO - Iniciando adquisición...
+2025-12-04 09:39:13,218 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 09:39:13,436 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR']
+2025-12-04 09:39:13,436 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 09:39:13,445 - INFO - Instrument connection opened
+2025-12-04 09:39:13,446 - INFO - Timeout set to 30000ms
+2025-12-04 09:39:14,962 - INFO - Instrument initialized successfully
+2025-12-04 09:39:14,963 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_093914.csv
+2025-12-04 09:39:14,964 - INFO - Interruption monitor started
+2025-12-04 09:39:14,964 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 09:48:37,876 - WARNING - Acquisition interrupted by user
+2025-12-04 09:48:37,901 - INFO - Instrument connection closed
+2025-12-04 09:48:37,903 - INFO - Resource manager closed
+2025-12-04 10:00:03,916 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 10:00:04,002 - INFO - Iniciando adquisición...
+2025-12-04 10:00:04,003 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 10:00:04,227 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR', 'ASRL6::INSTR']
+2025-12-04 10:00:04,227 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 10:00:04,235 - INFO - Instrument connection opened
+2025-12-04 10:00:04,235 - INFO - Timeout set to 30000ms
+2025-12-04 10:00:05,751 - INFO - Instrument initialized successfully
+2025-12-04 10:00:05,753 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_100005.csv
+2025-12-04 10:00:05,753 - INFO - Interruption monitor started
+2025-12-04 10:00:05,754 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 10:09:31,678 - WARNING - Acquisition interrupted by user
+2025-12-04 10:09:31,699 - INFO - Instrument connection closed
+2025-12-04 10:09:31,702 - INFO - Resource manager closed
+2025-12-04 10:13:26,534 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 10:13:26,659 - INFO - Iniciando adquisición...
+2025-12-04 10:13:26,661 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 10:13:26,870 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR', 'ASRL6::INSTR']
+2025-12-04 10:13:26,871 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 10:13:26,878 - INFO - Instrument connection opened
+2025-12-04 10:13:26,879 - INFO - Timeout set to 30000ms
+2025-12-04 10:13:28,395 - INFO - Instrument initialized successfully
+2025-12-04 10:13:28,396 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_101328.csv
+2025-12-04 10:13:28,397 - INFO - Interruption monitor started
+2025-12-04 10:13:28,398 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 10:22:55,004 - WARNING - Acquisition interrupted by user
+2025-12-04 10:22:55,033 - INFO - Instrument connection closed
+2025-12-04 10:22:55,035 - INFO - Resource manager closed
+2025-12-04 10:27:55,079 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 10:27:55,219 - INFO - Iniciando adquisición...
+2025-12-04 10:27:55,221 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 10:27:55,445 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR', 'ASRL6::INSTR']
+2025-12-04 10:27:55,445 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 10:27:55,454 - INFO - Instrument connection opened
+2025-12-04 10:27:55,454 - INFO - Timeout set to 30000ms
+2025-12-04 10:27:56,970 - INFO - Instrument initialized successfully
+2025-12-04 10:27:56,971 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_102756.csv
+2025-12-04 10:27:56,972 - INFO - Interruption monitor started
+2025-12-04 10:27:56,972 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 10:37:34,279 - WARNING - Acquisition interrupted by user
+2025-12-04 10:37:34,322 - INFO - Instrument connection closed
+2025-12-04 10:37:34,324 - INFO - Resource manager closed
+2025-12-04 10:40:01,934 - INFO - Creando instancia del adquisidor Keithley...
+2025-12-04 10:40:02,055 - INFO - Iniciando adquisición...
+2025-12-04 10:40:02,056 - WARNING - NI-VISA not available, using default backend: Wrapper not found: No package named pyvisa_ni
+2025-12-04 10:40:02,265 - INFO - Available resources: ['USB0::0x05E6::0x2110::1422671::INSTR', 'ASRL3::INSTR', 'ASRL4::INSTR', 'ASRL5::INSTR', 'ASRL6::INSTR']
+2025-12-04 10:40:02,266 - INFO - Using resource: USB0::0x05E6::0x2110::1422671::INSTR
+2025-12-04 10:40:02,273 - INFO - Instrument connection opened
+2025-12-04 10:40:02,273 - INFO - Timeout set to 30000ms
+2025-12-04 10:40:03,789 - INFO - Instrument initialized successfully
+2025-12-04 10:40:03,791 - INFO - CSV file initialized: lecturas\dc_voltage_readings_ejemplo_basico_20251204_104003.csv
+2025-12-04 10:40:03,792 - INFO - Interruption monitor started
+2025-12-04 10:40:03,792 - INFO - Interruption listener started - press 'q' or 'ESC' to stop
+2025-12-04 10:49:33,142 - WARNING - Acquisition interrupted by user
+2025-12-04 10:49:33,159 - INFO - Instrument connection closed
+2025-12-04 10:49:33,161 - INFO - Resource manager closed
