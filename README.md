@@ -1,18 +1,18 @@
 # Sistema de Adquisición Integrada Keithley + Alicat + TIVA
 
-Un sistema completo y modular para adquisición de datos integrada con instrumentos Keithley, Alicat y TIVA, incluyendo análisis estadístico avanzado, visualización de datos y exportación profesional.
+Un sistema completo para adquisición de datos integrada con instrumentos Keithley (multímetro digital), Alicat (controlador de flujo/presión) y TIVA (microcontrolador), incluyendo análisis de histéresis, visualización de datos y exportación profesional.
 
 ## 🚀 Características Principales
 
-- **🏗️ Arquitectura Modular**: Sistema dividido en módulos independientes para fácil mantenimiento y reutilización
 - **🔬 Adquisición Multi-Instrumento**: Integración simultánea de Keithley (voltaje), Alicat (presión) y TIVA (señales analógicas)
 - **📊 Análisis de Histéresis**: Análisis completo de ciclos de histéresis con promedios por fase y exportación organizada
 - **🖥️ Interfaz Gráfica Avanzada**: GUI completa con control en tiempo real, visualización y exportación
 - **📈 Análisis Estadístico Completo**: Estadísticas descriptivas, correlación, estabilidad y detección de outliers
-- **💾 Exportación Profesional**: Múltiples formatos (CSV, Excel, JSON) con datos organizados
+- **💾 Exportación Profesional**: Múltiples formatos (CSV, Excel) con datos organizados
 - **🔧 Configuración Flexible**: Parámetros personalizables y modos automático/manual
 - **🛡️ Manejo Robusto de Errores**: Logging detallado y recuperación automática
-- **🧪 Scripts Especializados**: Scripts independientes para adquisiciones específicas (TIVA standalone)
+- **🧪 Scripts Especializados**: Scripts independientes para adquisiciones específicas (TIVA standalone, sin Keithley)
+- **🎯 Calibración PID**: Sistema de calibración automática para controlador Alicat
 
 ## 📋 Requisitos del Sistema
 
@@ -34,53 +34,43 @@ Un sistema completo y modular para adquisición de datos integrada con instrumen
 3. **Instala NI-VISA** (recomendado para mejor soporte USBTMC):
    - Descarga desde: https://www.ni.com/en/support/downloads/drivers/download.ni-visa.html
 
-## 🏗️ Arquitectura Modular
+## 🏗️ Estructura del Proyecto
 
-El sistema está organizado en módulos independientes para facilitar el mantenimiento y reutilización:
+El sistema está organizado en archivos principales y carpetas especializadas:
 
 ```
-keithley-acquisition/
-├── 📁 Módulos Principales
-│   ├── main.py                 # 🚀 Punto de entrada principal (GUI)
-│   ├── config_global.py        # ⚙️ Configuraciones globales y parámetros
-│   ├── instruments.py          # 🔌 Clases para manejo de instrumentos
-│   ├── acquisition_control.py  # 🎛️ Lógica de control de adquisición
-│   ├── analysis.py             # 📊 Funciones de análisis de datos
-│   └── gui.py                  # 🖥️ Interfaz gráfica completa
-│
-├── 📁 Scripts Especializados
-│   ├── tiva_acquisition.py     # 🎯 Adquisición TIVA independiente
-│   ├── acquisition_wo_KEITHLEY.py # 🔄 Adquisición sin Keithley
-│   └── acquisition_instruments.py # 🔗 Compatibilidad legacy
-│
-├── 📁 Configuración y Datos
-│   ├── config.py              # ⚙️ Configuración Keithley específica
-│   ├── requirements.txt       # 📦 Dependencias Python
-│   ├── test_config.json       # 🧪 Configuración de pruebas
-│   └── README.md             # 📖 Esta documentación
-│
-├── 📁 Datos y Resultados
-│   ├── 📁 lecturas/           # 📊 Datos de lecturas
-│   ├── 📁 calibration_data/   # 🎯 Datos de calibración
-│   ├── 📁 logs/              # 📝 Logs del sistema
-│   └── 📁 temp/              # 🗂️ Archivos temporales
-│
-└── 📁 Tests y Utilidades
-    ├── 📁 test/              # 🧪 Tests unitarios
-    └── 📁 user_manuals/      # 📚 Manuales de usuario
+KEITHLEY/
+├── 📄 main.py                          # 🚀 Interfaz gráfica principal (GUI integrada)
+├── 📄 acquisition.py                   # 🔌 Módulo de adquisición Keithley
+├── 📄 acquisition_instruments.py       # 🔗 Adquisición integrada Keithley + Alicat + TIVA
+├── 📄 acquisition_wo_KEITHLEY.py       # 🔄 Adquisición sin Keithley
+├── 📄 tiva_acqusition.py               # 🎯 Adquisición TIVA standalone
+├── 📄 alicat_pid_calibration.py        # 🎛️ Calibración PID para Alicat
+├── 📄 config.py                        # ⚙️ Configuración para Keithley (línea de comandos)
+├── 📄 requirements.txt                 # 📦 Dependencias Python
+├── 📄 CodigoPresionADS.c               # 💻 Código C para TIVA (presión ADS)
+├── 📁 calibration_data/                # 🎯 Datos de calibración PID
+├── 📁 lecturas/                        # 📊 Datos de lecturas y experimentos
+├── 📁 logs/                           # 📝 Logs del sistema
+├── 📁 solo_keithley/                  # 🔌 Scripts específicos para Keithley
+├── 📁 test_kei/                       # 🧪 Tests y ejemplos para Keithley
+├── 📁 user_manuals/                   # 📚 Manuales de usuario
+├── 📁 kei lecture/                    # 📖 Lecturas y documentación Keithley
+└── 📁 __pycache__/                    # 🐍 Archivos compilados Python
 ```
 
-### 📋 Descripción de Módulos
+### 📋 Descripción de Archivos Principales
 
-| Módulo | Descripción | Responsabilidades |
-|--------|-------------|-------------------|
-| `main.py` | Punto de entrada principal | Inicializa y ejecuta la GUI |
-| `config_global.py` | Configuraciones globales | Puertos, parámetros, variables globales |
-| `instruments.py` | Manejo de instrumentos | Clases Keithley, funciones de lectura TIVA/Alicat |
-| `acquisition_control.py` | Control de adquisición | Lógica de ciclos, estabilidad, control de flujo |
-| `analysis.py` | Análisis de datos | Histéresis, estadísticas, exportación |
-| `gui.py` | Interfaz gráfica | GUI completa con todas las funcionalidades |
-| `tiva_acquisition.py` | Adquisición TIVA standalone | Script independiente para TIVA |
+| Archivo | Descripción | Funcionalidades |
+|---------|-------------|-----------------|
+| `main.py` | Interfaz gráfica principal | GUI completa con pestañas para control, calibración, visualización y análisis |
+| `acquisition.py` | Adquisición Keithley | Clase para control del multímetro digital, análisis estadístico |
+| `acquisition_instruments.py` | Adquisición integrada | Sistema completo Keithley + Alicat + TIVA con histéresis |
+| `acquisition_wo_KEITHLEY.py` | Adquisición sin Keithley | Alicat + TIVA únicamente |
+| `tiva_acqusition.py` | TIVA standalone | Adquisición especializada de 60 segundos con guardado incremental |
+| `alicat_pid_calibration.py` | Calibración Alicat | Sistema PID automático para control de presión/flujo |
+| `config.py` | Configuración | Argumentos de línea de comandos para Keithley |
+| `CodigoPresionADS.c` | Firmware TIVA | Código C para lectura de sensores de presión ADS |
 
 ## 🎯 Uso del Sistema
 
@@ -104,7 +94,7 @@ Para adquisición especializada de datos TIVA (60 segundos con guardado incremen
 
 ```bash
 # Ejecutar adquisición TIVA standalone
-python tiva_acquisition.py
+python tiva_acqusition.py
 ```
 
 **Características:**
@@ -114,23 +104,39 @@ python tiva_acquisition.py
 - Generación de archivos PWL para simulación
 - Cálculo de promedios finales
 
-### 🔧 Scripts de Compatibilidad
+### 🔧 Adquisición sin Keithley
 
-- `acquisition_instruments.py`: Mantiene compatibilidad con código legacy
-- `acquisition_wo_KEITHLEY.py`: Adquisición sin instrumento Keithley
+Para experimentos que no requieren el multímetro Keithley:
+
+```bash
+# Ejecutar adquisición Alicat + TIVA únicamente
+python acquisition_wo_KEITHLEY.py
+```
+
+### 🔌 Adquisición Keithley Básica
+
+Para adquisición simple con Keithley desde línea de comandos:
+
+```bash
+# Adquisición básica
+python acquisition.py --label "experimento1" --samples 1000 --blocks 10
+
+# Con parámetros personalizados
+python acquisition.py --label "voltaje_sensor" --samples 2000 --nplc 0.1 --blocks 5 --force
+```
 
 ## ⚙️ Configuración del Sistema
 
 ### Puertos Seriales
 ```python
-# En config_global.py
+# En los scripts (configuración típica)
 alicat_port = "COM5"  # Alicat Flow Controller
 tiva_port = "COM6"    # TIVA Microcontroller
 ```
 
 ### Parámetros de Adquisición
 ```python
-# Parámetros de histéresis
+# Parámetros de histéresis en acquisition_instruments.py
 num_ciclos = 1
 punto_inicio = 0
 punto_final = 6.867
@@ -216,7 +222,7 @@ Ciclo,Setpoint_kPA,Error_TIVA_V,Error_TIVA_FP_V,Error_Keithley_V,Area_TIVA,Area_
 
 ### Agregar Nuevo Análisis
 
-1. **Crear función en `analysis.py`**:
+1. **Crear función en `acquisition_instruments.py`** o módulo separado:
 ```python
 def run_mi_analisis(data: pd.DataFrame, **params) -> Dict[str, Any]:
     # Implementar lógica de análisis
@@ -224,7 +230,7 @@ def run_mi_analisis(data: pd.DataFrame, **params) -> Dict[str, Any]:
     return results
 ```
 
-2. **Agregar a GUI en `gui.py`**:
+2. **Agregar a GUI en `main.py`**:
 ```python
 def run_mi_analisis(self):
     results = run_mi_analisis(self.csv_data)
@@ -233,7 +239,7 @@ def run_mi_analisis(self):
 
 ### Agregar Nuevo Instrumento
 
-1. **Crear clase en `instruments.py`**:
+1. **Crear clase similar a `AlicatController`**:
 ```python
 class MiInstrumento:
     def __init__(self, config):
@@ -244,7 +250,7 @@ class MiInstrumento:
         return data
 ```
 
-2. **Integrar en `acquisition_control.py`**:
+2. **Integrar en `acquisition_instruments.py`**:
 ```python
 # Agregar llamadas de lectura en acquisition_loop
 mi_instrumento = MiInstrumento(config)
@@ -256,10 +262,10 @@ data = mi_instrumento.read_data()
 Ejecutar tests del sistema:
 ```bash
 # Tests unitarios
-python -m pytest test/ -v
+python -m pytest test_kei/ -v
 
 # Tests de integración
-python test_main.py
+python test_kei/test_main_acquisition.py
 ```
 
 ## 🚨 Solución de Problemas
@@ -274,7 +280,7 @@ pip install -r requirements.txt
 **Solución**:
 1. Verificar conexiones físicas
 2. Usar "Escanear Puertos" en la GUI
-3. Verificar configuración en `config_global.py`
+3. Verificar configuración en los scripts
 
 ### Problema: Error de estabilidad en adquisición
 **Solución**:
@@ -293,17 +299,17 @@ pip install -r requirements.txt
 
 ## 📝 Registro de Cambios
 
-### v3.0 (Actual) - Arquitectura Modular
-- ✅ **Modularización completa**: Sistema dividido en módulos independientes
+### v3.0 (Actual) - Sistema Integrado Completo
+- ✅ **GUI Completa**: Interfaz gráfica integrada en `main.py`
 - ✅ **Análisis de histéresis avanzado**: Promedios por fase y exportación organizada
-- ✅ **Interfaz gráfica integrada**: Control completo desde GUI
-- ✅ **Scripts especializados**: TIVA standalone con características específicas
+- ✅ **Módulos especializados**: Scripts separados para diferentes configuraciones
+- ✅ **Calibración PID**: Sistema automático para Alicat
 - ✅ **Documentación completa**: README actualizado y estructurado
 
-### v2.0 - Sistema Integrado
+### v2.0 - Sistema Integrado Básico
 - 🔄 Integración Keithley + Alicat + TIVA
 - 🔄 Análisis básico de histéresis
-- 🔄 Interfaz gráfica funcional
+- 🔄 Scripts separados por funcionalidad
 
 ### v1.0 - Sistema Keithley Básico
 - 📊 Adquisición Keithley con análisis estadístico
@@ -316,7 +322,7 @@ Para contribuir al proyecto:
 
 1. **Fork** el repositorio
 2. **Crear rama** para nueva funcionalidad: `git checkout -b feature/nueva-funcionalidad`
-3. **Implementar** cambios siguiendo la arquitectura modular
+3. **Implementar** cambios siguiendo la estructura existente
 4. **Agregar tests** para nueva funcionalidad
 5. **Documentar** cambios en el README
 6. **Crear Pull Request** con descripción detallada
@@ -325,198 +331,11 @@ Para contribuir al proyecto:
 
 Este proyecto es software libre distribuido bajo la licencia MIT. Consulta el archivo LICENSE para detalles completos.
 
-## 📞 Soporte
-
-Para soporte técnico o reportar issues:
-- Revisar logs en carpeta `logs/`
-- Verificar configuración en archivos de configuración
-- Consultar documentación de instrumentos específicos
-
 ---
 
 **Desarrollado por**: GuilleDevMX
-**Última actualización**: Octubre 2025
+**Última actualización**: Diciembre 2025
 **Versión**: 3.0.0
-```
-
-## 🎯 Uso Básico
-
-### Adquisición Simple
-```bash
-python main_refactored.py --label "experimento1" --samples 1000 --blocks 10
-```
-
-### Adquisición con Parámetros Personalizados
-```bash
-python main_refactored.py \
-    --label "voltaje_sensor" \
-    --samples 2000 \
-    --nplc 0.1 \
-    --blocks 5 \
-    --force
-```
-
-### Modo Estadísticas Básicas
-```bash
-python main_refactored.py \
-    --label "test_rapido" \
-    --samples 500 \
-    --blocks 3 \
-    --no-stats
-```
-
-### Adquisición Infinita
-```bash
-python main_refactored.py \
-    --label "monitoreo_continuo" \
-    --samples 1000 \
-    --blocks 0  # 0 = modo infinito
-```
-
-### Especificar Directorio de Salida
-```bash
-python main_refactored.py \
-    --label "experimento" \
-    --samples 1000 \
-    --blocks 5 \
-    --output-dir "resultados_experimento"
-```
-
-### Ejemplos de Organización
-```bash
-# Resultados organizados por experimento
-python main_refactored.py --output-dir "experimentos/sensor_voltaje"
-
-# Resultados organizados por fecha
-python main_refactored.py --output-dir "resultados/2025-10-09"
-
-# Resultados organizados por tipo de prueba
-python main_refactored.py --output-dir "calibracion/linealidad"
-```
-
-## �️ Interfaz Gráfica Avanzada
-
-El sistema incluye una interfaz gráfica completa (`gui_interface.py`) para control intuitivo de la adquisición y análisis de datos.
-
-### 🚀 Funcionalidades de la GUI
-
-#### **Pestañas Principales:**
-1. **Control de Adquisición**: Inicio, pausa, detención y monitoreo en tiempo real
-2. **Parámetros**: Configuración completa de setpoint, Keithley y directorios
-3. **Puertos**: Escaneo automático y prueba de conexiones seriales/VISA
-4. **Calibración**: Control de calibración PID para Alicat
-5. **Visualización**: Análisis gráfico avanzado de datos CSV
-6. **Exportación**: Exportación de datos y gráficas en múltiples formatos
-
-### 📊 Sistema de Visualización
-
-#### **Gráficas Principales:**
-- **Voltajes vs Tiempo**: Serie temporal con voltajes TIVA (crudos y filtrados) y KEITHLEY (cuando disponible)
-- **Presión Alicat vs Tiempo**: Presión actual, setpoint y setpoint enviado
-- **Layout**: 2 gráficas en columna (una por fila) para fácil comparación
-
-#### **Análisis Detallado:**
-- **Correlación**: Matriz de correlación entre todas las variables disponibles
-- **Histogramas**: Distribuciones de variables principales (voltajes TIVA/KEITHLEY, presión, temperatura)
-- **Espectro**: Análisis de frecuencia (FFT) dinámico para todas las señales disponibles
-- **Tendencias**: Regresión lineal y análisis de tendencias temporales para múltiples variables
-
-### 💾 Exportación de Datos
-
-#### **Formatos de Datos:**
-- **CSV**: Formato estándar de valores separados por comas
-- **Excel (XLSX)**: Compatible con Microsoft Excel y LibreOffice
-- **JSON**: Formato estructurado para aplicaciones web
-- **Parquet**: Optimizado para big data y análisis masivo
-
-#### **Formatos de Gráficas:**
-- **PNG**: Alta calidad para documentos y presentaciones
-- **JPG**: Comprimido para uso web
-- **BMP**: Formato sin pérdida para edición
-- **PDF**: Vectorial para publicaciones científicas
-- **EPS**: Formato PostScript para impresión profesional
-
-### 🎯 Cómo Usar la Interfaz Gráfica
-
-```bash
-# Activar entorno virtual
-.\env\Scripts\activate
-
-# Ejecutar interfaz gráfica
-python gui_interface.py
-```
-
-#### **Flujo de Trabajo Típico:**
-1. **Configurar Puertos**: Escanear y probar conexiones seriales
-2. **Ajustar Parámetros**: Configurar setpoints, Keithley y directorios
-3. **Iniciar Adquisición**: Comenzar captura de datos con monitoreo en tiempo real
-4. **Visualizar Datos**: Cargar CSV generado y explorar gráficas
-5. **Exportar Resultados**: Guardar datos y gráficas en formatos deseados
-
-### 🔧 Características Avanzadas
-
-- **Pausa/Reanudación**: Control preciso sobre la adquisición de datos
-- **Monitoreo en Tiempo Real**: Logs detallados y estado del sistema
-- **Validación Automática**: Verificación de conexiones y parámetros
-- **Interfaz Intuitiva**: Diseño moderno con navegación por pestañas
-- **Manejo de Errores**: Mensajes informativos y recuperación automática
-- **Cierre Seguro**: Limpieza automática de recursos al cerrar la aplicación
-  - Detiene threads de adquisición y calibración
-  - Cierra conexiones seriales y VISA
-  - Libera figuras de matplotlib
-  - Cierra handlers de logging
-  - Garantiza integridad de datos
-
-## �📁 Organización de Archivos
-
-### Estructura por Defecto
-```
-proyecto/
-├── main_refactored.py
-├── config.py
-├── acquisition.py
-├── analysis.py
-├── plotting.py
-└── output/                    # 📁 Archivos generados aquí
-    ├── dc_voltage_readings_experimento1_20251009_143000.csv
-    ├── voltage_analysis_experimento1_20251009_143005.png
-    └── keithley_acquisition_20251009.log
-```
-
-### Personalizar Carpeta de Salida
-```bash
-# Usar carpeta específica
-python main_refactored.py --output-dir "experimentos/voltaje"
-
-# Usar subcarpetas por fecha
-python main_refactored.py --output-dir "resultados/2025-10-09"
-```
-
-### Archivos Generados
-- **CSV**: `dc_voltage_readings_[etiqueta]_[timestamp].csv`
-  - Datos crudos de voltaje con metadatos
-  - Columnas: Block, Sample_In_Block, Global_Sample, Voltage_V, Timestamp
-
-- **PNG**: `voltage_analysis_[etiqueta]_[timestamp].png`
-  - Gráficas completas de análisis estadístico
-  - 6 paneles: serie temporal, distribución, análisis por bloques, etc.
-
-- **LOG**: `keithley_acquisition_[fecha].log`
-  - Registro completo de la ejecución
-  - Información de debugging y errores
-
-## ⚙️ Parámetros de Configuración
-
-| Parámetro | Descripción | Valor por defecto | Rango |
-|-----------|-------------|-------------------|-------|
-| `--label`, `-l` | Etiqueta del experimento | `experimento` | Cualquier string |
-| `--samples`, `-s` | Muestras por bloque | 2000 | 100-2000 |
-| `--nplc`, `-n` | Ciclos NPLC | 10 | 0.001-100 o MINimum/MAXimum |
-| `--blocks`, `-b` | Número de bloques | 50 | 0-1000 (0=infinito) |
-| `--force`, `-f` | Forzar NPLC personalizados | False | - |
-| `--no-stats` | Solo gráficas básicas | False | - |
-| `--output-dir`, `-o` | Directorio de salida para archivos | `output` | Ruta válida |
-| `--quiet`, `-q` | Modo silencioso | False | - |
 
 ### Gestión de Configuración
 
